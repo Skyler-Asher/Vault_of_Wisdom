@@ -6,6 +6,7 @@
     "emojiStyle": "native",
     "iconColor": null,
     "recentlyUsedIcons": [
+      "🗒",
       "LiBook"
     ],
     "recentlyUsedIconsSize": 5,
@@ -30,5 +31,6 @@
     "debugMode": false,
     "useInternalPlugins": false
   },
-  "Mentors": "LiBook"
+  "Mentors": "LiBook",
+  "Mentors/Alex_Hormozi": "🗒"
 }
