@@ -34,5 +34,6 @@
     "useInternalPlugins": false
   },
   "Mentors": "LiBook",
-  "Mentors/Alex_Hormozi": "LiStar"
+  "Mentors/Alex_Hormozi": "LiStar",
+  "Experiments": "LiBook"
 }
