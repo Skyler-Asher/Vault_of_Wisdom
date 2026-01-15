@@ -8,4 +8,10 @@ that just means its  a superpower that let you simulate reality unlimited times 
 
 I have seen many Great people using these what if questions to get their answers 
 
-like Alex hormozi said -- If my whole family life depends on getting jacked by 
+like Alex hormozi said -- If my whole family life depends on getting jacked by the end of the year  what is it that i would do  . 
+
+
+or like Elon_musk said -- what is it that my future 10 year self would do in this case . 
+
+
+as we can both above are simulated realities that helps the mind to come up with better plans 
