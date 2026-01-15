@@ -6,4 +6,6 @@ that just means its  a superpower that let you simulate reality unlimited times 
 # or 
 
 
-I have seen many Great peo
+I have seen many Great people using these what if questions to get their answers 
+
+like Alex hormozi said -- If my whole family life depends on getting jacked by 
