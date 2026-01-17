@@ -18,4 +18,4 @@ Time - 2:27 pm
    This theory is wrong as internal and external structure sometimes overlap but this theory just block that 
 
 
-1. 
+1. https://youtu.be/iYbevTXtejc?si=A365qWQLv2bYVIgY&t=707 a fact or a rule that is helpfull 
