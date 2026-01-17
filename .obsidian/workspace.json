@@ -20,8 +20,19 @@
               "icon": "lucide-file",
               "title": "What if  Scenarios are a Super Power that Humans are Gifted with ."
             }
+          },
+          {
+            "id": "0c4868f4f4865d07",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -181,10 +192,10 @@
       "bases:Create new base": false
     }
   },
-  "active": "8b8cb0c057e24da1",
+  "active": "0c4868f4f4865d07",
   "lastOpenFiles": [
-    "Mentors/Vinh Giang/Reality is Negotiable.md",
     "Experiments/What if  Scenarios are a Super Power that Humans are Gifted with ..md",
+    "Mentors/Vinh Giang/Reality is Negotiable.md",
     "Experiments",
     "Mentors/Alex_Hormozi/Quantity has a Quality of  its own --.md"
   ]
