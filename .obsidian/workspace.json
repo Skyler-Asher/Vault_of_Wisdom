@@ -104,6 +104,16 @@
         "type": "tabs",
         "children": [
           {
+            "id": "9dcbad80a971459c",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {},
+              "icon": "calendar-with-checkmark",
+              "title": "Calendar"
+            }
+          },
+          {
             "id": "c59743b3ab26df8a",
             "type": "leaf",
             "state": {
@@ -177,22 +187,12 @@
               "icon": "lucide-list",
               "title": "Outline"
             }
-          },
-          {
-            "id": "9dcbad80a971459c",
-            "type": "leaf",
-            "state": {
-              "type": "calendar",
-              "state": {},
-              "icon": "calendar-with-checkmark",
-              "title": "Calendar"
-            }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 306.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -206,7 +206,7 @@
       "bases:Create new base": false
     }
   },
-  "active": "8b8cb0c057e24da1",
+  "active": "9dcbad80a971459c",
   "lastOpenFiles": [
     "Experiments/What if  Scenarios are a Super Power that Humans are Gifted with ..md",
     "Daily Journal/2026/01/Jan 17 Saturday.md",
