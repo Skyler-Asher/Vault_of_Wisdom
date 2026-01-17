@@ -14,3 +14,6 @@ Time - 2:27 pm
 1. After  A External BOS  , price continues to increase  until we have internal Trend Change  thus giving us our External Weak high , now we have range having a strong low and a weak high establishing bullish market 
    
 2. For A weak high/low  to be confirmed on a  ,we are looking for an  internal Trend change that has occurred after the previous weak high/low has been violated .  
+   
+   
+   This theory is wrong as internal and external structure sometimes overlap but this theory just block that 
