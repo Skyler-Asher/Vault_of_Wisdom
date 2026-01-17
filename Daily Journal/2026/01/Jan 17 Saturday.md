@@ -12,4 +12,4 @@ Time - 2:27 pm
 
 ![[Pasted image 20260117143527.png]]
 1. After  A External BOS  , price continues to increase  until we have internal Trend Change  thus giving us our External Weak high , now we have range having a strong low and a weak high establishing bullish market 
-2. For Our
+2. For A weak high to be confirmed we watch for a  internal Trend change that has occur
