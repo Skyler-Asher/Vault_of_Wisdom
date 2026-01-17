@@ -35,8 +35,7 @@
               "title": "Jan 17 Saturday"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -196,7 +195,7 @@
       "bases:Create new base": false
     }
   },
-  "active": "0c4868f4f4865d07",
+  "active": "8b8cb0c057e24da1",
   "lastOpenFiles": [
     "Daily Journal/2026/01/Jan 17 Saturday.md",
     "Daily Journal/2026/01",
