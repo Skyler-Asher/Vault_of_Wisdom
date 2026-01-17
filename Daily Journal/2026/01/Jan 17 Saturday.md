@@ -10,4 +10,5 @@ Time - 2:27 pm
 
 # Trading 
 
-1.  after a BOS 
+![[Pasted image 20260117143527.png]]
+1. After  A 
