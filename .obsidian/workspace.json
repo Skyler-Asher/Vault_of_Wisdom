@@ -47,8 +47,7 @@
               "title": "Jan 17 Saturday"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -132,7 +131,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Attachments/Pasted image 20260117143527.png",
+                "file": "Daily Journal/2026/01/Jan 17 Saturday.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -142,7 +141,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Pasted image 20260117143527"
+              "title": "Backlinks for Jan 17 Saturday"
             }
           },
           {
@@ -151,12 +150,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Attachments/Pasted image 20260117143527.png",
+                "file": "Daily Journal/2026/01/Jan 17 Saturday.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Pasted image 20260117143527"
+              "title": "Outgoing links from Jan 17 Saturday"
             }
           },
           {
@@ -194,13 +193,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Attachments/Pasted image 20260117143527.png",
+                "file": "Daily Journal/2026/01/Jan 17 Saturday.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Pasted image 20260117143527"
+              "title": "Outline of Jan 17 Saturday"
             }
           }
         ],
@@ -223,10 +222,10 @@
       "bases:Create new base": false
     }
   },
-  "active": "969886aec49181ec",
+  "active": "8b8cb0c057e24da1",
   "lastOpenFiles": [
-    "Daily Journal/2026/01/Jan 17 Saturday.md",
     "Attachments/Pasted image 20260117143527.png",
+    "Daily Journal/2026/01/Jan 17 Saturday.md",
     "Experiments/What if  Scenarios are a Super Power that Humans are Gifted with ..md",
     "Daily Journal/2026/01",
     "Daily Journal/2026",

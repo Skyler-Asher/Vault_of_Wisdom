@@ -15,5 +15,7 @@ Time - 2:27 pm
    
 2. For a External  weak high/low  to be confirmed   ,we are looking for an  internal Trend change that  has occurred after the previous external  weak high/low has been violated .  
    
-   
    This theory is wrong as internal and external structure sometimes overlap but this theory just block that 
+
+
+1. 
