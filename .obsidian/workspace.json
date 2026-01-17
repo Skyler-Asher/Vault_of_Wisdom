@@ -22,6 +22,18 @@
             }
           },
           {
+            "id": "969886aec49181ec",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "Attachments/Pasted image 20260117143527.png"
+              },
+              "icon": "lucide-image",
+              "title": "Pasted image 20260117143527"
+            }
+          },
+          {
             "id": "0c4868f4f4865d07",
             "type": "leaf",
             "state": {
@@ -35,7 +47,8 @@
               "title": "Jan 17 Saturday"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -119,7 +132,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Daily Journal/2026/01/Jan 17 Saturday.md",
+                "file": "Attachments/Pasted image 20260117143527.png",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -129,7 +142,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Jan 17 Saturday"
+              "title": "Backlinks for Pasted image 20260117143527"
             }
           },
           {
@@ -138,11 +151,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Attachments/Pasted image 20260117143527.png",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links"
+              "title": "Outgoing links from Pasted image 20260117143527"
             }
           },
           {
@@ -180,19 +194,22 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "Attachments/Pasted image 20260117143527.png",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline"
+              "title": "Outline of Pasted image 20260117143527"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 306.5
+    "width": 306.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -206,11 +223,11 @@
       "bases:Create new base": false
     }
   },
-  "active": "8b8cb0c057e24da1",
+  "active": "969886aec49181ec",
   "lastOpenFiles": [
+    "Daily Journal/2026/01/Jan 17 Saturday.md",
     "Attachments/Pasted image 20260117143527.png",
     "Experiments/What if  Scenarios are a Super Power that Humans are Gifted with ..md",
-    "Daily Journal/2026/01/Jan 17 Saturday.md",
     "Daily Journal/2026/01",
     "Daily Journal/2026",
     "Attachments",
