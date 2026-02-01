@@ -22,6 +22,18 @@
             }
           },
           {
+            "id": "4579a6f2200a290b",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.11.5"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.11.5"
+            }
+          },
+          {
             "id": "969886aec49181ec",
             "type": "leaf",
             "state": {
@@ -47,7 +59,8 @@
               "title": "Read WSJ  3 articles"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -221,7 +234,7 @@
       "bases:Create new base": false
     }
   },
-  "active": "8b8cb0c057e24da1",
+  "active": "4579a6f2200a290b",
   "lastOpenFiles": [
     "Daily Journal/2026/01/Jan 17 Saturday.md",
     "Attachments/Pasted image 20260117143527.png",
