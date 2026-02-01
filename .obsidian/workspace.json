@@ -63,12 +63,14 @@
             "id": "4457a37b1f0dabf5",
             "type": "leaf",
             "state": {
-              "type": "release-notes",
+              "type": "markdown",
               "state": {
-                "currentVersion": "1.11.5"
+                "file": "Daily Journal/2026/02/01.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-book-up",
-              "title": "Release Notes 1.11.5"
+              "icon": "lucide-file",
+              "title": "01"
             }
           }
         ],
@@ -248,6 +250,8 @@
   },
   "active": "4457a37b1f0dabf5",
   "lastOpenFiles": [
+    "Daily Journal/2026/02/01.md",
+    "Daily Journal/2026/02",
     "Daily Journal/2026/01/Jan 17 Saturday.md",
     "Attachments/Pasted image 20260117143527.png",
     "Compounding Ideas/Read WSJ  3 articles.md",
