@@ -72,9 +72,19 @@
               "icon": "lucide-file",
               "title": "01"
             }
+          },
+          {
+            "id": "07649c095d61bbf6",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
+            }
           }
         ],
-        "currentTab": 4
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -248,7 +258,7 @@
       "bases:Create new base": false
     }
   },
-  "active": "4457a37b1f0dabf5",
+  "active": "07649c095d61bbf6",
   "lastOpenFiles": [
     "Daily Journal/2026/02/01.md",
     "Daily Journal/2026/02",
