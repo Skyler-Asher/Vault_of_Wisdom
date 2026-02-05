@@ -4,6 +4,7 @@ Start the video with a clean title screen that clearly displays:
 • Article Title  
 • Author Name  
 • Publish Date  
+** Mention Verbally **
 
 After the title screen, present a short **Roadmap** so viewers know what to expect. The roadmap must include:
 1. One-sentence summary of the article  
