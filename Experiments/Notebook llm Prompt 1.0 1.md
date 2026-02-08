@@ -8,7 +8,7 @@ Start the video with a clean title screen that clearly displays:
 ** Mention Verbally ** 
 
 After the title screen, 
-present a short **Road-map** so viewers know what to expect. The Road-map must include:
+present a short **Roadmap** so viewers know what to expect. The Roadmap must include:
 1. One-sentence summary of the article  
 2. Important background or context  
 3. Definitions of key terms  
