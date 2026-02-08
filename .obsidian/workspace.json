@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Experiments/Notebook llm Prompt 1.0.md",
+                "file": "Experiments/Notebook llm Prompt 1.0 1.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Notebook llm Prompt 1.0"
+              "title": "Notebook llm Prompt 1.0 1"
             }
           }
         ],
@@ -226,8 +226,9 @@
   },
   "active": "e8f416d42c6513d9",
   "lastOpenFiles": [
-    "Experiments/What if  Scenarios are a Super Power that Humans are Gifted with ..md",
     "Experiments/Notebook llm Prompt 1.0.md",
+    "Experiments/Notebook llm Prompt 1.0 1.md",
+    "Experiments/What if  Scenarios are a Super Power that Humans are Gifted with ..md",
     "Daily Journal/2026/02/05.md",
     "Daily Journal/2026/02/03.md",
     "Compounding Ideas/Read WSJ  3 articles.md",
