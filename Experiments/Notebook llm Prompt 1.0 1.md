@@ -9,12 +9,21 @@ Start the video with a clean title screen that clearly displays:
 
 After the title screen, 
 present a short **Roadmap** so viewers know what to expect. The Roadmap must include:
-1. One-sentence summary of the article  
-2. Important background or context  
-3. Definitions of key terms  
-4. Main arguments or developments  
-5. Real-world impact or why it matters  
-6. Final recap with 3 key takeaways  
+ **Big Picture:** What is happening in the economy and why it matters now.
+    
+- **Economic Context:** The larger forces driving the story (policy, inflation, growth, trade, etc.).
+    
+- **Key Terms Simplified:** Explain essential concepts in plain language.
+    
+- **Core Development:** What changed and the cause → effect behind it.
+    
+- **System Impact:** How it influences markets, businesses, consumers, and global flows.
+    
+- **Winners & Losers:** Who benefits, who faces pressure.
+    
+- **Looking Ahead:** What signals or data to watch next.
+    
+- **3 Takeaways:** Event, meaning, future implication.
 
 Narration Requirements:
 - Use very simple, clear sentences suitable for someone with zero prior knowledge.
