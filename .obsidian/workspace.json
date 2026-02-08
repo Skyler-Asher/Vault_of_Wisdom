@@ -34,9 +34,21 @@
               "icon": "lucide-file",
               "title": "Notebook llm Prompt 1.0"
             }
+          },
+          {
+            "id": "e8f416d42c6513d9",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.11.7"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.11.7"
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -210,7 +222,7 @@
       "bases:Create new base": false
     }
   },
-  "active": "51b4bdf85f428c38",
+  "active": "e8f416d42c6513d9",
   "lastOpenFiles": [
     "Daily Journal/2026/02/05.md",
     "Experiments/Notebook llm Prompt 1.0.md",
