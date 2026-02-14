@@ -50,7 +50,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -224,8 +224,9 @@
       "bases:Create new base": false
     }
   },
-  "active": "e8f416d42c6513d9",
+  "active": "51b4bdf85f428c38",
   "lastOpenFiles": [
+    "Mentors/Vinh Giang/Reality is Negotiable.md",
     "Mentors/TJR/# 6 Rules I've Learned From 6 Years of Trading by TJR.md",
     "Mentors/Alex_Hormozi/Quantity has a Quality of  its own --.md",
     "Mentors/Alex_Hormozi/Enough ways.md",
@@ -252,7 +253,6 @@
     "Daily Journal/2026",
     "Attachments",
     "Daily Journal",
-    "Mentors/Vinh Giang/Reality is Negotiable.md",
     "Experiments"
   ]
 }
