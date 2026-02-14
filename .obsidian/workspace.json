@@ -46,7 +46,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -130,7 +130,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Mentors/Vinh Giang/Reality is Negotiable.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -140,7 +139,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Reality is Negotiable"
+              "title": "Backlinks"
             }
           },
           {
@@ -192,13 +191,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Mentors/Vinh Giang/Reality is Negotiable.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Reality is Negotiable"
+              "title": "Outline"
             }
           }
         ]
@@ -220,11 +218,11 @@
       "bases:Create new base": false
     }
   },
-  "active": "e8f416d42c6513d9",
+  "active": "51b4bdf85f428c38",
   "lastOpenFiles": [
+    "Mentors/Vinh Giang/Reality is Negotiable.md",
     "Daily Journal/2026/02/03.md",
     "Experiments/Notebook llm Prompt 1.0.md",
-    "Mentors/Vinh Giang/Reality is Negotiable.md",
     "Mentors/TJR/# 6 Rules I've Learned From 6 Years of Trading by TJR.md",
     "Mentors/Alex_Hormozi/Quantity has a Quality of  its own --.md",
     "Mentors/Alex_Hormozi/Enough ways.md",
