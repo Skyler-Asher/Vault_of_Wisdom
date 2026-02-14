@@ -46,7 +46,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -130,6 +130,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Mentors/Vinh Giang/Reality is Negotiable.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -139,7 +140,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks"
+              "title": "Backlinks for Reality is Negotiable"
             }
           },
           {
@@ -191,12 +192,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "Mentors/Vinh Giang/Reality is Negotiable.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline"
+              "title": "Outline of Reality is Negotiable"
             }
           }
         ]
@@ -218,8 +220,9 @@
       "bases:Create new base": false
     }
   },
-  "active": "51b4bdf85f428c38",
+  "active": "e8f416d42c6513d9",
   "lastOpenFiles": [
+    "Daily Journal/2026/02/03.md",
     "Experiments/Notebook llm Prompt 1.0.md",
     "Mentors/Vinh Giang/Reality is Negotiable.md",
     "Mentors/TJR/# 6 Rules I've Learned From 6 Years of Trading by TJR.md",
@@ -236,7 +239,6 @@
     "Attachments/Pasted image 20260208141909.png",
     "Experiments/What if  Scenarios are a Super Power that Humans are Gifted with ..md",
     "Daily Journal/2026/02/05.md",
-    "Daily Journal/2026/02/03.md",
     "Compounding Ideas/Read WSJ  3 articles.md",
     "Attachments/Pasted image 20260117143527.png",
     "Daily Journal/2026/02/01.md",
