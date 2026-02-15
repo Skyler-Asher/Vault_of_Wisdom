@@ -11,7 +11,7 @@ Start the video with a clean title screen that clearly displays:
 After the title screen, 
 
 present a short **Roadmap** so viewers know what to expect. The Roadmap must include:
- **Big Picture:** What is happening in the economy and why it matters now.
+ **Big Picture:** 
  
 1. One-sentence summary: State who is buying/merging with whom, deal type, price or structure, and the immediate outcome.
     
