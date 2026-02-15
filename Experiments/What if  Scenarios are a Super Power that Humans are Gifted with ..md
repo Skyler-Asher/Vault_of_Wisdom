@@ -8,10 +8,12 @@ that just means its  a superpower that let you simulate reality unlimited times 
 
 I have noticed successful people   using  what if questions to increase their thinking abilities. 
 
-Alex hormozi said -- If my whole family life depends on getting jacked by the end of the year  what is it that i would do  . 
+Alex Hormozi -- If my whole family life depends on getting jacked by the end of the year  what is it that i would do  . 
+
+Elon Musk said -- what is it that my future 10 year self would do in this case . 
+
+ Unknown_source -- 
 
 
-or like Elon_musk said -- what is it that my future 10 year self would do in this case . 
 
-
-as we can both above are simulated realities that helps the mind to come up with better plans 
+ above are simulated realities that helps the mind to come up with better plans 
