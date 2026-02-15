@@ -10,20 +10,18 @@ Start the video with a clean title screen that clearly displays:
 After the title screen, 
 present a short **Roadmap** so viewers know what to expect. The Roadmap must include:
  **Big Picture:** What is happening in the economy and why it matters now.
+ 
+1. One-sentence summary: State who is buying/merging with whom, deal type, price or structure, and the immediate outcome.
     
-- **Economic Context:** The larger forces driving the story (policy, inflation, growth, trade, etc.).
+2. Background: Briefly profile both parties, recent triggers, and the market or regulatory setting enabling the deal.
     
-- **Key Terms Simplified:** Explain essential concepts in plain language.
+3. Key terms: Define 3–6 essential mechanics (consideration, earnout, approvals, break fees) in one line each.
     
-- **Core Development:** What changed and the cause → effect behind it.
+4. Core developments: Explain structure, valuation, strategy, financing, and key conditions or timelines.
     
-- **System Impact:** How it influences markets, businesses, consumers, and global flows.
+5. Impact: Outline short- and medium-term effects on shareholders, employees, customers, competitors, and risks.
     
-- **Winners & Losers:** Who benefits, who faces pressure.
-    
-- **Looking Ahead:** What signals or data to watch next.
-    
-- **3 Takeaways:** Event, meaning, future implication.
+6. Recap: One closing sentence plus three takeaways—strategic significance, main risk, and next milestone to watch.
 
 Narration Requirements:
 - Use very simple, clear sentences suitable for someone with zero prior knowledge.
