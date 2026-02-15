@@ -7,7 +7,9 @@ Start the video with a clean title screen that clearly displays:
 • Publish Date  -(Extract it from the source )
 ** Mention Verbally ** 
 
+
 After the title screen, 
+
 present a short **Roadmap** so viewers know what to expect. The Roadmap must include:
  **Big Picture:** What is happening in the economy and why it matters now.
  
