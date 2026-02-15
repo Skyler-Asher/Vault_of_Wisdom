@@ -14,7 +14,4 @@ Elon Musk said -- what is it that my future 10 year self would do in this case .
 
  Unknown_source -- What would you dream if there is a 100% chance that your dream will come true? 
 
-
-
-
- above are simulated realities that helps the mind to come up with better plans 
+*IN the above 3 cases , they all are what if scenarios , that you are simulating in your mind , so that you can  *
