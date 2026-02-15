@@ -6,9 +6,9 @@ that just means its  a superpower that let you simulate reality unlimited times 
 
 ### Personal Observations -- 
 
-I have noticed some Gr using these what if questions to get their answers 
+I have noticed successful people   using  what if questions to increase their thinking abilities. 
 
-like Alex hormozi said -- If my whole family life depends on getting jacked by the end of the year  what is it that i would do  . 
+Alex hormozi said -- If my whole family life depends on getting jacked by the end of the year  what is it that i would do  . 
 
 
 or like Elon_musk said -- what is it that my future 10 year self would do in this case . 
