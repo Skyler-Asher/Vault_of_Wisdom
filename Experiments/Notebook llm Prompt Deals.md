@@ -16,38 +16,8 @@ These details must also be mentioned verbally in the narration.
 
 ---
 
-After the title screen, present a short **Roadmap** so viewers understand what to expect.
 
-The Roadmap must include:
 
-**Big Picture:**  
-Explain what is happening in the economy and why it matters right now.
-
-1. **One-sentence summary:**  
-    State who is buying or merging with whom, the deal type, the price or structure, and the immediate outcome.
-    
-2. **Background:**  
-    Briefly profile both parties. Mention recent triggers and the market or regulatory environment that made this deal possible.
-    
-3. **Key Terms:**  
-    Define 3–6 essential deal mechanics in one line each (for example: consideration, earnout, regulatory approval, break fee).
-    
-4. **Core Developments:**  
-    Explain the structure, valuation, strategy, financing, key conditions, and timeline.
-    
-5. **Impact:**  
-    Outline the short- and medium-term effects on shareholders, employees, customers, competitors, and potential risks.
-    
-6. **Recap:**  
-    End with one closing sentence and three clear takeaways:
-    
-
-- Strategic significance
-    
-- Main risk
-    
-- Next milestone to watch
-    
 
 ---
 
