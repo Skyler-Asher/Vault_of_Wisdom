@@ -12,7 +12,8 @@ Alex Hormozi -- If my whole family life depends on getting jacked by the end of 
 
 Elon Musk said -- what is it that my future 10 year self would do in this case . 
 
- Unknown_source -- 
+ Unknown_source -- What would you dream if there is a 100% chance that your dream will come true? 
+
 
 
 
