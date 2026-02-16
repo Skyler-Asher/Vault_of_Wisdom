@@ -20,7 +20,7 @@ After the title screen, present a short **Roadmap** so viewers understand what t
 
 The Roadmap must include:
 
-
+Big Picture --  According to the Article 
 
 1. **One-sentence summary:**  
     State who is buying or merging with whom, the deal type, the price or structure, and the immediate outcome.
