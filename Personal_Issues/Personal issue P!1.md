@@ -25,11 +25,13 @@ Wednesday , Feb 18 11:45pm
 5. Not bathing daily
     
 6. Not brushing teeth twice a day
+
+7.Not getting my haircut at the start of each month  
     
 
 ### C. Fitness & Physical Discipline
 
-7. Not exercising daily
+7. Not exercising daily/not exercising well enough 
     
 8. Not eating clean, healthy food
     
