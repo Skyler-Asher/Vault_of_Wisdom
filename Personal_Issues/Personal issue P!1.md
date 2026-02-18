@@ -10,4 +10,5 @@ Wednesday , Feb 18 11:45pm
 8. Not being able to work hard enough due to indulging in games ,manga, porn. 
 9. running away from thinking/planning 
 10. not getting a mic fix for my pc , so i can record videos 
-11. 
+11. Masturbating alot , almost daily 2 -3 times
+12. not eating clean , healthy food . 
