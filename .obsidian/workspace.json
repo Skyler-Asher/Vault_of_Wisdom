@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Experiments/Notebook llm Prompts/Notebook llm Prompt Deals.md",
+                "file": "Experiments/Notebook llm Prompts/Notebook llm Prompt OPED.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Notebook llm Prompt Deals"
+              "title": "Notebook llm Prompt OPED"
             }
           }
         ]
@@ -196,8 +196,8 @@
   },
   "active": "ee597682c9dc5144",
   "lastOpenFiles": [
-    "Experiments/Notebook llm Prompts/Notebook llm Prompt Macro_economic.md",
     "Experiments/Notebook llm Prompts/Notebook llm Prompt Deals.md",
+    "Experiments/Notebook llm Prompts/Notebook llm Prompt Macro_economic.md",
     "Experiments/Notebook llm Prompts/Notebook llm Prompt OPED.md",
     "Experiments/What if  Scenarios are a Super Power that Humans are Gifted with ..md",
     "Experiments/Notebook llm Prompts",
