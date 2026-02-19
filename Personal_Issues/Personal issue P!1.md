@@ -49,7 +49,7 @@ Wednesday , Feb 18 11:45pm
 
 10. Excessive gaming
     
-11. Excessive manga consumption
+11. Excessive manga/novel consumption
     
 12. Excessive pornography consumption
     
