@@ -1,4 +1,5 @@
 
+A consciously formulated rule of behavior that can be consistently executed, observed, and tested in reality.
 
 | Ranks | Identifications       |
 | ----- | --------------------- |
