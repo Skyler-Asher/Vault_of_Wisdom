@@ -21,3 +21,5 @@ G-1 → G-10 → F-1 → F-10 → so on .
 
 ⚙️ Upgrade Condition (core rule)
 ✅ The behavior is performed consistently
+✅ It holds under mild stress
+✅ It repeats over time (not one success)
