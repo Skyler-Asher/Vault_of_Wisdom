@@ -3,7 +3,7 @@
 **1. Externalize and Test**  
 When I encounter complexity, I externalize my understanding on paper and test it in reality.  
 Complexity may arise from sources such as YouTube videos, trading problems, imaginative “what-if” scenarios, theoretical questions, or any situation that requires deeper understanding.  
-Execution: using thoughts on paper, then perform at least one concrete test (simulation, backtest, or real-world attempt).
+Execution: using thoughts on paper, perform at least one concrete test  (simulation, backtest, or real-world attempt).
 
 
 
