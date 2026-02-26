@@ -5,6 +5,6 @@ It includes to factors
 Common-Tasks -- The tasks that are supposed to be done daily 
 Uncommon Tasks --- The tasks that are supposed to be done on certain days  . 
 
-|     | Common-Tasks | Uncommon-Tasks |
-| --- | ------------ | -------------- |
-|     |              |                |
+| no.  | Common-Tasks | Uncommon-Tasks |
+| ---- | ------------ | -------------- |
+|      |              |                |
