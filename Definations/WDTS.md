@@ -4,8 +4,7 @@ It includes to factors
 
 Common-Tasks -- The tasks that are supposed to be done daily 
 Uncommon Tasks --- The tasks that are supposed to be done on certain days  . 
-Temprary-T asks
 
-| Common-Tasks | Uncommon-Tasks |
-| ------------ | -------------- |
-|              |                |
+|     | Common-Tasks | Uncommon-Tasks |
+| --- | ------------ | -------------- |
+|     |              |                |
