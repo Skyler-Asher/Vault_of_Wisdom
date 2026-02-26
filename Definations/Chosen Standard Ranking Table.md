@@ -12,5 +12,5 @@
 | S     |                       |
 | SS    |                       |
 | SSS   |                       |
-| L(n)  |  Surpass i            |
+| L(n)  | Un-ending             |
 | Ex -- | God Tier / Impossible |
