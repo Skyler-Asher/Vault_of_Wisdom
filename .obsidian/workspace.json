@@ -4,59 +4,20 @@
     "type": "split",
     "children": [
       {
-        "id": "ebe118444e2ca219",
+        "id": "63f33411a89dbf80",
         "type": "tabs",
         "children": [
           {
-            "id": "761863b4de9e1dc3",
+            "id": "07ae601f67a0d5e4",
             "type": "leaf",
             "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.12.4"
-              },
-              "icon": "lucide-book-up",
-              "title": "Release Notes 1.12.4"
-            }
-          },
-          {
-            "id": "5a0e44f690726b6c",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.12.4"
-              },
-              "icon": "lucide-book-up",
-              "title": "Release Notes 1.12.4"
-            }
-          },
-          {
-            "id": "a50079eb614b20cd",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.12.4"
-              },
-              "icon": "lucide-book-up",
-              "title": "Release Notes 1.12.4"
-            }
-          },
-          {
-            "id": "3bebe9a370db9f2b",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.12.4"
-              },
-              "icon": "lucide-book-up",
-              "title": "Release Notes 1.12.4"
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "vertical"
@@ -229,7 +190,7 @@
       "bases:Create new base": false
     }
   },
-  "active": "3bebe9a370db9f2b",
+  "active": "07ae601f67a0d5e4",
   "lastOpenFiles": [
     "Definations/Kurama Energy.md",
     "Attachments/Daily Canvas/05-03-2026T.canvas",
