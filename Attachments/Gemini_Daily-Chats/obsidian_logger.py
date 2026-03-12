@@ -26,7 +26,9 @@ def log_to_obsidian():
         # Get date and time
         now = datetime.now()
         date_str = now.strftime("%d-%m-%Y")
+        day_name = now.strftime("%A")
         time_str = now.strftime("%H:%M:%S")
+        date_header = now.strftime("%d / %m / %Y")
         
         # Extract messages
         messages = payload.get("llm_request", {}).get("messages", [])
@@ -63,7 +65,7 @@ def log_to_obsidian():
         # Define file path
         file_path = os.path.join(TARGET_DIR, f"{date_str}.md")
         
-        # Read existing content to handle sections
+        # Read existing content
         content = ""
         if os.path.exists(file_path):
             with open(file_path, "r", encoding="utf-8") as f:
@@ -71,12 +73,11 @@ def log_to_obsidian():
 
         # Initialize file if empty
         if not content:
-            content = f"# Chat History - {date_str}\n\n## 📝 Daily Summary\n\n\n## 📂 Detailed Logs\n"
+            content = f"# {date_header} – {day_name}\n\n> [!NOTE] Daily Journal\n> *A human-readable summary of today's work will be written here at the end of the session.*\n\n## 📝 Daily Summary\n\n\n## 📂 Detailed Logs\n"
 
         # Insert Summary Bullet
         if "## 📂 Detailed Logs" in content:
             parts = content.split("## 📂 Detailed Logs")
-            # Append summary to the summary section
             new_content = parts[0].strip() + "\n" + summary_line + "\n## 📂 Detailed Logs\n" + parts[1].strip() + "\n" + raw_entry
         else:
             new_content = content + "\n" + summary_line + "\n" + raw_entry
