@@ -3,8 +3,8 @@ import json
 import os
 from datetime import datetime
 
-# Target directory (Current directory of the script)
-TARGET_DIR = os.path.dirname(os.path.abspath(__file__))
+# Target directory
+TARGET_DIR = "/home/crimson-crow/Documents/Vault of the Wisdom /Attachments/Gemini_Daily-Chats/"
 
 def log_to_obsidian():
     try:

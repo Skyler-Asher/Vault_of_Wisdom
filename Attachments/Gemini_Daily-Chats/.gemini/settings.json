@@ -1,0 +1,11 @@
+{
+  "hooks": {
+    "AfterModel": [
+      {
+        "name": "obsidian-real-time-logger",
+        "type": "command",
+        "command": "python3 obsidian_logger.py"
+      }
+    ]
+  }
+}
