@@ -42,9 +42,21 @@
               "icon": "lucide-book-up",
               "title": "Release Notes 1.12.4"
             }
+          },
+          {
+            "id": "3bebe9a370db9f2b",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.12.4"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.12.4"
+            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -217,7 +229,7 @@
       "bases:Create new base": false
     }
   },
-  "active": "a50079eb614b20cd",
+  "active": "3bebe9a370db9f2b",
   "lastOpenFiles": [
     "Definations/Kurama Energy.md",
     "Attachments/Daily Canvas/05-03-2026T.canvas",
