@@ -46,9 +46,9 @@ def log_to_obsidian():
             elif isinstance(part, dict) and "text" in part:
                 model_response += part["text"] + "\n"
 
-        # 1. Create the Summary Bullet
+        # 1. Create the Timeline Bullet
         topic = get_short_topic(last_user_message)
-        summary_line = f"- **{time_str}**: {topic}\n"
+        timeline_line = f"- **{time_str}**: {topic}\n"
 
         # 2. Create the Toggleable Raw Entry
         raw_entry = f"""
@@ -73,14 +73,32 @@ def log_to_obsidian():
 
         # Initialize file if empty
         if not content:
-            content = f"# {date_header} – {day_name}\n\n> [!NOTE] Daily Journal\n> *A human-readable summary of today's work will be written here at the end of the session.*\n\n## 📝 Daily Summary\n\n\n## 📂 Detailed Logs\n"
+            content = f"""# {date_header} – {day_name}
 
-        # Insert Summary Bullet
+> [!NOTE] Daily Journal
+> *Insert human-readable story here.*
+
+## 📝 Daily Summary
+> [!ABSTRACT] Summary of Achievements
+> *The structured summary of today's work will be added here at the end of the session.*
+
+## 🕓 Timeline
+
+
+## 📂 Detailed Logs
+"""
+
+        # Insert Timeline Bullet
         if "## 📂 Detailed Logs" in content:
             parts = content.split("## 📂 Detailed Logs")
-            new_content = parts[0].strip() + "\n" + summary_line + "\n## 📂 Detailed Logs\n" + parts[1].strip() + "\n" + raw_entry
+            # Timeline is between ## 🕓 Timeline and ## 📂 Detailed Logs
+            if "## 🕓 Timeline" in parts[0]:
+                sub_parts = parts[0].split("## 🕓 Timeline")
+                new_content = sub_parts[0].strip() + "\n\n## 🕓 Timeline\n" + sub_parts[1].strip() + "\n" + timeline_line + "\n\n## 📂 Detailed Logs\n" + parts[1].strip() + "\n" + raw_entry
+            else:
+                new_content = parts[0].strip() + "\n\n## 🕓 Timeline\n" + timeline_line + "\n\n## 📂 Detailed Logs\n" + parts[1].strip() + "\n" + raw_entry
         else:
-            new_content = content + "\n" + summary_line + "\n" + raw_entry
+            new_content = content + "\n" + timeline_line + "\n" + raw_entry
 
         with open(file_path, "w", encoding="utf-8") as f:
             f.write(new_content)
