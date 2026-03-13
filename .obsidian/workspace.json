@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "63f33411a89dbf80",
+        "id": "4e6ff04770acc516",
         "type": "tabs",
         "children": [
           {
-            "id": "3ca6fb03da7bd157",
+            "id": "e1fe302541914094",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Attachments/Gemini_Daily-Chats/12-03-2026.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "12-03-2026"
+              "title": "New tab"
             }
           }
         ]
@@ -194,13 +190,13 @@
       "bases:Create new base": false
     }
   },
-  "active": "3ca6fb03da7bd157",
+  "active": "f467059a1be9f1b7",
   "lastOpenFiles": [
+    "Attachments/Gemini_Daily-Chats/12-03-2026.md",
     "Attachments/Gemini_Daily-Chats/restore_logs.py",
     "Attachments/Gemini_Daily-Chats/reformat_history.py",
     "Attachments/Gemini_Daily-Chats/flush_history.py",
     "Attachments/Gemini_Daily-Chats/GEMINI.md",
-    "Attachments/Gemini_Daily-Chats/12-03-2026.md",
     "Daily Journal/2026/03/12.md",
     "Attachments/Gemini_Daily-Chats/test_payload.json",
     "Attachments/Gemini_Daily-Chats/obsidian_logger.py",
@@ -226,7 +222,6 @@
     "Templates",
     "Attachments/Neutral Aesthetic Simple Quote Instagram Post 1.png",
     "Definations/Discipline = consistent execution of a chosen standard..md",
-    "Chosen Standard",
     "Daily Journal/2026/02/25.md",
     "Attachments/Pasted image 20260117143527.png",
     "Attachments/Neutral Aesthetic Simple Quote Instagram Post.png",
