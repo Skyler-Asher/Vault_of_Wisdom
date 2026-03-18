@@ -4,4 +4,4 @@
 - If you can't explain it to a 6 year old  , you don't understand it yourself ~ Albert Einstein.
  
 - Get to the point first , state the point and then support it . 
--- if someone asks a question , say the one thing  
+- Say the one thing when someone asks you a questions.
