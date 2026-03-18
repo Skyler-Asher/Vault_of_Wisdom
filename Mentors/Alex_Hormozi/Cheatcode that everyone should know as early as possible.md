@@ -1,2 +1,2 @@
 
-> Anything worth doing takes exceptionally longer than you expect it to and until you worked  a 1000 hours on a single project you don't even understand the amount of  work it requires to make it great , by extension  you cannot be doing everything  if you want them to work . 
+> Anything worth doing takes exceptionally longer than you expect it to and until you worked  a 1000 hours on a single project you don't even understand the amount of  work it requires to make it great , by extension  why you can't do many things you want if you want them to be worth doing . 
