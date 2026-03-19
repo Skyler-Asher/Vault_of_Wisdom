@@ -20,6 +20,16 @@
               "icon": "lucide-file",
               "title": "19"
             }
+          },
+          {
+            "id": "cdb2a8e1be89e0a3",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
+            }
           }
         ]
       }
@@ -78,7 +88,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "4673cbf91f47654f",
@@ -196,8 +207,8 @@
   },
   "active": "5e6d87bbcf675a5f",
   "lastOpenFiles": [
-    "Mentors/Alex_Hormozi/Cheatcode that everyone should know as early as possible.md",
     "Daily Journal/2026/03/19.md",
+    "Mentors/Alex_Hormozi/Cheatcode that everyone should know as early as possible.md",
     "Mentors/Vinh Giang/5 Speak Tricks to stop rambling.md",
     "Daily Journal/2026/03/18.md",
     "Daily Journal/2026/03/17.md",
