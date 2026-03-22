@@ -4,23 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "e953ab80356b7237",
+        "id": "1247dd76dc2bcbe9",
         "type": "tabs",
         "children": [
           {
-            "id": "5e6d87bbcf675a5f",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "Mentors/Unknown~/Set fonts.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "Set fonts"
-            }
-          },
-          {
-            "id": "cdb2a8e1be89e0a3",
+            "id": "4167ce89333911f7",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -203,10 +191,10 @@
       "bases:Create new base": false
     }
   },
-  "active": "5e6d87bbcf675a5f",
+  "active": "4167ce89333911f7",
   "lastOpenFiles": [
-    "Daily Journal/2026/03/19.md",
     "Mentors/Unknown~/Set fonts.pdf",
+    "Daily Journal/2026/03/19.md",
     "Mentors/Unknown~",
     "Mentors/Alex_Hormozi/Cheatcode that everyone should know as early as possible.md",
     "Mentors/Vinh Giang/5 Speak Tricks to stop rambling.md",
