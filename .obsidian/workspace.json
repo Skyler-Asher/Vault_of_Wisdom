@@ -16,8 +16,8 @@
                 "file": "Mentors/Trading/Technical_Analysis/Untitled.canvas",
                 "viewState": {
                   "x": 305.90688572769494,
-                  "y": -223.20000000000005,
-                  "zoom": -0.8
+                  "y": -417.506885727695,
+                  "zoom": -1.6
                 }
               },
               "icon": "lucide-layout-dashboard",
@@ -81,7 +81,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "4673cbf91f47654f",
