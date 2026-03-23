@@ -11,10 +11,14 @@
             "id": "4167ce89333911f7",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Daily Journal/2026/03/23.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "23"
             }
           }
         ]
@@ -193,6 +197,7 @@
   },
   "active": "4167ce89333911f7",
   "lastOpenFiles": [
+    "Daily Journal/2026/03/23.md",
     "Mentors/Unknown~/Set fonts.pdf",
     "Daily Journal/2026/03/19.md",
     "Mentors/Unknown~",
