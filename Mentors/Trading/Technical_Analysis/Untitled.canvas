@@ -1,6 +1,11 @@
 {
 	"nodes":[
-		{"id":"05829f80daca4b3c","x":-340,"y":-140,"width":240,"height":60,"color":"#0e32e1","type":"text","text":"# 1-Week "}
+		{"id":"05829f80daca4b3c","x":-360,"y":-160,"width":160,"height":60,"color":"#0e32e1","type":"text","text":"# 1-**Week** "},
+		{"id":"e53d20af3b6fcd8d","x":-120,"y":-160,"width":160,"height":60,"color":"#0033ff","type":"text","text":"# 1-Day "},
+		{"id":"279dbd015b1d2b83","type":"text","text":"# 1-Day ","x":120,"y":-160,"width":160,"height":60,"color":"#0033ff"}
 	],
-	"edges":[]
+	"edges":[
+		{"id":"5d0935d6b48caf9a","fromNode":"05829f80daca4b3c","fromSide":"right","toNode":"e53d20af3b6fcd8d","toSide":"left"},
+		{"id":"024b599246c02063","fromNode":"e53d20af3b6fcd8d","fromSide":"right","toNode":"279dbd015b1d2b83","toSide":"left"}
+	]
 }
