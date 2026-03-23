@@ -11,14 +11,17 @@
             "id": "4167ce89333911f7",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "canvas",
               "state": {
-                "file": "Mentors/Trading/TJR/# 6 Rules I've Learned From 6 Years of Trading by TJR.md",
-                "mode": "source",
-                "source": false
+                "file": "Mentors/Trading/Technical_Analysis/Untitled.canvas",
+                "viewState": {
+                  "x": 0,
+                  "y": 0,
+                  "zoom": 0
+                }
               },
-              "icon": "lucide-file",
-              "title": "# 6 Rules I've Learned From 6 Years of Trading by TJR"
+              "icon": "lucide-layout-dashboard",
+              "title": "Untitled"
             }
           }
         ]
@@ -194,8 +197,11 @@
       "bases:Create new base": false
     }
   },
-  "active": "f467059a1be9f1b7",
+  "active": "4167ce89333911f7",
   "lastOpenFiles": [
+    "Mentors/Trading/TJR/# 6 Rules I've Learned From 6 Years of Trading by TJR.md",
+    "Mentors/Trading/Technical_Analysis/Untitled.canvas",
+    "Mentors/Trading/Technical_Analysis/Untitled.md",
     "Mentors/Trading/Technical_Analysis",
     "Mentors/Trading",
     "timeframes.png",
@@ -228,13 +234,10 @@
     "Attachments/Files_inside_notes/Untitled.md",
     "Compounding Ideas/Exercise_plan.md",
     "Attachments/Files_inside_notes/Chatgpt Defination of 3 types of problems.md",
-    "Attachments/Files_inside_notes",
     "Daily Journal/2026/03/06.md",
     "Templates/Daily Template.md",
     "Daily Journal/2026/02/28.md",
     "Chosen Standard/no.1 Chosen Standard.md",
-    "Definations/WDTS.md",
-    "Chosen Standard/Chosen Standard Ranking Table.md",
     "Attachments/Neutral Aesthetic Simple Quote Instagram Post 1.png",
     "Attachments/Pasted image 20260117143527.png",
     "Attachments/Neutral Aesthetic Simple Quote Instagram Post.png",
