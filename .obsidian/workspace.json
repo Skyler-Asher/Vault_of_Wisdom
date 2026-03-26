@@ -42,12 +42,14 @@
             "id": "abb4e2b4521f1ddb",
             "type": "leaf",
             "state": {
-              "type": "release-notes",
+              "type": "markdown",
               "state": {
-                "currentVersion": "1.12.7"
+                "file": "Daily Journal/2026/03/26.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-book-up",
-              "title": "Release Notes 1.12.7"
+              "icon": "lucide-file",
+              "title": "26"
             }
           }
         ],
@@ -227,6 +229,8 @@
   },
   "active": "abb4e2b4521f1ddb",
   "lastOpenFiles": [
+    "Attachments/Pasted image 20260326112356.png",
+    "Daily Journal/2026/03/26.md",
     "Daily Journal/2026/03/25.md",
     "Mentors/Trading/Technical_Analysis/Untitled.canvas",
     "Mentors/Trading/TJR/# 6 Rules I've Learned From 6 Years of Trading by TJR.md",
@@ -265,8 +269,6 @@
     "Attachments/Files_inside_notes/Chatgpt Defination of 3 types of problems.md",
     "Daily Journal/2026/03/06.md",
     "Templates/Daily Template.md",
-    "Daily Journal/2026/02/28.md",
-    "Chosen Standard/no.1 Chosen Standard.md",
     "Attachments/Neutral Aesthetic Simple Quote Instagram Post 1.png",
     "Attachments/Pasted image 20260117143527.png",
     "Attachments/Neutral Aesthetic Simple Quote Instagram Post.png",
