@@ -37,9 +37,21 @@
               "icon": "lucide-file",
               "title": "25"
             }
+          },
+          {
+            "id": "abb4e2b4521f1ddb",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.12.7"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.12.7"
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -213,7 +225,7 @@
       "bases:Create new base": false
     }
   },
-  "active": "98fd183a1883a62c",
+  "active": "abb4e2b4521f1ddb",
   "lastOpenFiles": [
     "Daily Journal/2026/03/25.md",
     "Mentors/Trading/Technical_Analysis/Untitled.canvas",
