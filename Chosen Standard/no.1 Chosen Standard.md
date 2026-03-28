@@ -32,3 +32,7 @@ Thought is validated through testing; time is clarified through tracking.
 Question-1 
 What to do when the urge to do the above hits ? 
 ans -   Follow the Task-List , if in a scenario where either all tasks are completed or i am not in the mood to do the task , take a pen and paper sit quietly for 30 mins you will get the answer . *
+
+
+Sleep Shedule -- Sleep at 10pm -- wake up at 6 am 
+if 10pm  is not possible make it 11pm .
