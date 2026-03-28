@@ -36,3 +36,5 @@ ans -   Follow the Task-List , if in a scenario where either all tasks are compl
 
 Sleep Shedule -- Sleep at 10pm -- wake up at 6 am 
 if 10pm  is not possible make it 11pm .
+
+When you feel the impulse to act, immediately count **5-4-3-2-1** and start moving before you finish. Don’t think, hesitate, or negotiate—action begins during the countdown, not after. Use it only to start tasks (like getting out of bed or beginning work). If you’re still hesitating at 1, you failed that rep. Repeat consistently. The goal is to interrupt overthinking and train yourself to act instantly without giving your brain time to resist.
