@@ -18,7 +18,9 @@ Understanding must be externalized, and intention must be observable.
 Thought is validated through testing; time is clarified through tracking.
 
 
+   
+   
+   
 3. WDTS 
-   
-   
-   
+
+**
