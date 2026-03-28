@@ -20,7 +20,15 @@ Thought is validated through testing; time is clarified through tracking.
 
    
    
-   
-3. WDTS 
+3. WDTS = Wake Up Daily To Create A task list first thing in the morning . 
 
-**
+
+*To Live a Better Life  , i will not be doing this on a whim some common occurrences are forbidden by the rule  as below : 
+1.  Not Reading Novels /Comics and watching anime . 
+2. Forbidden from using my Dad's Laptop .
+3. My phone when not in use should stay in a box that is not to be opened unless a specific task require my phone such as recording a video of me doing push ups . 
+4. A task list  needs to be created at the start of new day.  
+   
+Question-1 
+What to do when the urge to do the above hits ? 
+ans -   Follow the Task-List , if in a scenario where either all tasks are completed or i am not in the mood to do the task , take a pen and paper sit quietly for 30 mins you will get the answer . *
