@@ -1,0 +1,12 @@
+# Large files
+Attachments/Achieve Your Most Ambitious Goals.mp4
+
+# Obsidian internal files
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/backups/
+.obsidian/plugins/obsidian-git/data.json
+
+# OS files
+.DS_Store
+Thumbs.db

@@ -18,7 +18,7 @@ Day 7 — Rest
 
 ## Daily template (warm-up → main → mobility → cool-down)
 
-**Warm-up:** 5–8 min jump rope, neck rotations, light dynamic movement.  
+**Warm-uq2ns, light dynamic movement.  
 **Between sets rest:** 90–120 s (2 min) recommended.  
 **Cool-down:** towel shoulder mobility work, neck extensions/rotations, light stretching.
 
