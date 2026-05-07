@@ -1,4 +1,4 @@
-Here's the updated breakdown:
+
 
 ---
 
@@ -34,7 +34,3 @@ Here's the updated breakdown:
 
 - Porn
 - Gaming (at its peak)
-
----
-
-Does this feel right?
