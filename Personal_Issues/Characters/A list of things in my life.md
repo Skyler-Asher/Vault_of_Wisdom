@@ -8,6 +8,7 @@
 - Reading non-fiction (Meditations, self-improvement)
 - Watching Alex Hormozi
 - When a hard situation hits — breathe, pause, understand it before reacting
+- 10-min Meditation
 
 ---
 
