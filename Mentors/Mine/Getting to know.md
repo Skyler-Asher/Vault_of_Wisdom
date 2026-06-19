@@ -20,7 +20,8 @@
 * full body at home workout 
 * Trying to consciously gain insights from things could be stories/succesfull peopls/ or even objects.
 * doing eye exercise sometimes , did only 2 days .
-* recording trading session analysis
+* recording trading session analysis - ex pre session/post session then uploading them on internet . 
+* killing time with basketball at my house . 
 * 
 
 ## Patterns
