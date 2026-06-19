@@ -23,7 +23,8 @@
 * recording trading session analysis - ex pre session/post session then uploading them on internet . 
 * killing time with basketball at my house . 
 * only know to cook eggs and some other minor stuff 
-* i have good emotional iq atleast for my family , since recently i have realised that 
+* i have good emotional iq atleast for my family , since recently i have realised that i can't see through stragers exactly probably because i need time and thier emotional vulnerability for me to see thorugh them . 
+* doing useless stuff with my pc , such as cust
 
 ## Patterns
 
