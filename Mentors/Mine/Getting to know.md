@@ -121,6 +121,8 @@ Being misunderstood?
 > >' The present is same for everyone '
 > >
 
+interesting Counterpoint: If everyone forgets a tree fell in your forest, did it not fall?
+
 ----
 
 
