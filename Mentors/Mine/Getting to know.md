@@ -24,7 +24,8 @@
 * killing time with basketball at my house . 
 * only know to cook eggs and some other minor stuff 
 * i have good emotional iq atleast for my family , since recently i have realised that i can't see through stragers exactly probably because i need time and thier emotional vulnerability for me to see thorugh them . 
-* doing useless stuff with my pc , such as cust
+* doing useless stuff with my pc , such as customizing it even though i can work with the pc as it is i will go waste hours doing stuff to make tiny changes to my pc .
+* not following vinh guiadance even a 
 
 ## Patterns
 
