@@ -112,6 +112,12 @@ Being misunderstood?
 > 
 > ' The past is memories  means that memories of every creature not just your , because if something happened in the past that everyone knows and you forget the past still exists  but if everyone forget the past crumbles , so past exist in memories . 
 > 
+> ' The future is what exists for you , the future is imagination , every being has his own future thus his own imagination'
+> 
+> ' The present is same for everyone '
+
+
+> 
 > ----
 > 
 
