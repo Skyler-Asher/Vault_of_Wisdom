@@ -25,7 +25,8 @@
 * only know to cook eggs and some other minor stuff 
 * i have good emotional iq atleast for my family , since recently i have realised that i can't see through stragers exactly probably because i need time and thier emotional vulnerability for me to see thorugh them . 
 * doing useless stuff with my pc , such as customizing it even though i can work with the pc as it is i will go waste hours doing stuff to make tiny changes to my pc .
-* not following vinh guiadance even a 
+* not following vinh guiadance even a bit now i have the excuse of not having a phone however even when i had a phone i did not follow vinh words , my fault , probabyin the list of thing i should be doing but keep putting off . 
+* doing minor chores at home (massagin my mom/bringing water )
 
 ## Patterns
 
