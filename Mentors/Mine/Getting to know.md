@@ -8,8 +8,7 @@
 
 ## Stuff that i do 
 
-* Reading web novels
-* Watching web novel recaps
+* Reading/watching recaps -  web novels/comics/manwha/manhua/mannga
 * Listening to music
 * Drinking Coffee/Shakes/lemon water/
 * Writing with my left hand daily 10 mins 
@@ -17,9 +16,9 @@
 * playing Minecraft 1.8.9
 * Trading session 
 * watch porn and fap to it 
-* Backtesting ?
+* Backtesting 
 * full body at home workout 
-* Trying to consciously gain insights from things could be stories/succesfull peopls/ or even objects .
+* Trying to consciously gain insights from things could be stories/succesfull peopls/ or even objects.
 * 
 
 ## Patterns
