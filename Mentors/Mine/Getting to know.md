@@ -6,28 +6,33 @@
 * Indulging in porn
 * Gaming(not sure though to think about )
 
-## Stuff that i do 
+## My Activities
 
-* Reading/watching recaps -  web novels/comics/manwha/manhua/mannga
-* Listening to music
-* Drinking Coffee/Shakes/lemon water/
-* Writing with my left hand daily 10 mins 
-* Reading self help books
-* playing Minecraft 1.8.9
-* Trading session 
-* watch porn and fap to it 
-* Backtesting 
-* full body at home workout 
-* Trying to consciously gain insights from things could be stories/succesfull peopls/ or even objects.
-* doing eye exercise sometimes , did only 2 days .
-* recording trading session analysis - ex pre session/post session then uploading them on internet . 
-* killing time with basketball at my house . 
-* only know to cook eggs and some other minor stuff 
-* i have good emotional iq atleast for my family , since recently i have realized that i can't see through strangers exactly probably because i need time and their emotional vulnerability for me to see through them . 
-* doing useless stuff with my pc , such as customizing it even though I can work with the pc as it is I will go waste hours doing stuff to make tiny changes to my pc .
-* not following vinh guidance even a bit now i have the excuse of not having a phone however even when i had a phone i did not follow vinh words , my fault , probablyin the list of thing i should be doing but keep putting off . 
-* doing minor chores at home (massagin my mom/bringing drinking water from near a arroww ,etc )
-* 
+- Reading/watching recaps - web novels/comics/manwha/manhua/manga
+- Listening to music
+- Drinking coffee/shakes/lemon water
+- Writing with my left hand daily (10 mins)
+- Reading self-help books
+- Playing Minecraft 1.8.9
+- Trading session
+  - Backtesting
+  - Session analysis (pre-session/post-session recordings, uploading online)
+- Watching porn and masturbating
+- Full body at-home workout
+- Trying to consciously gain insights from things (could be stories/successful people/or even objects)
+- Doing eye exercises sometimes (only 2 days so far)
+- Killing time with basketball at my house
+- Only know how to cook eggs and some other minor stuff
+- I have good emotional IQ, at least with my family. Recently realized I can't read strangers accurately—probably because I need time and their emotional vulnerability for me to understand them
+- Doing useless stuff with my PC, such as customizing it even though I can work with it as is. I waste hours making tiny changes
+- Doing minor chores at home (massaging mom/bringing drinking water)
+
+---
+
+## Things I Should Do But Don't (To Sort Later)
+
+- Following Vinh's guidance (even had the excuse of no phone, but didn't follow even when I had one)
+- Developing cooking skills beyond basics
 
 ## Patterns
 
