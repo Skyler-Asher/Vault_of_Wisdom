@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Day — Designed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/tabler-icons.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="storage.js"></script>
+<script>
+// Guard: if storage.js failed to load (e.g. opened as file://) show a clear message
+window.addEventListener('DOMContentLoaded', () => {
+  if (typeof window.store === 'undefined') {
+    document.body.innerHTML = `
+      <div style="font-family:'DM Sans',sans-serif;background:#0d0d0f;color:#f0efe8;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem;text-align:center">
+        <div>
+          <div style="font-size:2rem;margin-bottom:1rem">⚠️</div>
+          <div style="font-size:1.1rem;font-weight:700;margin-bottom:0.5rem">Server not running</div>
+          <div style="font-size:0.85rem;color:#888885;line-height:1.7;max-width:340px">
+            This app needs the local server to work.<br>
+            Run <code style="background:#1e1e22;padding:2px 7px;border-radius:5px">start.bat</code> (or <code style="background:#1e1e22;padding:2px 7px;border-radius:5px">python server.py</code>),<br>
+            then open <strong>http://localhost:8000/monday_schedule.html</strong>
+          </div>
+        </div>
+      </div>`;
+  }
+});
+</script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0d0d0f; --bg-card: #141416; --bg-hover: #1a1a1d; --bg-done: #111113;
+  --surface: #1e1e22; --surface2: #252529;
+  --text-primary: #f0efe8; --text-secondary: #888885; --text-tertiary: #484846;
+  --border: rgba(255,255,255,0.06); --border-hover: rgba(255,255,255,0.12); --border-done: rgba(255,255,255,0.04);
+  --purple: #7C6FE0; --purple-dim: rgba(124,111,224,0.10); --purple-glow: rgba(124,111,224,0.22);
+  --teal: #2EC090; --teal-dim: rgba(46,192,144,0.10);
+  --amber: #E8A030; --amber-dim: rgba(232,160,48,0.10);
+  --coral: #E86840; --coral-dim: rgba(232,104,64,0.10);
+  --gray: #666662; --gray-dim: rgba(102,102,98,0.10);
+  --success: #2EC090; --success-dim: rgba(46,192,144,0.12);
+  --font-display: 'Syne', sans-serif; --font-body: 'DM Sans', sans-serif;
+  --radius: 14px; --radius-pill: 100px;
+  --nav-h: 64px;
+}
+html { scroll-behavior: smooth; }
+body { background: var(--bg); font-family: var(--font-body); min-height: 100vh; color: var(--text-primary); -webkit-font-smoothing: antialiased; overflow-x: hidden; padding-bottom: calc(var(--nav-h) + 1rem); }
+body::before {
+  content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: 0.4;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+}
+.page { position: relative; z-index: 1; max-width: 660px; margin: 0 auto; padding: 3.5rem 1.75rem 5rem; }
+
+/* HEADER */
+.header { margin-bottom: 3rem; animation: fadeUp 0.6s ease both; }
+.date-chip { display: inline-flex; align-items: center; gap: 7px; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--purple); background: var(--purple-dim); border: 1px solid rgba(124,111,224,0.22); border-radius: var(--radius-pill); padding: 6px 14px 6px 10px; margin-bottom: 1.25rem; cursor: pointer; transition: background 0.2s, border-color 0.2s, box-shadow 0.2s; }
+.date-chip::before { content: ''; display: none; }
+.date-chip .chip-icon { font-size: 13px; opacity: 0.75; }
+.date-chip:hover { background: rgba(124,111,224,0.18); border-color: rgba(124,111,224,0.38); }
+.date-chip:active { transform: scale(0.97); }
+.header h1 { font-family: var(--font-display); font-size: clamp(40px,8vw,60px); font-weight: 800; line-height: 1.0; letter-spacing: -0.03em; color: var(--text-primary); margin-bottom: 1.75rem; }
+.header h1 em { font-style: normal; color: var(--purple); }
+.meta-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.meta-pill { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-secondary); background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-pill); padding: 5px 13px; }
+.meta-pill i { font-size: 13px; }
+.meta-pill.accent { color: var(--purple); background: var(--purple-dim); border-color: rgba(124,111,224,0.2); }
+
+/* PROGRESS */
+.progress-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
+.progress-count { font-family: var(--font-display); font-size: 13px; font-weight: 700; color: var(--text-primary); }
+#prog-label { font-size: 11px; color: var(--text-tertiary); letter-spacing: 0.02em; }
+.progress-track { height: 2px; background: var(--surface2); border-radius: 2px; overflow: hidden; }
+.progress-fill { height: 100%; border-radius: 2px; background: linear-gradient(90deg, var(--purple), var(--teal)); width: 0%; transition: width 0.5s cubic-bezier(0.4,0,0.2,1); }
+
+/* SECTIONS */
+.section { display: flex; align-items: center; gap: 12px; margin: 2.5rem 0 1rem; animation: fadeUp 0.5s ease both; }
+.section-line { flex: 1; height: 1px; background: var(--border); }
+.section-text { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-tertiary); white-space: nowrap; }
+
+/* BLOCKS */
+.tl-block { display: flex; align-items: stretch; margin-bottom: 6px; cursor: pointer; animation: fadeUp 0.5s ease both; }
+.tl-block.no-click { cursor: default; }
+.tl-block:not(.no-click):hover .tl-card { border-color: var(--border-hover); background: var(--bg-hover); }
+.tl-block:not(.no-click):active .tl-card { transform: scale(0.997); }
+.tl-block:nth-child(1){animation-delay:0.05s} .tl-block:nth-child(2){animation-delay:0.10s}
+.tl-block:nth-child(3){animation-delay:0.15s} .tl-block:nth-child(4){animation-delay:0.20s}
+.tl-block:nth-child(5){animation-delay:0.25s} .tl-block:nth-child(6){animation-delay:0.30s}
+
+/* SPINE */
+.tl-spine { display: flex; flex-direction: column; align-items: center; width: 44px; min-width: 44px; padding-top: 18px; flex-shrink: 0; }
+.tl-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; transition: all 0.3s ease; }
+.tl-dot.anchor-dot { width: 12px; height: 12px; box-shadow: 0 0 0 3px var(--bg), 0 0 0 4.5px currentColor; }
+.tl-dot.done { background: var(--success) !important; box-shadow: 0 0 12px rgba(46,192,144,0.4) !important; color: var(--success) !important; }
+.tl-line { flex: 1; width: 1px; background: var(--border); margin-top: 5px; }
+.tl-line.dashed { background: none; border-left: 1px dashed rgba(255,255,255,0.08); }
+
+/* CARD */
+.tl-card { flex: 1; min-width: 0; border-radius: var(--radius); border: 1px solid var(--border); background: var(--bg-card); padding: 14px 16px; display: flex; align-items: flex-start; gap: 12px; transition: background 0.2s, border-color 0.2s, transform 0.15s; }
+.tl-card.is-anchor { border-color: rgba(124,111,224,0.28); background: rgba(124,111,224,0.04); }
+.tl-card.done-card { background: var(--bg-done); border-color: var(--border-done); }
+.tl-card.done-card .card-title { color: var(--text-tertiary); text-decoration: line-through; text-decoration-color: var(--text-tertiary); }
+.tl-card.done-card .card-detail { opacity: 0.3; }
+.tl-card.done-card .card-icon { opacity: 0.25; }
+
+/* CHECK */
+.tl-check { width: 20px; height: 20px; min-width: 20px; border-radius: 50%; border: 1px solid var(--text-tertiary); display: flex; align-items: center; justify-content: center; margin-top: 1px; transition: all 0.25s cubic-bezier(0.4,0,0.2,1); flex-shrink: 0; }
+.tl-check.checked { border-color: transparent; transform: scale(1.08); }
+.tl-check i { font-size: 11px; color: #fff; opacity: 0; transform: scale(0.4); transition: all 0.2s cubic-bezier(0.4,0,0.2,1); }
+.tl-check.checked i { opacity: 1; transform: scale(1); }
+
+/* CONTENT */
+.card-body { flex: 1; min-width: 0; }
+.card-top { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; flex-wrap: wrap; }
+.card-icon { font-size: 15px; flex-shrink: 0; transition: opacity 0.2s; }
+.card-title { font-size: 14px; font-weight: 500; color: var(--text-primary); line-height: 1.3; transition: color 0.25s, text-decoration 0.25s; }
+.card-detail { font-size: 12.5px; color: var(--text-secondary); line-height: 1.65; font-weight: 300; transition: opacity 0.25s; }
+
+/* TAGS */
+.tag { display: inline-flex; align-items: center; gap: 4px; font-size: 10.5px; font-weight: 500; padding: 3px 9px; border-radius: var(--radius-pill); white-space: nowrap; letter-spacing: 0.01em; }
+.tag-time { font-family: var(--font-display); font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.tag-stack { background: rgba(56,139,253,0.08); color: #58a6ff; border: 1px solid rgba(56,139,253,0.15); }
+.ml-auto { margin-left: auto; }
+
+/* RULE */
+.rule-box { margin-top: 2.5rem; padding: 20px 22px; background: var(--purple-dim); border: 1px solid rgba(124,111,224,0.18); border-radius: var(--radius); position: relative; overflow: hidden; animation: fadeUp 0.6s ease 0.5s both; }
+.rule-box::before { content: '"'; position: absolute; top: -8px; right: 20px; font-family: var(--font-display); font-size: 90px; font-weight: 800; color: var(--purple); opacity: 0.12; line-height: 1; pointer-events: none; }
+.rule-box p { font-size: 13px; color: var(--text-secondary); line-height: 1.8; font-weight: 300; }
+.rule-box strong { color: var(--text-primary); font-weight: 500; }
+
+/* COMPLETE */
+.complete-banner { display: none; margin-top: 1.5rem; padding: 16px 20px; background: var(--success-dim); border: 1px solid rgba(46,192,144,0.18); border-radius: var(--radius); text-align: center; animation: popIn 0.4s cubic-bezier(0.34,1.56,0.64,1) both; }
+.complete-banner.visible { display: block; }
+.complete-banner p { font-family: var(--font-display); font-size: 15px; font-weight: 700; color: var(--teal); letter-spacing: 0.02em; }
+.complete-banner span { font-size: 12px; color: var(--text-secondary); font-weight: 300; display: block; margin-top: 3px; }
+
+/* TASK BANK IMPORT FLASH */
+@keyframes bankIn { from { opacity:0; transform:translateY(10px) scale(0.98); } to { opacity:1; transform:translateY(0) scale(1); } }
+.bank-imported { animation: bankIn 0.35s cubic-bezier(0.34,1.4,0.64,1) both; }
+
+
+/* BOTTOM NAV */
+.bottom-nav {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(20,20,22,0.92); backdrop-filter: blur(16px);
+  border-top: 1px solid var(--border);
+  height: var(--nav-h); display: flex; align-items: center; justify-content: center; gap: 4px;
+  padding: 0 1.5rem;
+}
+.nav-item {
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
+  padding: 8px 22px; border-radius: 12px; cursor: pointer; text-decoration: none;
+  color: var(--text-tertiary); transition: color 0.2s, background 0.2s;
+  font-size: 10px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+}
+.nav-item i { font-size: 20px; }
+.nav-item:hover { color: var(--text-secondary); background: var(--surface); }
+.nav-item.active { color: var(--purple); background: var(--purple-dim); }
+
+/* flatpickr dark theme overrides */
+.flatpickr-calendar {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-hover) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5) !important;
+  font-family: var(--font-body) !important;
+}
+.flatpickr-calendar.arrowTop:before, .flatpickr-calendar.arrowTop:after { border-bottom-color: var(--border-hover) !important; }
+.flatpickr-months .flatpickr-month { background: var(--bg-card) !important; color: var(--text-primary) !important; }
+.flatpickr-current-month { color: var(--text-primary) !important; font-family: var(--font-display) !important; font-weight: 700 !important; }
+.flatpickr-current-month .flatpickr-monthDropdown-months { background: var(--bg-card) !important; color: var(--text-primary) !important; }
+.flatpickr-current-month input.cur-year { color: var(--text-primary) !important; font-family: var(--font-display) !important; font-weight: 700 !important; }
+.flatpickr-weekdays { background: var(--bg-card) !important; }
+span.flatpickr-weekday { background: var(--bg-card) !important; color: var(--text-tertiary) !important; font-size: 10px; font-weight: 600; letter-spacing: 0.08em; }
+.flatpickr-days { border-color: var(--border) !important; }
+.dayContainer { border-color: var(--border) !important; }
+.flatpickr-day { color: var(--text-secondary) !important; border-radius: 8px !important; }
+.flatpickr-day:hover, .flatpickr-day.prevMonthDay:hover, .flatpickr-day.nextMonthDay:hover {
+  background: var(--surface) !important; border-color: transparent !important; color: var(--text-primary) !important;
+}
+.flatpickr-day.selected, .flatpickr-day.selected:hover {
+  background: var(--purple) !important; border-color: var(--purple) !important; color: #fff !important;
+}
+.flatpickr-day.today { border-color: var(--purple) !important; color: var(--purple) !important; font-weight: 600; }
+.flatpickr-day.today:hover { background: var(--purple-dim) !important; }
+.flatpickr-day.prevMonthDay, .flatpickr-day.nextMonthDay { color: var(--text-tertiary) !important; }
+.flatpickr-prev-month, .flatpickr-next-month { color: var(--text-secondary) !important; fill: var(--text-secondary) !important; }
+.flatpickr-prev-month:hover svg, .flatpickr-next-month:hover svg { fill: var(--purple) !important; }
+::-webkit-scrollbar { width: 5px; } ::-webkit-scrollbar-track { background: transparent; } ::-webkit-scrollbar-thumb { background: var(--surface2); border-radius: 3px; }
+::selection { background: var(--purple-glow); color: var(--text-primary); }
+#reset-btn { background: none; border: 1px solid var(--text-tertiary); color: var(--text-tertiary); font-family: var(--font-body); font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 8px 22px; border-radius: var(--radius-pill); cursor: pointer; transition: all 0.2s ease; }
+#reset-btn:hover { border-color: var(--coral); color: var(--coral); }
+#reset-btn:active { transform: scale(0.97); }
+@media (max-width:480px) { .page { padding: 2.5rem 1.25rem 4rem; } .header h1 { font-size: 38px; } }
+
+/* EDIT MODE */
+.edit-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--text-secondary); background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-pill); padding: 6px 14px; cursor: pointer;
+  transition: all 0.2s; margin-left: auto;
+}
+.edit-btn:hover { border-color: var(--border-hover); color: var(--text-primary); }
+.edit-btn.done-btn { color: var(--teal); background: var(--teal-dim); border-color: rgba(46,192,144,0.3); }
+.cancel-btn {
+  display: none; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--text-tertiary); background: transparent; border: 1px solid var(--border);
+  border-radius: var(--radius-pill); padding: 6px 14px; cursor: pointer;
+  transition: all 0.2s; margin-left: 8px;
+}
+.cancel-btn:hover { border-color: var(--border-hover); color: var(--text-secondary); }
+body.edit-mode .cancel-btn { display: inline-flex; }
+.header-top { display: flex; align-items: center; margin-bottom: 1.25rem; }
+.header-actions { display: flex; align-items: center; margin-left: auto; }
+
+/* DRAG HANDLE — full-height left strip */
+.drag-handle {
+  display: none; align-items: center; justify-content: center;
+  width: 44px; min-width: 44px;
+  align-self: stretch;
+  margin: -14px 10px -14px -16px;
+  padding: 0;
+  border-right: 1px solid var(--border);
+  background: rgba(255,255,255,0.02);
+  border-radius: var(--radius) 0 0 var(--radius);
+  cursor: grab; color: var(--text-tertiary);
+  font-size: 18px; touch-action: none;
+  transition: background 0.18s, color 0.18s, border-color 0.18s;
+  position: relative;
+  overflow: hidden;
+}
+.drag-handle::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 20%, rgba(124,111,224,0.06) 100%);
+  opacity: 0; transition: opacity 0.2s;
+  pointer-events: none;
+}
+.drag-handle:hover {
+  background: rgba(255,255,255,0.05);
+  border-right-color: rgba(124,111,224,0.25);
+  color: var(--purple);
+}
+.drag-handle:hover::after { opacity: 1; }
+.drag-handle:active { cursor: grabbing; }
+body.edit-mode .drag-handle { display: flex; }
+
+/* ── DRAG GHOST (the floating clone while dragging) ── */
+.sortable-drag .tl-card {
+  box-shadow:
+    0 2px 8px rgba(0,0,0,0.25),
+    0 16px 48px rgba(0,0,0,0.55),
+    0 0 0 1px rgba(124,111,224,0.35) !important;
+  border-color: rgba(124,111,224,0.4) !important;
+  background: var(--bg-hover) !important;
+  transform: rotate(-0.6deg) scale(1.015) !important;
+  opacity: 1 !important;
+}
+.sortable-drag .drag-handle {
+  background: rgba(124,111,224,0.12) !important;
+  border-right-color: rgba(124,111,224,0.3) !important;
+  color: var(--purple) !important;
+}
+
+/* ── GHOST PLACEHOLDER (the gap left behind) ── */
+.sortable-ghost .tl-card {
+  background: rgba(124,111,224,0.04) !important;
+  border: 1.5px dashed rgba(124,111,224,0.35) !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+.sortable-ghost .tl-card * { opacity: 0 !important; }
+.sortable-ghost .tl-spine { opacity: 0 !important; }
+
+/* For section-group ghost */
+.section-group.sortable-ghost {
+  opacity: 1 !important;
+  background: transparent !important;
+}
+.section-group.sortable-ghost .section-item {
+  opacity: 0.3;
+}
+.section-group.sortable-ghost .tl-card {
+  background: rgba(124,111,224,0.04) !important;
+  border: 1.5px dashed rgba(124,111,224,0.25) !important;
+}
+.section-group.sortable-ghost .tl-card * { opacity: 0 !important; }
+
+/* ── SECTION drag handle polish ── */
+.section-drag-handle {
+  display: none; align-items: center; justify-content: center;
+  width: 24px; height: 24px; cursor: grab; color: var(--text-tertiary);
+  font-size: 15px; touch-action: none; flex-shrink: 0;
+  transition: color 0.18s, transform 0.15s;
+  border-radius: 5px; padding: 2px;
+}
+.section-drag-handle:hover { color: var(--purple); transform: scale(1.15); }
+.section-drag-handle:active { cursor: grabbing; color: var(--purple); }
+body.edit-mode .section-drag-handle { display: flex; }
+
+/* ── LAND ANIMATION — card settling into place ── */
+@keyframes cardLand {
+  0%   { transform: scale(1.02) translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+  60%  { transform: scale(0.995) translateY(1px); }
+  100% { transform: scale(1) translateY(0); box-shadow: none; }
+}
+.drag-landed .tl-card {
+  animation: cardLand 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ── CURSOR: grabbing on whole card while dragging ── */
+body.is-dragging * { cursor: grabbing !important; }
+
+/* DELETE BUTTON — pill matching task page */
+.card-delete {
+  display: none; align-items: center; gap: 6px;
+  height: 34px; padding: 0 13px; border-radius: var(--radius-pill);
+  border: 1px solid rgba(232,104,64,0.2); background: rgba(232,104,64,0.08);
+  color: var(--coral); font-family: var(--font-body); font-size: 12px; font-weight: 600;
+  cursor: pointer; flex-shrink: 0; white-space: nowrap;
+  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+}
+.card-delete i { font-size: 15px; }
+.card-delete:hover { background: rgba(232,104,64,0.18); border-color: rgba(232,104,64,0.4); }
+.card-delete:active { transform: scale(0.96); }
+body.edit-mode .card-delete { display: flex; }
+
+/* INLINE CONFIRM STATE */
+.card-confirm {
+  display: none; align-items: center; gap: 6px; flex-shrink: 0;
+}
+.card-confirm.visible { display: flex; }
+.confirm-label { font-size: 11px; font-weight: 600; color: var(--coral); white-space: nowrap; }
+.confirm-yes {
+  height: 28px; padding: 0 10px; border-radius: 7px;
+  background: var(--coral); border: none; color: #fff;
+  font-family: var(--font-body); font-size: 11px; font-weight: 600; cursor: pointer;
+  transition: opacity 0.15s;
+}
+.confirm-yes:hover { opacity: 0.85; }
+.confirm-no {
+  height: 28px; padding: 0 10px; border-radius: 7px;
+  background: transparent; border: 1px solid var(--border); color: var(--text-secondary);
+  font-family: var(--font-body); font-size: 11px; font-weight: 600; cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+.confirm-no:hover { border-color: var(--border-hover); color: var(--text-primary); }
+
+/* edit mode block states */
+body.edit-mode .tl-block[data-color] { cursor: default; }
+body.edit-mode .tl-block[data-color] .tl-card { border-color: var(--border-hover) !important; background: var(--bg-card) !important; }
+
+/* Chosen (picked up but not yet moving) */
+body.edit-mode .tl-block.sortable-chosen .tl-card {
+  border-color: rgba(124,111,224,0.5) !important;
+  background: rgba(124,111,224,0.05) !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3) !important;
+}
+body.edit-mode .section-group.sortable-chosen { outline: 1px solid rgba(124,111,224,0.25); border-radius: var(--radius); }
+
+/* SECTION GROUP — wraps header + tasks, draggable as unit */
+.section-group { display: contents; }
+body.edit-mode .section-group { display: block; margin: 1rem 0 0.5rem; }
+
+/* SECTION ITEM — collapsible header */
+.section-item {
+  display: flex; align-items: center; gap: 10px; margin: 2.5rem 0 1rem;
+  cursor: pointer; user-select: none;
+}
+.section-item .section-line { flex: 1; height: 1px; background: var(--border); }
+.section-item .section-text { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-tertiary); white-space: nowrap; }
+.section-chevron {
+  font-size: 13px; color: var(--text-tertiary); flex-shrink: 0;
+  transition: transform 0.25s cubic-bezier(0.4,0,0.2,1), color 0.2s;
+}
+.section-item:hover .section-chevron { color: var(--text-secondary); }
+.section-item.collapsed .section-chevron { transform: rotate(-90deg); }
+.section-count {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.04em;
+  padding: 2px 8px; border-radius: var(--radius-pill);
+  background: var(--surface); border: 1px solid var(--border);
+  color: var(--text-tertiary); white-space: nowrap; flex-shrink: 0;
+  display: none;
+}
+.section-item.collapsed .section-count { display: inline-flex; }
+
+/* SECTION TASKS WRAPPER — animates collapse */
+.section-tasks {
+  overflow: hidden;
+  transition: max-height 0.3s cubic-bezier(0.4,0,0.2,1), opacity 0.25s ease;
+  max-height: 2000px; opacity: 1;
+}
+.section-tasks.collapsed { max-height: 0; opacity: 0; }
+
+/* DRAG HANDLE on section header in edit mode */
+.section-drag-handle {
+  display: none; align-items: center; justify-content: center;
+  width: 22px; height: 22px; cursor: grab; color: var(--text-tertiary);
+  font-size: 14px; touch-action: none; flex-shrink: 0;
+  transition: color 0.2s;
+}
+.section-drag-handle:hover { color: var(--text-secondary); }
+.section-drag-handle:active { cursor: grabbing; color: var(--purple); }
+body.edit-mode .section-drag-handle { display: flex; }
+
+/* In edit mode, disable collapse toggle so drag doesn't fire it */
+body.edit-mode .section-item { cursor: default; margin: 0.5rem 0 0.25rem; }
+body.edit-mode .section-chevron { display: none; }
+body.edit-mode .section-count { display: none !important; }
+body.edit-mode .section-tasks { max-height: none !important; opacity: 1 !important; overflow: visible !important; }
+body.edit-mode .section-group { padding: 6px; border: 1px dashed var(--border-hover); border-radius: var(--radius); background: rgba(255,255,255,0.01); }
+
+.section-delete-btn {
+  display: none; align-items: center; justify-content: center; gap: 4px;
+  height: 28px; padding: 0 12px; border-radius: var(--radius-pill);
+  border: 1px solid rgba(232,104,64,0.25); background: rgba(232,104,64,0.08);
+  color: var(--coral); font-family: var(--font-body); font-size: 11px; font-weight: 600;
+  cursor: pointer; flex-shrink: 0; transition: background 0.2s, border-color 0.2s;
+  white-space: nowrap;
+}
+.section-delete-btn i { font-size: 14px; }
+.section-delete-btn:hover { background: rgba(232,104,64,0.18); border-color: rgba(232,104,64,0.45); }
+body.edit-mode .section-delete-btn { display: flex; }
+
+/* ADD SECTION ROW — visible only in edit mode */
+.add-section-row {
+  display: none; align-items: center; gap: 8px;
+  margin: 1.5rem 0 0.5rem; padding: 10px 14px;
+  border: 1px dashed var(--border-hover); border-radius: var(--radius);
+  background: transparent; transition: border-color 0.2s;
+}
+body.edit-mode .add-section-row { display: flex; }
+.add-section-row input {
+  flex: 1; background: transparent; border: none; outline: none;
+  font-family: var(--font-body); font-size: 12px; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-secondary);
+}
+.add-section-row input::placeholder { color: var(--text-tertiary); }
+.add-section-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  height: 28px; padding: 0 12px; border-radius: 7px;
+  background: var(--surface); border: 1px solid var(--border);
+  color: var(--text-secondary); font-family: var(--font-body);
+  font-size: 11px; font-weight: 600; cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+.add-section-btn:hover { background: var(--surface2); border-color: var(--border-hover); color: var(--text-primary); }
+
+/* edit mode banner */
+.edit-banner {
+  display: none; align-items: center; gap: 8px; padding: 10px 14px;
+  background: var(--teal-dim); border: 1px solid rgba(46,192,144,0.2); border-radius: var(--radius);
+  margin-bottom: 1rem; font-size: 12px; color: var(--teal); font-weight: 500;
+}
+.edit-banner i { font-size: 15px; }
+/* RESET MODAL */
+.reset-modal-overlay {
+  display: none; position: fixed; inset: 0; z-index: 200;
+  background: rgba(0,0,0,0.6); backdrop-filter: blur(6px);
+  align-items: center; justify-content: center; padding: 1.5rem;
+}
+.reset-modal {
+  background: var(--bg-card); border: 1px solid var(--border-hover);
+  border-radius: var(--radius); padding: 24px 24px 20px; max-width: 340px; width: 100%;
+  animation: popIn 0.25s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+.reset-modal h3 { font-family: var(--font-display); font-size: 16px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; }
+.reset-modal p { font-size: 12.5px; color: var(--text-secondary); line-height: 1.6; font-weight: 300; margin-bottom: 18px; }
+.reset-modal-actions { display: flex; flex-direction: column; gap: 8px; }
+.reset-opt {
+  width: 100%; padding: 10px 16px; border-radius: 10px; border: 1px solid var(--border);
+  background: var(--surface); color: var(--text-primary); font-family: var(--font-body);
+  font-size: 13px; font-weight: 500; cursor: pointer; text-align: left;
+  transition: background 0.2s, border-color 0.2s;
+}
+.reset-opt:hover { background: var(--surface2); border-color: var(--border-hover); }
+.reset-opt.danger { color: var(--coral); border-color: rgba(232,104,64,0.2); background: rgba(232,104,64,0.05); }
+.reset-opt.danger:hover { background: rgba(232,104,64,0.12); border-color: rgba(232,104,64,0.4); }
+.reset-cancel { margin-top: 4px; width: 100%; padding: 8px; background: none; border: none; color: var(--text-tertiary); font-family: var(--font-body); font-size: 12px; cursor: pointer; }
+.reset-cancel:hover { color: var(--text-secondary); }
+</style>
+
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="header-top">
+      <div class="date-chip" id="date-chip"><i class="ti ti-calendar chip-icon"></i><span id="date-chip-label">Monday · Day 1</span><i class="ti ti-chevron-down chip-icon" style="font-size:11px;opacity:0.5"></i></div>
+      <div id="date-picker-anchor" style="position:relative;height:0;width:0;overflow:visible"></div>
+      <div class="header-actions">
+        <button class="edit-btn" id="edit-btn" onclick="enterEditMode()"><i class="ti ti-pencil"></i> Edit</button>
+        <button class="cancel-btn" id="cancel-btn" onclick="cancelEditMode()"><i class="ti ti-x"></i> Cancel</button>
+      </div>
+    </div>
+    <h1>Design<br>your <em>day.</em></h1>
+    <div class="edit-banner"><i class="ti ti-drag-drop"></i> Hold the left strip to drag · tap Delete to remove</div>
+    <div class="meta-row">
+      <span class="meta-pill"><i class="ti ti-dumbbell"></i> Workout day</span>
+      <span class="meta-pill accent"><i class="ti ti-trending-up"></i> Trading 5:00–8:45 PM</span>
+    </div>
+    <div>
+      <div class="progress-top">
+        <span class="progress-count" id="done-count">0 / 8 complete</span>
+        <span id="prog-label">Click a block to check it off</span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="prog-bar"></div></div>
+    </div>
+  </div>
+
+  <div class="section-group" data-group-id="sec-morning">
+    <div class="section-item" data-type="section" data-id="sec-morning" onclick="toggleSection(this)">
+      <div class="section-drag-handle"><i class="ti ti-grip-vertical"></i></div>
+      <i class="ti ti-chevron-down section-chevron"></i>
+      <div class="section-line"></div>
+      <span class="section-text">Morning — don't negotiate, just execute</span>
+      <span class="section-count"></span>
+      <div class="section-line"></div>
+      <button class="section-delete-btn" onclick="deleteSection(event,this)"><i class="ti ti-trash"></i> Delete</button>
+    </div>
+    <div class="section-tasks">
+
+  <div class="tl-block" onclick="toggle(this)" data-color="purple" data-id="wake">
+    <div class="tl-spine"><div class="tl-dot anchor-dot" style="background:var(--purple);color:var(--purple)" data-dot></div><div class="tl-line"></div></div>
+    <div class="tl-card is-anchor">
+      <div class="drag-handle"><i class="ti ti-grip-vertical"></i></div>
+      <div class="tl-check" data-check><i class="ti ti-check"></i></div>
+      <div class="card-body">
+        <div class="card-top">
+          <i class="ti ti-alarm card-icon" style="color:var(--purple)"></i>
+          <span class="card-title">Wake up</span>
+          <span class="tag tag-time ml-auto" style="background:var(--purple-dim);color:var(--purple);border:1px solid rgba(124,111,224,0.2)">5:30 AM</span>
+        </div>
+        <div class="card-detail">No phone. Sit up immediately. Feet on floor — the sequence starts here.</div>
+      </div>
+      <div class="card-delete-wrap" style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0">
+        <button class="card-delete" onclick="showConfirm(event,this)"><i class="ti ti-trash"></i> Delete</button>
+        <div class="card-confirm">
+          <span class="confirm-label">Sure?</span>
+          <button class="confirm-yes" onclick="confirmDelete(event,this)">Yes</button>
+          <button class="confirm-no" onclick="cancelConfirm(event,this)">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tl-block" onclick="toggle(this)" data-color="teal" data-id="reading">
+    <div class="tl-spine"><div class="tl-dot" style="background:var(--teal)" data-dot></div><div class="tl-line"></div></div>
+    <div class="tl-card">
+      <div class="drag-handle"><i class="ti ti-grip-vertical"></i></div>
+      <div class="tl-check" data-check><i class="ti ti-check"></i></div>
+      <div class="card-body">
+        <div class="card-top">
+          <i class="ti ti-book card-icon" style="color:var(--teal)"></i>
+          <span class="card-title">Reading</span>
+          <span class="tag tag-stack"><i class="ti ti-droplet" style="font-size:10px"></i> drink alongside</span>
+          <span class="tag ml-auto" style="background:var(--teal-dim);color:var(--teal);border:1px solid rgba(46,192,144,0.15)">~40 min</span>
+        </div>
+        <div class="card-detail">Grab whatever you're drinking — cold coffee, lemon water, anything. Sit down and read. The drink is just company.</div>
+      </div>
+      <div class="card-delete-wrap" style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0">
+        <button class="card-delete" onclick="showConfirm(event,this)"><i class="ti ti-trash"></i> Delete</button>
+        <div class="card-confirm">
+          <span class="confirm-label">Sure?</span>
+          <button class="confirm-yes" onclick="confirmDelete(event,this)">Yes</button>
+          <button class="confirm-no" onclick="cancelConfirm(event,this)">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tl-block" onclick="toggle(this)" data-color="amber" data-id="comms">
+    <div class="tl-spine"><div class="tl-dot" style="background:var(--amber)" data-dot></div><div class="tl-line"></div></div>
+    <div class="tl-card">
+      <div class="drag-handle"><i class="ti ti-grip-vertical"></i></div>
+      <div class="tl-check" data-check><i class="ti ti-check"></i></div>
+      <div class="card-body">
+        <div class="card-top">
+          <i class="ti ti-microphone card-icon" style="color:var(--amber)"></i>
+          <span class="card-title">Communication practice</span>
+          <span class="tag ml-auto" style="background:var(--amber-dim);color:var(--amber);border:1px solid rgba(232,160,48,0.15)">~10 min</span>
+        </div>
+        <div class="card-detail">Pick today's tongue twister. Run the Vinh Giang framework. Short and sharp.</div>
+      </div>
+      <div class="card-delete-wrap" style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0">
+        <button class="card-delete" onclick="showConfirm(event,this)"><i class="ti ti-trash"></i> Delete</button>
+        <div class="card-confirm">
+          <span class="confirm-label">Sure?</span>
+          <button class="confirm-yes" onclick="confirmDelete(event,this)">Yes</button>
+          <button class="confirm-no" onclick="cancelConfirm(event,this)">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tl-block" onclick="toggle(this)" data-color="coral" data-id="workout">
+    <div class="tl-spine"><div class="tl-dot" style="background:var(--coral)" data-dot></div><div class="tl-line"></div></div>
+    <div class="tl-card">
+      <div class="drag-handle"><i class="ti ti-grip-vertical"></i></div>
+      <div class="tl-check" data-check><i class="ti ti-check"></i></div>
+      <div class="card-body">
+        <div class="card-top">
+          <i class="ti ti-run card-icon" style="color:var(--coral)"></i>
+          <span class="card-title">Workout</span>
+          <span class="tag ml-auto" style="background:var(--coral-dim);color:var(--coral);border:1px solid rgba(232,104,64,0.15)">YouTube video</span>
+        </div>
+        <div class="card-detail">The video decides, you execute. No deliberating, no skipping. Hit play.</div>
+      </div>
+      <div class="card-delete-wrap" style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0">
+        <button class="card-delete" onclick="showConfirm(event,this)"><i class="ti ti-trash"></i> Delete</button>
+        <div class="card-confirm">
+          <span class="confirm-label">Sure?</span>
+          <button class="confirm-yes" onclick="confirmDelete(event,this)">Yes</button>
+          <button class="confirm-no" onclick="cancelConfirm(event,this)">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    </div><!-- /section-tasks -->
+  </div><!-- /section-group morning -->
+
+  <div class="section-group" data-group-id="sec-afternoon">
+    <div class="section-item" data-type="section" data-id="sec-afternoon" onclick="toggleSection(this)">
+      <div class="section-drag-handle"><i class="ti ti-grip-vertical"></i></div>
+      <i class="ti ti-chevron-down section-chevron"></i>
+      <div class="section-line"></div>
+      <span class="section-text">Afternoon — flexible gap</span>
+      <span class="section-count"></span>
+      <div class="section-line"></div>
+      <button class="section-delete-btn" onclick="deleteSection(event,this)"><i class="ti ti-trash"></i> Delete</button>
+    </div>
+    <div class="section-tasks">
+
+  <div class="tl-block no-click">
+    <div class="tl-spine"><div class="tl-dot" style="background:var(--gray)"></div><div class="tl-line dashed"></div></div>
+    <div class="tl-card" style="cursor:default">
+      <div style="width:20px;min-width:20px"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <i class="ti ti-soup card-icon" style="color:var(--gray)"></i>
+          <span class="card-title">Recover — eat, rest, free time</span>
+          <span class="tag ml-auto" style="background:var(--gray-dim);color:var(--gray);border:1px solid rgba(102,102,98,0.15)">open</span>
+        </div>
+        <div class="card-detail">Unstructured. Could be 2 hours, could be 5. Just protect your energy for the session.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tl-block" onclick="toggle(this)" data-color="purple" data-id="prep">
+    <div class="tl-spine"><div class="tl-dot" style="background:var(--purple)" data-dot></div><div class="tl-line"></div></div>
+    <div class="tl-card">
+      <div class="drag-handle"><i class="ti ti-grip-vertical"></i></div>
+      <div class="tl-check" data-check><i class="ti ti-check"></i></div>
+      <div class="card-body">
+        <div class="card-top">
+          <i class="ti ti-chart-candle card-icon" style="color:var(--purple)"></i>
+          <span class="card-title">Pre-session prep</span>
+          <span class="tag ml-auto" style="background:var(--purple-dim);color:var(--purple);border:1px solid rgba(124,111,224,0.2)">~15 min before 5</span>
+        </div>
+        <div class="card-detail">Review your rules. Clear your desk. Shift into trader mode — start when it feels like "almost time."</div>
+      </div>
+      <div class="card-delete-wrap" style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0">
+        <button class="card-delete" onclick="showConfirm(event,this)"><i class="ti ti-trash"></i> Delete</button>
+        <div class="card-confirm">
+          <span class="confirm-label">Sure?</span>
+          <button class="confirm-yes" onclick="confirmDelete(event,this)">Yes</button>
+          <button class="confirm-no" onclick="cancelConfirm(event,this)">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    </div><!-- /section-tasks -->
+  </div><!-- /section-group afternoon -->
+
+  <div class="section-group" data-group-id="sec-trading">
+    <div class="section-item" data-type="section" data-id="sec-trading" onclick="toggleSection(this)">
+      <div class="section-drag-handle"><i class="ti ti-grip-vertical"></i></div>
+      <i class="ti ti-chevron-down section-chevron"></i>
+      <div class="section-line"></div>
+      <span class="section-text">Trading — non-negotiable</span>
+      <span class="section-count"></span>
+      <div class="section-line"></div>
+      <button class="section-delete-btn" onclick="deleteSection(event,this)"><i class="ti ti-trash"></i> Delete</button>
+    </div>
+    <div class="section-tasks">
+
+  <div class="tl-block" onclick="toggle(this)" data-color="purple" data-id="trading">
+    <div class="tl-spine"><div class="tl-dot anchor-dot" style="background:var(--purple);color:var(--purple)" data-dot></div><div class="tl-line"></div></div>
+    <div class="tl-card is-anchor">
+      <div class="drag-handle"><i class="ti ti-grip-vertical"></i></div>
+      <div class="tl-check" data-check><i class="ti ti-check"></i></div>
+      <div class="card-body">
+        <div class="card-top">
+          <i class="ti ti-trending-up card-icon" style="color:var(--purple)"></i>
+          <span class="card-title">Trading session</span>
+          <span class="tag tag-time ml-auto" style="background:var(--purple-dim);color:var(--purple);border:1px solid rgba(124,111,224,0.2)">5:00 PM</span>
+          <span class="tag" style="background:var(--purple-dim);color:var(--purple);border:1px solid rgba(124,111,224,0.2)">3 h 45 min</span>
+        </div>
+        <div class="card-detail">Emotions are not a valid reason to skip. Follow session rules. You show up regardless.</div>
+      </div>
+      <div class="card-delete-wrap" style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0">
+        <button class="card-delete" onclick="showConfirm(event,this)"><i class="ti ti-trash"></i> Delete</button>
+        <div class="card-confirm">
+          <span class="confirm-label">Sure?</span>
+          <button class="confirm-yes" onclick="confirmDelete(event,this)">Yes</button>
+          <button class="confirm-no" onclick="cancelConfirm(event,this)">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tl-block" onclick="toggle(this)" data-color="purple" data-id="debrief">
+    <div class="tl-spine"><div class="tl-dot" style="background:var(--purple)" data-dot></div><div class="tl-line"></div></div>
+    <div class="tl-card">
+      <div class="drag-handle"><i class="ti ti-grip-vertical"></i></div>
+      <div class="tl-check" data-check><i class="ti ti-check"></i></div>
+      <div class="card-body">
+        <div class="card-top">
+          <i class="ti ti-notes card-icon" style="color:var(--purple)"></i>
+          <span class="card-title">Session debrief</span>
+          <span class="tag ml-auto" style="background:var(--purple-dim);color:var(--purple);border:1px solid rgba(124,111,224,0.2)">~10 min</span>
+        </div>
+        <div class="card-detail">Right after the session. What did I follow? What did I break? One honest note — no judgment.</div>
+      </div>
+      <div class="card-delete-wrap" style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0">
+        <button class="card-delete" onclick="showConfirm(event,this)"><i class="ti ti-trash"></i> Delete</button>
+        <div class="card-confirm">
+          <span class="confirm-label">Sure?</span>
+          <button class="confirm-yes" onclick="confirmDelete(event,this)">Yes</button>
+          <button class="confirm-no" onclick="cancelConfirm(event,this)">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tl-block no-click">
+    <div class="tl-spine"><div class="tl-dot" style="background:var(--gray)"></div></div>
+    <div class="tl-card" style="cursor:default">
+      <div style="width:20px;min-width:20px"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <i class="ti ti-moon card-icon" style="color:var(--gray)"></i>
+          <span class="card-title">Wind down — sleep by 10 PM</span>
+          <span class="tag ml-auto" style="background:var(--gray-dim);color:var(--gray);border:1px solid rgba(102,102,98,0.15)">close</span>
+        </div>
+        <div class="card-detail">Protect tomorrow's 5:30 AM. The day closes here.</div>
+      </div>
+    </div>
+  </div>
+
+    </div><!-- /section-tasks -->
+  </div><!-- /section-group trading -->
+
+  <div class="add-section-row" id="add-section-row">
+    <i class="ti ti-layout-sidebar" style="color:var(--text-tertiary);font-size:15px;flex-shrink:0"></i>
+    <input type="text" id="section-name-input" placeholder="New section name…" maxlength="40">
+    <button class="add-section-btn" onclick="addSection()"><i class="ti ti-plus"></i> Add</button>
+  </div>
+
+  <div class="complete-banner" id="complete-banner">
+    <p>Day complete. You showed up.</p>
+    <span>That's all it takes. Do it again tomorrow.</span>
+  </div>
+
+  <div class="rule-box">
+    <p><strong>Two anchors, one sequence.</strong> Wake at 5:30, read then communicate then workout in order, rest freely, then show up to trading at 5 PM no matter what. The clock only matters at the anchors — everything else just follows the thing before it.</p>
+  </div>
+
+  <div style="text-align:center;margin-top:2rem">
+    <button onclick="resetDay()" id="reset-btn">Reset day</button>
+  </div>
+
+</div>
+<script>
+const COLORS = { purple:'#7C6FE0', teal:'#2EC090', amber:'#E8A030', coral:'#E86840', gray:'#666662' };
+const STORAGE_KEY = 'monday_schedule_v2'; // v2: id-keyed, not index-based
+const DAY_TASKS_KEY = 'day_custom_tasks_v1';
+
+function getTotal() { return document.querySelectorAll('.tl-block[data-color]').length; }
+
+// FIX #1 & #4: Save state keyed by data-id, not array index
+// This means reordering/deleting tasks never corrupts saved state
+function saveState() {
+  const state = {};
+  document.querySelectorAll('.tl-block[data-color]').forEach(b => {
+    state[b.dataset.id] = b.querySelector('[data-check]').classList.contains('checked');
+  });
+  store.set(STORAGE_KEY, state);
+}
+
+// FIX #1: Restore by id — safe across reorders and deletions
+async function restoreState() {
+  const state = await store.get(STORAGE_KEY);
+  if (!state) return;
+  document.querySelectorAll('.tl-block[data-color]').forEach(block => {
+    if (state[block.dataset.id]) {
+      const card=block.querySelector('.tl-card'), check=block.querySelector('[data-check]'), dot=block.querySelector('[data-dot]');
+      const color=COLORS[block.dataset.color]||COLORS.purple;
+      check.classList.add('checked'); check.style.background=color;
+      card.classList.add('done-card'); if(dot) dot.classList.add('done');
+    }
+  });
+  updateProgress();
+}
+
+function toggle(block) {
+  const card=block.querySelector('.tl-card'), check=block.querySelector('[data-check]'), dot=block.querySelector('[data-dot]');
+  const color=COLORS[block.dataset.color]||COLORS.purple, isDone=check.classList.contains('checked');
+  if(isDone){check.classList.remove('checked');check.style.background='';card.classList.remove('done-card');if(dot)dot.classList.remove('done');}
+  else{check.classList.add('checked');check.style.background=color;card.classList.add('done-card');if(dot)dot.classList.add('done');}
+  updateProgress();
+  saveState();
+}
+
+function updateProgress(){
+  const total=getTotal(), done=document.querySelectorAll('[data-check].checked').length, pct=total?Math.round((done/total)*100):0;
+  document.getElementById('prog-bar').style.width=pct+'%';
+  document.getElementById('done-count').textContent=done+' / '+total+' complete';
+  document.getElementById('complete-banner').classList.toggle('visible',total>0&&done===total);
+  document.getElementById('prog-label').textContent=done===0?'Click a block to check it off':done===total?'You showed up. \u2726':pct+'% through your day';
+}
+
+// FIX #7: Reset shows a choice — just uncheck, or full reset (clears order + sections too)
+function resetDay() {
+  const modal = document.getElementById('reset-modal');
+  if (modal) { modal.style.display='flex'; return; }
+  // fallback if modal not in DOM
+  _resetChecks();
+}
+function _resetChecks() {
+  store.remove(STORAGE_KEY);
+  document.querySelectorAll('.tl-block[data-color]').forEach(block => {
+    const card=block.querySelector('.tl-card'), check=block.querySelector('[data-check]'), dot=block.querySelector('[data-dot]');
+    check.classList.remove('checked'); check.style.background='';
+    card.classList.remove('done-card'); if(dot) dot.classList.remove('done');
+  });
+  updateProgress();
+}
+function resetChecksOnly() {
+  document.getElementById('reset-modal').style.display='none';
+  _resetChecks();
+}
+function resetFull() {
+  document.getElementById('reset-modal').style.display='none';
+  store.remove(STORAGE_KEY);
+  store.remove(ORDER_KEY);
+  store.remove(SECTIONS_KEY);
+  store.remove(DAY_TASKS_KEY);
+  location.reload();
+}
+function closeResetModal() {
+  document.getElementById('reset-modal').style.display='none';
+}
+
+
+// ── TASK BANK IMPORT ────────────────────────────────────────
+(async function importFromBank() {
+  const params = new URLSearchParams(window.location.search);
+  const raw = params.get('bank_task');
+  if (!raw) return;
+
+  let task;
+  try { task = JSON.parse(decodeURIComponent(raw)); } catch { return; }
+
+  // Clean the URL so refresh doesn't re-import
+  history.replaceState({}, '', window.location.pathname);
+
+  const COLOR_MAP = {
+    purple: { hex:'#7C6FE0', dim:'rgba(124,111,224,0.10)', border:'rgba(124,111,224,0.22)' },
+    teal:   { hex:'#2EC090', dim:'rgba(46,192,144,0.10)',  border:'rgba(46,192,144,0.22)'  },
+    amber:  { hex:'#E8A030', dim:'rgba(232,160,48,0.10)',  border:'rgba(232,160,48,0.22)'  },
+    coral:  { hex:'#E86840', dim:'rgba(232,104,64,0.10)',  border:'rgba(232,104,64,0.22)'  },
+    gray:   { hex:'#666662', dim:'rgba(102,102,98,0.10)',  border:'rgba(102,102,98,0.22)'  },
+  };
+
+  const ruleBox = document.querySelector('.rule-box');
+  const page = document.querySelector('.page');
+  function escH(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function getTags(t) {
+    if (Array.isArray(t.tags) && t.tags.length) return t.tags;
+    return String(t.duration || '').split(',').map(tag => tag.trim()).filter(Boolean);
+  }
+
+  const c = COLOR_MAP[task.color] || COLOR_MAP.purple;
+  const taskId = 'bank-' + task.id;
+  if (document.querySelector(`[data-id="${taskId}"]`)) return;
+
+  const block = document.createElement('div');
+  block.className = 'tl-block bank-imported';
+  block.setAttribute('onclick', 'toggle(this)');
+  block.dataset.color = task.color || 'purple';
+  block.dataset.id = taskId;
+  block.dataset.customTask = 'true';
+
+  const tags = getTags(task);
+  const durationTag = tags.map((tag, index) =>
+    `<span class="tag ${index === 0 ? 'ml-auto' : ''}" style="background:${c.dim};color:${c.hex};border:1px solid ${c.border}">${escH(tag)}</span>`
+  ).join('');
+  const noteHtml = task.note
+    ? `<div class="card-detail">${escH(task.note)}</div>`
+    : '';
+
+  block.innerHTML = `
+    <div class="tl-spine">
+      <div class="tl-dot" style="background:${c.hex}" data-dot></div>
+      <div class="tl-line"></div>
+    </div>
+    <div class="tl-card">
+      <div class="drag-handle"><i class="ti ti-grip-vertical"></i></div>
+      <div class="tl-check" data-check><i class="ti ti-check"></i></div>
+      <div class="card-body">
+        <div class="card-top">
+          <i class="ti ${escH(task.icon)} card-icon" style="color:${c.hex}"></i>
+          <span class="card-title">${escH(task.name)}</span>
+          ${durationTag}
+        </div>
+        ${noteHtml}
+      </div>
+      <div class="card-delete-wrap" style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0">
+        <button class="card-delete" onclick="showConfirm(event,this)"><i class="ti ti-trash"></i> Delete</button>
+        <div class="card-confirm">
+          <span class="confirm-label">Sure?</span>
+          <button class="confirm-yes" onclick="confirmDelete(event,this)">Yes</button>
+          <button class="confirm-no" onclick="cancelConfirm(event,this)">No</button>
+        </div>
+      </div>
+    </div>
+  `;
+
+  const target = getCustomTaskTarget();
+  if (!target) return;
+  target.appendChild(block);
+  await saveCustomDayTasks();
+  updateProgress();
+  if (typeof saveOrder === 'function') saveOrder();
+})();
+
+function getCustomTaskTarget() {
+  return document.querySelector('.section-group[data-group-id="sec-afternoon"] .section-tasks')
+    || document.querySelector('.section-tasks');
+}
+
+async function saveCustomDayTasks() {
+  const tasks = Array.from(document.querySelectorAll('.tl-block[data-custom-task="true"]')).map(block => ({
+    dayId: block.dataset.id,
+    id: block.dataset.id.replace(/^bank-/, ''),
+    name: block.querySelector('.card-title')?.textContent || 'Task',
+    tags: Array.from(block.querySelectorAll('.tag')).map(tag => tag.textContent.trim()).filter(Boolean),
+    duration: Array.from(block.querySelectorAll('.tag')).map(tag => tag.textContent.trim()).filter(Boolean).join(', '),
+    note: block.querySelector('.card-detail')?.textContent || '',
+    icon: (block.querySelector('.card-icon')?.className.match(/\bti-[\w-]+\b/) || ['ti-star'])[0],
+    color: block.dataset.color || 'purple'
+  }));
+  await store.set(DAY_TASKS_KEY, tasks);
+}
+
+function buildCustomDayTaskBlock(task) {
+  const colorMap = {
+    purple: { hex:'#7C6FE0', dim:'rgba(124,111,224,0.10)', border:'rgba(124,111,224,0.22)' },
+    teal:   { hex:'#2EC090', dim:'rgba(46,192,144,0.10)',  border:'rgba(46,192,144,0.22)'  },
+    amber:  { hex:'#E8A030', dim:'rgba(232,160,48,0.10)',  border:'rgba(232,160,48,0.22)'  },
+    coral:  { hex:'#E86840', dim:'rgba(232,104,64,0.10)',  border:'rgba(232,104,64,0.22)'  },
+    gray:   { hex:'#666662', dim:'rgba(102,102,98,0.10)',  border:'rgba(102,102,98,0.22)'  },
+  };
+  function escH(s) { return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  const c = colorMap[task.color] || colorMap.purple;
+  const block = document.createElement('div');
+  block.className = 'tl-block bank-imported';
+  block.setAttribute('onclick', 'toggle(this)');
+  block.dataset.color = task.color || 'purple';
+  block.dataset.id = task.dayId || ('bank-' + task.id);
+  block.dataset.customTask = 'true';
+  const tags = Array.isArray(task.tags) && task.tags.length
+    ? task.tags
+    : String(task.duration || '').split(',').map(tag => tag.trim()).filter(Boolean);
+  const durationTag = tags.map((tag, index) =>
+    `<span class="tag ${index === 0 ? 'ml-auto' : ''}" style="background:${c.dim};color:${c.hex};border:1px solid ${c.border}">${escH(tag)}</span>`
+  ).join('');
+  const noteHtml = task.note
+    ? `<div class="card-detail">${escH(task.note)}</div>`
+    : '';
+
+  block.innerHTML = `
+    <div class="tl-spine">
+      <div class="tl-dot" style="background:${c.hex}" data-dot></div>
+      <div class="tl-line"></div>
+    </div>
+    <div class="tl-card">
+      <div class="drag-handle"><i class="ti ti-grip-vertical"></i></div>
+      <div class="tl-check" data-check><i class="ti ti-check"></i></div>
+      <div class="card-body">
+        <div class="card-top">
+          <i class="ti ${escH(task.icon || 'ti-star')} card-icon" style="color:${c.hex}"></i>
+          <span class="card-title">${escH(task.name)}</span>
+          ${durationTag}
+        </div>
+        ${noteHtml}
+      </div>
+      <div class="card-delete-wrap" style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0">
+        <button class="card-delete" onclick="showConfirm(event,this)"><i class="ti ti-trash"></i> Delete</button>
+        <div class="card-confirm">
+          <span class="confirm-label">Sure?</span>
+          <button class="confirm-yes" onclick="confirmDelete(event,this)">Yes</button>
+          <button class="confirm-no" onclick="cancelConfirm(event,this)">No</button>
+        </div>
+      </div>
+    </div>
+  `;
+  return block;
+}
+
+async function restoreCustomDayTasks() {
+  const tasks = await store.get(DAY_TASKS_KEY) || [];
+  const target = getCustomTaskTarget();
+  if (!target) return;
+  tasks.forEach(task => {
+    const id = task.dayId || ('bank-' + task.id);
+    if (!document.querySelector(`[data-id="${id}"]`)) target.appendChild(buildCustomDayTaskBlock(task));
+  });
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/plugins/AutoScroll/autoscroll.js"></script>
+<script>
+// Register the AutoScroll plugin so window-level drag scrolling works in all directions
+if (typeof Sortable !== 'undefined' && typeof AutoScroll !== 'undefined') {
+  Sortable.mount(new AutoScroll());
+}
+</script>
+<script>
+// ── EDIT MODE ──────────────────────────────────────────────
+const ORDER_KEY = 'day_order_v1';
+const SECTIONS_KEY = 'day_sections_v1';
+let editMode = false;
+let sortable = null;
+let taskSortables = [];
+let snapshotHTML = '';
+let snapshotState = '';
+let snapshotOrder = '';
+let snapshotSections = '';
+
+function escHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+// ── SECTION COLLAPSE ──────────────────────────────────────
+function toggleSection(header) {
+  if (editMode) return; // no collapse in edit mode
+  const group = header.closest('.section-group');
+  const tasks = group.querySelector('.section-tasks');
+  const isCollapsed = tasks.classList.contains('collapsed');
+  tasks.classList.toggle('collapsed', !isCollapsed);
+  header.classList.toggle('collapsed', !isCollapsed);
+  updateSectionCount(header);
+}
+
+function updateSectionCount(header) {
+  const group = header.closest('.section-group');
+  const taskCount = group.querySelectorAll('.tl-block[data-color]').length;
+  const countEl = header.querySelector('.section-count');
+  if (countEl) countEl.textContent = taskCount + ' task' + (taskCount !== 1 ? 's' : '');
+}
+
+function updateAllSectionCounts() {
+  document.querySelectorAll('.section-item[data-type="section"]').forEach(updateSectionCount);
+}
+
+// ── DRAGGABLE GROUPS ──────────────────────────────────────
+function getDraggableGroups() {
+  return Array.from(document.querySelectorAll('.section-group'));
+}
+
+function enterEditMode() {
+  editMode = true;
+  snapshotHTML = document.querySelector('.page').innerHTML;
+  snapshotState    = store._cache ? JSON.stringify(store._cache[STORAGE_KEY] ?? '') : '';
+  snapshotOrder    = store._cache ? JSON.stringify(store._cache[ORDER_KEY] ?? '') : '';
+  snapshotSections = store._cache ? JSON.stringify(store._cache[SECTIONS_KEY] ?? '') : '';
+  document.body.classList.add('edit-mode');
+  const btn = document.getElementById('edit-btn');
+  btn.innerHTML = '<i class="ti ti-check"></i> Done';
+  btn.classList.add('done-btn');
+  btn.onclick = exitEditMode;
+  // Disable task toggle clicks in edit mode
+  document.querySelectorAll('.tl-block[data-color]').forEach(b => {
+    b._onclick = b.getAttribute('onclick');
+    b.removeAttribute('onclick');
+  });
+  // Expand all sections so tasks are visible for drag-within-group
+  document.querySelectorAll('.section-tasks.collapsed').forEach(t => {
+    t.classList.remove('collapsed');
+    t.closest('.section-group').querySelector('.section-item').classList.remove('collapsed');
+  });
+  initSortable();
+}
+
+function exitEditMode() {
+  editMode = false;
+  document.body.classList.remove('edit-mode');
+  const btn = document.getElementById('edit-btn');
+  btn.innerHTML = '<i class="ti ti-pencil"></i> Edit';
+  btn.classList.remove('done-btn');
+  btn.onclick = enterEditMode;
+  document.querySelectorAll('.tl-block[data-color]').forEach(b => {
+    if (b._onclick) b.setAttribute('onclick', b._onclick);
+  });
+  document.querySelectorAll('.card-confirm.visible').forEach(c => c.classList.remove('visible'));
+  document.querySelectorAll('.card-delete').forEach(d => d.style.display = '');
+  destroySortables();
+  const inp = document.getElementById('section-name-input');
+  if (inp) inp.value = '';
+  saveOrder();
+  saveSections();
+  saveState();
+  updateProgress();
+  updateAllSectionCounts();
+}
+
+function cancelEditMode() {
+  destroySortables();
+  document.querySelector('.page').innerHTML = snapshotHTML;
+  editMode = false;
+  document.body.classList.remove('edit-mode');
+  if (snapshotState)    store.set(STORAGE_KEY, JSON.parse(snapshotState));
+  else                  store.remove(STORAGE_KEY);
+  if (snapshotOrder)    store.set(ORDER_KEY, JSON.parse(snapshotOrder));
+  else                  store.remove(ORDER_KEY);
+  if (snapshotSections) store.set(SECTIONS_KEY, JSON.parse(snapshotSections));
+  else                  store.remove(SECTIONS_KEY);
+  const btn = document.getElementById('edit-btn');
+  if (btn) { btn.innerHTML = '<i class="ti ti-pencil"></i> Edit'; btn.classList.remove('done-btn'); btn.onclick = enterEditMode; }
+  restoreState();
+}
+
+function initSortable() {
+  destroySortables();
+  const page = document.querySelector('.page');
+  // Sortable for section-groups (move whole section + tasks)
+  sortable = Sortable.create(page, {
+    animation: 200,
+    handle: '.section-drag-handle',
+    draggable: '.section-group',
+    ghostClass: 'sortable-ghost',
+    chosenClass: 'sortable-chosen',
+    dragClass: 'sortable-drag',
+    easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+    scroll: true,
+    scrollSensitivity: 120,
+    scrollSpeed: 20,
+    bubbleScroll: true,
+    delay: 40,
+    delayOnTouchOnly: true,
+    touchStartThreshold: 4,
+    fallbackOnBody: true,
+    swapThreshold: 0.65,
+    onStart() { document.body.classList.add('is-dragging'); },
+    onEnd(evt) {
+      document.body.classList.remove('is-dragging');
+      if (evt.item) {
+        evt.item.classList.add('drag-landed');
+        setTimeout(() => evt.item.classList.remove('drag-landed'), 400);
+      }
+      saveOrder(); saveSections();
+    }
+  });
+  // Sortable for tasks within each section
+  document.querySelectorAll('.section-tasks').forEach(container => {
+    const taskSortable = Sortable.create(container, {
+      animation: 200,
+      group: 'day-tasks',
+      handle: '.drag-handle',
+      draggable: '.tl-block[data-color]',
+      ghostClass: 'sortable-ghost',
+      chosenClass: 'sortable-chosen',
+      dragClass: 'sortable-drag',
+      easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+      scroll: true,
+      scrollSensitivity: 120,
+      scrollSpeed: 20,
+      bubbleScroll: true,
+      delay: 40,
+      delayOnTouchOnly: true,
+      touchStartThreshold: 4,
+      fallbackOnBody: true,
+      emptyInsertThreshold: 20,
+      swapThreshold: 0.55,
+      onStart() { document.body.classList.add('is-dragging'); },
+      onEnd(evt) {
+        document.body.classList.remove('is-dragging');
+        if (evt.item) {
+          evt.item.classList.add('drag-landed');
+          setTimeout(() => evt.item.classList.remove('drag-landed'), 400);
+        }
+        saveOrder(); updateAllSectionCounts();
+      }
+    });
+    taskSortables.push(taskSortable);
+  });
+}
+
+function destroySortables() {
+  if (sortable) { sortable.destroy(); sortable = null; }
+  taskSortables.forEach(s => s.destroy());
+  taskSortables = [];
+}
+
+function saveOrder() {
+  // Save group order + task order within each group
+  const groups = getDraggableGroups().map(g => {
+    const header = g.querySelector('.section-item');
+    const tasks = Array.from(g.querySelectorAll('.tl-block[data-color]')).map(b => b.dataset.id);
+    return { groupId: g.dataset.groupId, sectionId: header ? header.dataset.id : null, tasks };
+  });
+  store.set(ORDER_KEY, groups);
+}
+
+function saveSections() {
+  const sections = Array.from(document.querySelectorAll('.section-item[data-type="section"]')).map(el => ({
+    id: el.dataset.id,
+    label: el.querySelector('.section-text').textContent
+  }));
+  store.set(SECTIONS_KEY, sections);
+}
+
+async function restoreOrder() {
+  const groups = await store.get(ORDER_KEY);
+  if (!groups) return;
+  // If old format (array of {id, type}), skip — incompatible
+  if (!groups[0] || !groups[0].groupId) return;
+
+  const page = document.querySelector('.page');
+  const anchor = document.getElementById('add-section-row');
+
+  groups.forEach(({ groupId, tasks }) => {
+    const group = page.querySelector(`.section-group[data-group-id="${groupId}"]`);
+    if (!group) return;
+    page.insertBefore(group, anchor);
+    // Restore task order within group
+    const tasksContainer = group.querySelector('.section-tasks');
+    if (!tasksContainer) return;
+    tasks.forEach(taskId => {
+      const el = page.querySelector(`[data-id="${taskId}"]`);
+      if (el) tasksContainer.appendChild(el);
+    });
+  });
+}
+
+async function restoreSections() {
+  const sections = await store.get(SECTIONS_KEY);
+  if (!sections) return;
+  sections.forEach(({ id, label }) => {
+    const el = document.querySelector(`.section-item[data-id="${id}"]`);
+    if (el) el.querySelector('.section-text').textContent = label;
+  });
+}
+
+// ── ADD SECTION ───────────────────────────────────────────
+function addSection() {
+  const inp = document.getElementById('section-name-input');
+  const name = inp.value.trim();
+  if (!name) { inp.focus(); inp.style.color = 'var(--coral)'; setTimeout(() => inp.style.color = '', 500); return; }
+  const id = 'sec-' + Date.now();
+  const groupEl = buildSectionGroupEl(id, name);
+  const row = document.getElementById('add-section-row');
+  row.parentNode.insertBefore(groupEl, row);
+  inp.value = '';
+  inp.focus();
+  // Bind sortable to new tasks container
+  if (editMode && typeof Sortable !== 'undefined') {
+    Sortable.create(groupEl.querySelector('.section-tasks'), {
+      animation: 200, handle: '.drag-handle', draggable: '.tl-block[data-color]',
+      ghostClass: 'sortable-ghost', dragClass: 'sortable-drag',
+      scroll: true, scrollSensitivity: 120, scrollSpeed: 20, bubbleScroll: true,
+      delay: 80, delayOnTouchOnly: true, touchStartThreshold: 4,
+      onEnd: () => saveOrder()
+    });
+  }
+  saveOrder();
+  saveSections();
+}
+
+function buildSectionGroupEl(id, label) {
+  const group = document.createElement('div');
+  group.className = 'section-group';
+  group.dataset.groupId = id;
+  group.innerHTML = `
+    <div class="section-item" data-type="section" data-id="${id}" onclick="toggleSection(this)">
+      <div class="section-drag-handle"><i class="ti ti-grip-vertical"></i></div>
+      <i class="ti ti-chevron-down section-chevron"></i>
+      <div class="section-line"></div>
+      <span class="section-text">${escHtml(label)}</span>
+      <span class="section-count"></span>
+      <div class="section-line"></div>
+      <button class="section-delete-btn" onclick="deleteSection(event,this)"><i class="ti ti-trash"></i> Delete</button>
+    </div>
+    <div class="section-tasks"></div>
+  `;
+  return group;
+}
+
+function deleteSection(e, btn) {
+  e.stopPropagation();
+  const group = btn.closest('.section-group');
+  if (group) {
+    group.style.transition = 'opacity 0.2s, transform 0.2s';
+    group.style.opacity = '0';
+    group.style.transform = 'translateX(12px)';
+    setTimeout(() => { group.remove(); saveOrder(); saveSections(); saveCustomDayTasks(); updateProgress(); }, 200);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const inp = document.getElementById('section-name-input');
+  if (inp) inp.addEventListener('keydown', e => { if (e.key === 'Enter') addSection(); });
+  updateAllSectionCounts();
+});
+
+// ── DELETE TASK ───────────────────────────────────────────
+function showConfirm(e, btn) {
+  e.stopPropagation();
+  document.querySelectorAll('.card-confirm.visible').forEach(c => {
+    c.classList.remove('visible');
+    c.closest('.card-delete-wrap').querySelector('.card-delete').style.display = '';
+  });
+  btn.style.display = 'none';
+  btn.nextElementSibling.classList.add('visible');
+}
+
+function cancelConfirm(e, btn) {
+  e.stopPropagation();
+  const wrap = btn.closest('.card-delete-wrap');
+  wrap.querySelector('.card-confirm').classList.remove('visible');
+  wrap.querySelector('.card-delete').style.display = '';
+}
+
+function confirmDelete(e, btn) {
+  e.stopPropagation();
+  const block = btn.closest('.tl-block');
+  block.style.transition = 'opacity 0.2s, transform 0.2s';
+  block.style.opacity = '0';
+  block.style.transform = 'translateX(14px)';
+  setTimeout(() => { block.remove(); updateProgress(); saveOrder(); saveSections(); saveState(); saveCustomDayTasks(); updateAllSectionCounts(); }, 200);
+}
+
+// Restore on load — must be sequential so order runs after sections
+(async function init() {
+  await restoreSections();
+  await restoreCustomDayTasks();
+  await restoreOrder();
+  await restoreState();
+  updateAllSectionCounts();
+})();
+</script>
+<nav class="bottom-nav">
+  <a class="nav-item active" href="monday_schedule.html">
+    <i class="ti ti-calendar-week"></i>
+    Day
+  </a>
+  <a class="nav-item" href="tasks.html">
+    <i class="ti ti-stack-2"></i>
+    Tasks
+  </a>
+</nav>
+<script>
+const DAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const chip = document.getElementById('date-chip');
+const chipLabel = document.getElementById('date-chip-label');
+
+// FIX #6: update both chip label and page <title>
+function formatDateChip(d) {
+  const dayName = DAYS[d.getDay()];
+  const dayNum = d.getDate();
+  const month = d.toLocaleString('default', { month: 'short' });
+  chipLabel.textContent = `${dayName} · ${month} ${dayNum}`;
+  document.getElementById('page-title').textContent = `${dayName} — Designed`;
+}
+
+// Auto-detect today on load
+formatDateChip(new Date());
+
+const fp = flatpickr(document.getElementById('date-picker-anchor'), {
+  defaultDate: 'today',
+  disableMobile: true,
+  clickOpens: false,
+  onChange(selectedDates) {
+    if (selectedDates[0]) formatDateChip(selectedDates[0]);
+  }
+});
+
+chip.addEventListener('click', () => fp.open());
+</script>
+<!-- RESET MODAL -->
+<div class="reset-modal-overlay" id="reset-modal" onclick="if(event.target===this)closeResetModal()">
+  <div class="reset-modal">
+    <h3>Reset day</h3>
+    <p>Just want to uncheck everything? Or start completely fresh — clearing your custom task order and sections too?</p>
+    <div class="reset-modal-actions">
+      <button class="reset-opt" onclick="resetChecksOnly()">↺ Uncheck all tasks</button>
+      <button class="reset-opt danger" onclick="resetFull()">⚠ Full reset — restore default layout</button>
+    </div>
+    <button class="reset-cancel" onclick="closeResetModal()">Cancel</button>
+  </div>
+</div>
+</body>
+</html>

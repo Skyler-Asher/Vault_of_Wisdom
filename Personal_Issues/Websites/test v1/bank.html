@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Task Bank</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/tabler-icons.min.css">
+<script src="storage.js"></script>
+<script src="core.js"></script>
+<link rel="stylesheet" href="shared.css">
+<link rel="stylesheet" href="bank.css">
+</head>
+<body>
+
+<div class="page">
+
+  <div class="header">
+    <div class="page-eyebrow"><i class="ti ti-stack-2" style="font-size:13px;opacity:0.8"></i> Task Bank</div>
+    <h1>Your <em>tasks.</em></h1>
+    <p>Build a library of tasks. Pick them up and drop them into any day.</p>
+  </div>
+
+  <!-- ADD FORM -->
+  <div class="add-form" id="add-form">
+    <div class="form-row">
+      <div class="form-field" style="flex:2;min-width:180px">
+        <label>Task name</label>
+        <input type="text" id="f-name" placeholder="e.g. Morning run" maxlength="48">
+      </div>
+      <div class="form-field" style="flex:1;min-width:120px">
+        <label>Tags</label>
+        <input type="text" id="f-duration" placeholder="e.g. 30 min, AM, urgent">
+      </div>
+    </div>
+    <div class="form-row" style="margin-top:12px">
+      <div class="form-field" style="flex:2;min-width:180px">
+        <label>Note (optional)</label>
+        <textarea id="f-note" placeholder="Any context or cue for this task..."></textarea>
+      </div>
+      <div class="form-field" style="flex:1;min-width:120px">
+        <label>Icon</label>
+        <select id="f-icon">
+          <option value="ti-run">Run</option>
+          <option value="ti-barbell">Lift</option>
+          <option value="ti-book-2">Read</option>
+          <option value="ti-pencil">Write</option>
+          <option value="ti-brain">Think</option>
+          <option value="ti-chart-line">Trade</option>
+          <option value="ti-moon">Wind down</option>
+          <option value="ti-coffee">Coffee</option>
+          <option value="ti-meditation">Meditate</option>
+          <option value="ti-device-laptop">Deep work</option>
+          <option value="ti-notes">Debrief</option>
+          <option value="ti-walk">Walk</option>
+          <option value="ti-music">Music</option>
+          <option value="ti-heart-rate-monitor">Health</option>
+          <option value="ti-star">Custom</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row" style="margin-top:12px; align-items:center">
+      <div class="form-field" style="flex:1">
+        <label>Colour</label>
+        <div class="swatch-row" id="swatch-row">
+          <div class="swatch active" data-color="purple" style="background:#7C6FE0" title="Purple"></div>
+          <div class="swatch" data-color="teal"   style="background:#2EC090" title="Teal"></div>
+          <div class="swatch" data-color="amber"  style="background:#E8A030" title="Amber"></div>
+          <div class="swatch" data-color="coral"  style="background:#E86840" title="Coral"></div>
+          <div class="swatch" data-color="gray"   style="background:#666662" title="Gray"></div>
+        </div>
+      </div>
+      <div class="form-actions" style="margin-top:0;align-self:flex-end">
+        <button class="btn-add" onclick="addTask()"><i class="ti ti-plus"></i> Add task</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TASK LIST -->
+  <div class="section">
+    <div class="section-line"></div>
+    <span class="section-text" id="task-count-label">0 tasks</span>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="task-list" id="task-list"></div>
+
+  <div class="empty-state" id="empty-state">
+    <div class="empty-icon"><i class="ti ti-stack-2"></i></div>
+    <p>No tasks yet.<br>Add your first one above to build your library.</p>
+  </div>
+
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"><i class="ti ti-check" style="font-size:13px"></i> Added to today's day</div>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+  <a class="nav-item" href="index.html">
+    <i class="ti ti-calendar-week"></i>
+    Day
+  </a>
+  <a class="nav-item active" href="bank.html">
+    <i class="ti ti-stack-2"></i>
+    Tasks
+  </a>
+</nav>
+
+<script>
+let tasks = [];
+let selectedColor = 'purple';
+
+async function loadTasks() {
+  tasks = await store.get(KEYS.BANK) || [];
+  renderTasks();
+}
+
+function saveTasks() {
+  store.set(KEYS.BANK, tasks);
+}
+
+function addTask() {
+  const name = document.getElementById('f-name').value.trim();
+  if (!name) { document.getElementById('f-name').focus(); shake(document.getElementById('f-name')); return; }
+  const task = {
+    id: Date.now(),
+    name,
+    tags: parseTags(document.getElementById('f-duration').value),
+    duration: document.getElementById('f-duration').value.trim() || '',
+    note: document.getElementById('f-note').value.trim() || '',
+    icon: document.getElementById('f-icon').value,
+    color: selectedColor,
+  };
+  tasks.unshift(task);
+  saveTasks();
+  renderTasks();
+  // reset form
+  document.getElementById('f-name').value = '';
+  document.getElementById('f-duration').value = '';
+  document.getElementById('f-note').value = '';
+  document.getElementById('f-name').focus();
+}
+
+function deleteTask(id) {
+  tasks = tasks.filter(t => t.id !== id);
+  saveTasks();
+  renderTasks();
+}
+
+function renderTasks() {
+  const list = document.getElementById('task-list');
+  const empty = document.getElementById('empty-state');
+  const countLabel = document.getElementById('task-count-label');
+
+  countLabel.textContent = tasks.length === 0 ? '0 tasks' : tasks.length === 1 ? '1 task' : `${tasks.length} tasks`;
+  empty.style.display = tasks.length === 0 ? 'block' : 'none';
+  list.innerHTML = '';
+
+  tasks.forEach((t, idx) => {
+    const c = COLORS[t.color] || COLORS.purple;
+    const tags = getTaskTags(t);
+    const tagHtml = tags.map(tag => `<span class="task-badge" style="background:${c.dim};color:${c.hex};border:1px solid ${c.border}">${escHtml(tag)}</span>`).join('');
+    const card = document.createElement('div');
+    card.className = 'task-card';
+    card.style.animationDelay = (idx * 0.04) + 's';
+    card.style.setProperty('--task-color', c.hex);
+    card.style.setProperty('--task-dim', c.dim);
+    card.style.setProperty('--task-border', c.border);
+    card.innerHTML = `
+      <div class="task-color-bar" style="background:${c.hex}"></div>
+      <div class="task-icon"><i class="ti ${t.icon}" style="color:${c.hex}"></i></div>
+      <div class="task-info">
+        <div class="task-name">${escHtml(t.name)}</div>
+        ${t.note ? `<div class="task-desc">${escHtml(t.note)}</div>` : '<div class="task-desc" style="color:var(--text-tertiary)">No note</div>'}
+      </div>
+      ${tagHtml ? `<div class="task-tags">${tagHtml}</div>` : ''}
+      <div class="task-actions">
+        <button class="task-btn-add" onclick="addToDay(event,${t.id})"><i class="ti ti-calendar-plus"></i> Add to Day</button>
+        <button class="task-btn-delete" onclick="deleteTask(${t.id})"><i class="ti ti-trash"></i> Delete</button>
+      </div>
+    `;
+    list.appendChild(card);
+  });
+}
+
+function addToDay(e, id) {
+  e.stopPropagation();
+  const task = tasks.find(t => t.id === id);
+  if (!task) return;
+
+  const btn = e.currentTarget;
+  btn.classList.add('sent');
+  btn.innerHTML = '<i class="ti ti-check"></i> Added';
+
+  showToast();
+
+  // Navigate to day page with task encoded in URL after brief toast
+  setTimeout(() => {
+    const encoded = encodeURIComponent(JSON.stringify(task));
+    window.location.href = 'index.html?bank_task=' + encoded;
+  }, 700);
+}
+
+let toastTimer;
+function showToast() {
+  const toast = document.getElementById('toast');
+  toast.classList.add('visible');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('visible'), 2200);
+}
+
+// Swatch selection
+document.getElementById('swatch-row').addEventListener('click', e => {
+  const swatch = e.target.closest('.swatch');
+  if (!swatch) return;
+  document.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
+  swatch.classList.add('active');
+  selectedColor = swatch.dataset.color;
+});
+
+// Enter key submits form
+document.getElementById('f-name').addEventListener('keydown', e => { if (e.key === 'Enter') addTask(); });
+
+loadTasks();
+</script>
+</body>
+</html>

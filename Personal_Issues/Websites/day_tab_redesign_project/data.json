@@ -1,0 +1,48 @@
+{
+  "task_bank_v1": [
+    {
+      "id": 1780304009706,
+      "name": "Sleep",
+      "tags": [
+        "15m",
+        "nap"
+      ],
+      "duration": "15m, nap",
+      "note": "A good nap helps",
+      "icon": "ti-moon",
+      "color": "amber"
+    }
+  ],
+  "day_order_v1": [
+    {
+      "groupId": "sec-1780303170294",
+      "tasks": [
+        "bank-1780304009706-1780304041904"
+      ]
+    }
+  ],
+  "day_sections_v1": [
+    {
+      "id": "sec-1780303170294",
+      "label": "My Day"
+    }
+  ],
+  "day_custom_tasks_v1": [
+    {
+      "id": 1780304009706,
+      "name": "Sleep",
+      "tags": [
+        "15m",
+        "nap"
+      ],
+      "duration": "15m, nap",
+      "note": "A good nap helps",
+      "icon": "ti-moon",
+      "color": "amber",
+      "dayId": "bank-1780304009706-1780304041904"
+    }
+  ],
+  "monday_schedule_v2": {
+    "bank-1780304009706-1780304041904": false
+  }
+}

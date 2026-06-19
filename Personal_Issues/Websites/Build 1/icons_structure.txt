@@ -1,0 +1,33 @@
+Folder PATH listing
+Volume serial number is 000000A5 4CF8:D088
+C:\USERS\SKYLE\DOCUMENTS\OBSIDIAN VAULTS\VAULT_OF_WISDOM\PERSONAL_ISSUES\WEBSITES\BUILD 1\ICONS
+│   tabler-icons-filled.css
+│   tabler-icons-filled.css.map
+│   tabler-icons-filled.html
+│   tabler-icons-filled.min.css
+│   tabler-icons-filled.min.css.map
+│   tabler-icons-filled.scss
+│   tabler-icons-outline.css
+│   tabler-icons-outline.css.map
+│   tabler-icons-outline.html
+│   tabler-icons-outline.min.css
+│   tabler-icons-outline.min.css.map
+│   tabler-icons-outline.scss
+│   tabler-icons.css
+│   tabler-icons.css.map
+│   tabler-icons.html
+│   tabler-icons.min.css
+│   tabler-icons.min.css.map
+│   tabler-icons.scss
+│   
+└───fonts
+        tabler-icons-filled.ttf
+        tabler-icons-filled.woff
+        tabler-icons-filled.woff2
+        tabler-icons-outline.ttf
+        tabler-icons-outline.woff
+        tabler-icons-outline.woff2
+        tabler-icons.ttf
+        tabler-icons.woff
+        tabler-icons.woff2
+        

@@ -1,0 +1,71 @@
+{
+  "monday_schedule_v2": {
+    "wake": false,
+    "reading": false,
+    "comms": false,
+    "workout": false,
+    "prep": false,
+    "bank-1779987403015-1780216968916": true,
+    "trading": false,
+    "debrief": false
+  },
+  "day_order_v1": [
+    {
+      "groupId": "sec-morning",
+      "tasks": [
+        "wake",
+        "reading",
+        "comms",
+        "workout"
+      ]
+    },
+    {
+      "groupId": "sec-afternoon",
+      "tasks": [
+        "prep",
+        "bank-1779987403015-1780216968916"
+      ]
+    },
+    {
+      "groupId": "sec-trading",
+      "tasks": [
+        "trading",
+        "debrief"
+      ]
+    }
+  ],
+  "day_sections_v1": [
+    {
+      "id": "sec-1780216677428",
+      "label": "Morning"
+    }
+  ],
+  "task_bank_v1": [
+    {
+      "id": 1779987403015,
+      "name": "Sleep Ready",
+      "tags": [
+        "10:00pm",
+        "schedule"
+      ],
+      "duration": "10:00pm , schedule",
+      "note": "No digital screen after 10 pm and a 15m walk . \n15m walk can be outdoors or indoors.",
+      "icon": "ti-star",
+      "color": "amber"
+    }
+  ],
+  "day_custom_tasks_v1": [
+    {
+      "dayId": "bank-1779987403015-1780216968916",
+      "id": "1779987403015-1780216968916",
+      "name": "Sleep Ready",
+      "tags": [
+        "10:00pm",
+        "schedule"
+      ],
+      "note": "No digital screen after 10 pm and a 15m walk . \n15m walk can be outdoors or indoors.",
+      "icon": "ti-star",
+      "color": "amber"
+    }
+  ]
+}

@@ -1,0 +1,796 @@
+{
+  "task_bank_v1": [
+    {
+      "id": 1781421402707,
+      "name": "Post Session Analysis",
+      "tags": [],
+      "duration": "",
+      "note": "Record Post-Session Analysis and Upload it",
+      "icon": "ti-chart-line",
+      "color": "amber"
+    },
+    {
+      "id": 1781421361092,
+      "name": "Pre-Session Analysis Recorded",
+      "tags": [],
+      "duration": "",
+      "note": "Record the Pre-session Analysis",
+      "icon": "ti-chart-line",
+      "color": "amber"
+    },
+    {
+      "id": 1781421188459,
+      "name": "Tounge Twisters",
+      "tags": [
+        "10min"
+      ],
+      "duration": "10min",
+      "note": "",
+      "icon": "ti-heart-rate-monitor",
+      "color": "amber"
+    },
+    {
+      "id": 1781078017013,
+      "name": "BACK-TESTING",
+      "tags": [
+        "1 hour"
+      ],
+      "duration": "1 hour",
+      "note": "BACK TEST WITH THE IMMEDIATE SESSION RANGE BEING L1",
+      "icon": "ti-chart-line",
+      "color": "purple"
+    },
+    {
+      "id": 1780910358089,
+      "name": "Write With Left Hand",
+      "tags": [
+        "10 min"
+      ],
+      "duration": "10 min",
+      "note": "",
+      "icon": "ti-pencil",
+      "color": "purple"
+    },
+    {
+      "id": 1780910291238,
+      "name": "Communication Practise",
+      "tags": [
+        "30-Min Session"
+      ],
+      "duration": "30-Min Session",
+      "note": "Communication Practice (Task 1) — Complete exercises from the 4 reference images.\nTongue Twisters (10 min) — Practice tongue twisters for 10 minutes.",
+      "icon": "ti-device-laptop",
+      "color": "purple"
+    },
+    {
+      "id": 1780476906802,
+      "name": "Book-Reading",
+      "tags": [
+        "Habit Stacking : Drinks"
+      ],
+      "duration": "Habit Stacking : Drinks",
+      "note": "Read 10 pages of any chosen book",
+      "icon": "ti-book-2",
+      "color": "amber"
+    },
+    {
+      "id": 1780476798963,
+      "name": "Bath",
+      "tags": [
+        "under 15m"
+      ],
+      "duration": "under 15m",
+      "note": "",
+      "icon": "ti-star",
+      "color": "amber"
+    },
+    {
+      "id": 1780407540001,
+      "name": "Water Refill",
+      "tags": [
+        "under 15m"
+      ],
+      "duration": "under 15m",
+      "note": "Going to the  Arow  to fill water",
+      "icon": "ti-star",
+      "color": "amber"
+    },
+    {
+      "id": 1780318267960,
+      "name": "Trading- Session",
+      "tags": [
+        "5:00 PM — 8:45 PM"
+      ],
+      "duration": "5:00 PM — 8:45 PM",
+      "note": "Session Analysis\nRecord & Review",
+      "icon": "ti-chart-line",
+      "color": "purple"
+    },
+    {
+      "id": 1780307392927,
+      "name": "Exercise",
+      "tags": [
+        "3pm"
+      ],
+      "duration": "3pm",
+      "note": "Use a Full-Body Workout  from a you tube video",
+      "icon": "ti-barbell",
+      "color": "amber"
+    },
+    {
+      "id": 1780304009706,
+      "name": "Sleep",
+      "tags": [
+        "10:00PM - 11:00PM"
+      ],
+      "duration": "10:00PM - 11:00PM",
+      "note": "After 10 pm  no screens",
+      "icon": "ti-moon",
+      "color": "amber"
+    }
+  ],
+  "day_order_v1": [
+    {
+      "groupId": "sec-1780303170294",
+      "tasks": [
+        "bank-1780476798963-1780547297069",
+        "bank-1780407540001-1780547299988",
+        "bank-1780569830610-1780569835147",
+        "bank-1780307392927-1780547305493",
+        "bank-1780476906802-1780547302013",
+        "bank-1780318267960-1780547306661",
+        "bank-1780304009706-1780547307708"
+      ]
+    }
+  ],
+  "day_sections_v1": [
+    {
+      "id": "sec-1780303170294",
+      "label": "My Day"
+    }
+  ],
+  "day_custom_tasks_v1": [
+    {
+      "id": 1780476798963,
+      "name": "Bath",
+      "tags": [
+        "under 15m"
+      ],
+      "duration": "under 15m",
+      "note": "",
+      "icon": "ti-star",
+      "color": "amber",
+      "dayId": "bank-1780476798963-1780547297069"
+    },
+    {
+      "id": 1780407540001,
+      "name": "Water Refill",
+      "tags": [
+        "under 15m"
+      ],
+      "duration": "under 15m",
+      "note": "Going to the  Arow  to fill water",
+      "icon": "ti-star",
+      "color": "amber",
+      "dayId": "bank-1780407540001-1780547299988"
+    },
+    {
+      "id": 1780476906802,
+      "name": "Book-Reading",
+      "tags": [
+        "Habit Stacking : Drinks"
+      ],
+      "duration": "Habit Stacking : Drinks",
+      "note": "Read 10 pages minimum of a book that broaden my horizons of the world. \n\n(Skipped For Now )",
+      "icon": "ti-book-2",
+      "color": "amber",
+      "dayId": "bank-1780476906802-1780547302013"
+    },
+    {
+      "id": 1780307392927,
+      "name": "Exercise",
+      "tags": [
+        "Approx:1 hour"
+      ],
+      "duration": "Approx:1 hour",
+      "note": "Use a Full-Body Workout  from a you tube video \nAT 3 pm",
+      "icon": "ti-barbell",
+      "color": "amber",
+      "dayId": "bank-1780307392927-1780547305493"
+    },
+    {
+      "id": 1780318267960,
+      "name": "Trading- Session",
+      "tags": [
+        "5:00 PM — 8:45 PM"
+      ],
+      "duration": "5:00 PM — 8:45 PM",
+      "note": "Session Analysis\nRecord & Review",
+      "icon": "ti-chart-line",
+      "color": "purple",
+      "dayId": "bank-1780318267960-1780547306661"
+    },
+    {
+      "id": 1780304009706,
+      "name": "Sleep",
+      "tags": [
+        "10:00PM - 11:00PM"
+      ],
+      "duration": "10:00PM - 11:00PM",
+      "note": "After 10 pm  no screens",
+      "icon": "ti-moon",
+      "color": "amber",
+      "dayId": "bank-1780304009706-1780547307708"
+    },
+    {
+      "id": 1780569830610,
+      "name": "GBP/USD  : Re-Analysis",
+      "tags": [],
+      "duration": "",
+      "note": "Recorded / UPloaded",
+      "icon": "ti-chart-line",
+      "color": "purple",
+      "dayId": "bank-1780569830610-1780569835147"
+    }
+  ],
+  "monday_schedule_v2": {
+    "bank-1780476798963-1780547297069": true,
+    "bank-1780407540001-1780547299988": true,
+    "bank-1780569830610-1780569835147": true,
+    "bank-1780307392927-1780547305493": true,
+    "bank-1780476906802-1780547302013": false,
+    "bank-1780318267960-1780547306661": true,
+    "bank-1780304009706-1780547307708": true
+  },
+  "day_custom_tasks_v1_2026-06-05": [
+    {
+      "id": 1780318267960,
+      "name": "Trading- Session",
+      "tags": [
+        "5:00 PM — 8:45 PM"
+      ],
+      "duration": "5:00 PM — 8:45 PM",
+      "note": "Session Analysis\nRecord & Review",
+      "icon": "ti-chart-line",
+      "color": "purple",
+      "dayId": "bank-1780318267960-1780652967955"
+    },
+    {
+      "id": 1780307392927,
+      "name": "Exercise",
+      "tags": [
+        "Approx:1 hour"
+      ],
+      "duration": "Approx:1 hour",
+      "note": "Use a Full-Body Workout  from a you tube video. \nOnly Warm up section done .",
+      "icon": "ti-barbell",
+      "color": "amber",
+      "dayId": "bank-1780307392927-1780652985005"
+    }
+  ],
+  "day_sections_v1_2026-06-05": [
+    {
+      "id": "sec-1780627345048",
+      "label": "My Day"
+    }
+  ],
+  "day_order_v1_2026-06-05": [
+    {
+      "groupId": "sec-1780627345048",
+      "tasks": [
+        "bank-1780318267960-1780652967955",
+        "bank-1780307392927-1780652985005"
+      ]
+    }
+  ],
+  "monday_schedule_v2_2026-06-05": {
+    "bank-1780318267960-1780652967955": false,
+    "bank-1780307392927-1780652985005": false
+  },
+  "day_custom_tasks_v1_2026-06-04": [],
+  "day_sections_v1_2026-06-04": [
+    {
+      "id": "sec-1780627382443",
+      "label": "My Day"
+    }
+  ],
+  "day_order_v1_2026-06-04": [
+    {
+      "groupId": "sec-1780627382443",
+      "tasks": []
+    }
+  ],
+  "monday_schedule_v2_2026-06-04": {},
+  "day_custom_tasks_v1_2026-06-07": [
+    {
+      "id": 1780476798963,
+      "name": "Bath",
+      "tags": [
+        "under 15m"
+      ],
+      "duration": "under 15m",
+      "note": "",
+      "icon": "ti-star",
+      "color": "amber",
+      "dayId": "bank-1780476798963-1780808140421"
+    }
+  ],
+  "day_sections_v1_2026-06-07": [
+    {
+      "id": "sec-1780808140538",
+      "label": "My Day"
+    }
+  ],
+  "day_order_v1_2026-06-07": [
+    {
+      "groupId": "sec-1780808140538",
+      "tasks": [
+        "bank-1780476798963-1780808140421"
+      ]
+    }
+  ],
+  "day_custom_tasks_v1_2026-06-08": [
+    {
+      "id": 1780476798963,
+      "name": "Bath",
+      "tags": [
+        "under 15m"
+      ],
+      "duration": "under 15m",
+      "note": "",
+      "icon": "ti-star",
+      "color": "amber",
+      "dayId": "bank-1780476798963-1780892350634"
+    },
+    {
+      "id": 1780407540001,
+      "name": "Water Refill",
+      "tags": [
+        "under 15m"
+      ],
+      "duration": "under 15m",
+      "note": "Going to the  Arow  to fill water",
+      "icon": "ti-star",
+      "color": "amber",
+      "dayId": "bank-1780407540001-1780892360306"
+    },
+    {
+      "id": 1780318267960,
+      "name": "Trading- Session",
+      "tags": [
+        "5:00 PM — 8:45 PM"
+      ],
+      "duration": "5:00 PM — 8:45 PM",
+      "note": "Session Analysis\nRecord & Review",
+      "icon": "ti-chart-line",
+      "color": "purple",
+      "dayId": "bank-1780318267960-1780895092496"
+    },
+    {
+      "id": 1780307392927,
+      "name": "Exercise",
+      "tags": [
+        "3pm"
+      ],
+      "duration": "3pm",
+      "note": "Use a Full-Body Workout  from a you tube video",
+      "icon": "ti-barbell",
+      "color": "amber",
+      "dayId": "bank-1780307392927-1780899259751"
+    },
+    {
+      "id": 1780910291238,
+      "name": "Communication Practise",
+      "tags": [
+        "30-Min Session"
+      ],
+      "duration": "30-Min Session",
+      "note": "Communication Practice (Task 1) — Complete exercises from the 4 reference images.\nTongue Twisters (10 min) — Practice tongue twisters for 10 minutes.",
+      "icon": "ti-device-laptop",
+      "color": "purple",
+      "dayId": "bank-1780910291238-1780910296006"
+    },
+    {
+      "id": 1780910358089,
+      "name": "Write With Left Hand",
+      "tags": [
+        "10 min"
+      ],
+      "duration": "10 min",
+      "note": "",
+      "icon": "ti-pencil",
+      "color": "purple",
+      "dayId": "bank-1780910358089-1780910363486"
+    }
+  ],
+  "day_sections_v1_2026-06-08": [
+    {
+      "id": "sec-1780892350747",
+      "label": "My Day"
+    },
+    {
+      "id": "sec-1780909836837",
+      "label": "Block 1"
+    }
+  ],
+  "day_order_v1_2026-06-08": [
+    {
+      "groupId": "sec-1780892350747",
+      "tasks": [
+        "bank-1780476798963-1780892350634",
+        "bank-1780407540001-1780892360306",
+        "bank-1780318267960-1780895092496"
+      ]
+    },
+    {
+      "groupId": "sec-1780909836837",
+      "tasks": [
+        "bank-1780307392927-1780899259751",
+        "bank-1780910291238-1780910296006",
+        "bank-1780910358089-1780910363486"
+      ]
+    }
+  ],
+  "monday_schedule_v2_2026-06-08": {
+    "bank-1780476798963-1780892350634": true,
+    "bank-1780407540001-1780892360306": true,
+    "bank-1780318267960-1780895092496": true,
+    "bank-1780307392927-1780899259751": true,
+    "bank-1780910291238-1780910296006": false,
+    "bank-1780910358089-1780910363486": true
+  },
+  "day_custom_tasks_v1_2026-06-10": [
+    {
+      "id": 1780910358089,
+      "name": "Write With Left Hand",
+      "tags": [
+        "10 min"
+      ],
+      "duration": "10 min",
+      "note": "",
+      "icon": "ti-pencil",
+      "color": "purple",
+      "dayId": "bank-1780910358089-1781077925614"
+    },
+    {
+      "id": 1780910291238,
+      "name": "Communication Practise",
+      "tags": [
+        "30-Min Session"
+      ],
+      "duration": "30-Min Session",
+      "note": "Communication Practice (Task 1) — Complete exercises from the 4 reference images.\nTongue Twisters (10 min) — Practice tongue twisters for 10 minutes.",
+      "icon": "ti-device-laptop",
+      "color": "purple",
+      "dayId": "bank-1780910291238-1781077926262"
+    },
+    {
+      "id": 1780476906802,
+      "name": "Book-Reading",
+      "tags": [
+        "Habit Stacking : Drinks"
+      ],
+      "duration": "Habit Stacking : Drinks",
+      "note": "Read 10 pages of any chosen book",
+      "icon": "ti-book-2",
+      "color": "amber",
+      "dayId": "bank-1780476906802-1781077927085"
+    },
+    {
+      "id": 1780476798963,
+      "name": "Bath",
+      "tags": [
+        "under 15m"
+      ],
+      "duration": "under 15m",
+      "note": "",
+      "icon": "ti-star",
+      "color": "amber",
+      "dayId": "bank-1780476798963-1781077929718"
+    },
+    {
+      "id": 1780407540001,
+      "name": "Water Refill",
+      "tags": [
+        "under 15m"
+      ],
+      "duration": "under 15m",
+      "note": "Going to the  Arow  to fill water",
+      "icon": "ti-star",
+      "color": "amber",
+      "dayId": "bank-1780407540001-1781077932231"
+    },
+    {
+      "id": 1780318267960,
+      "name": "Trading- Session",
+      "tags": [
+        "5:00 PM — 8:45 PM"
+      ],
+      "duration": "5:00 PM — 8:45 PM",
+      "note": "Session Analysis\nRecord & Review",
+      "icon": "ti-chart-line",
+      "color": "purple",
+      "dayId": "bank-1780318267960-1781077935823"
+    },
+    {
+      "id": 1781078017013,
+      "name": "BACK-TESTING",
+      "tags": [
+        "1 hour"
+      ],
+      "duration": "1 hour",
+      "note": "BACK TEST WITH THE IMMEDIATE SESSION RANGE BEING L1",
+      "icon": "ti-chart-line",
+      "color": "purple",
+      "dayId": "bank-1781078017013-1781078019750"
+    }
+  ],
+  "day_sections_v1_2026-06-10": [
+    {
+      "id": "sec-1781077925712",
+      "label": "My Day"
+    },
+    {
+      "id": "sec-1781077964765",
+      "label": "BLOCK 1"
+    }
+  ],
+  "day_order_v1_2026-06-10": [
+    {
+      "groupId": "sec-1781077925712",
+      "tasks": [
+        "bank-1780910358089-1781077925614",
+        "bank-1780910291238-1781077926262",
+        "bank-1780476906802-1781077927085",
+        "bank-1780476798963-1781077929718",
+        "bank-1780407540001-1781077932231",
+        "bank-1780318267960-1781077935823"
+      ]
+    },
+    {
+      "groupId": "sec-1781077964765",
+      "tasks": [
+        "bank-1781078017013-1781078019750"
+      ]
+    }
+  ],
+  "monday_schedule_v2_2026-06-10": {
+    "bank-1780910358089-1781077925614": false,
+    "bank-1780910291238-1781077926262": false,
+    "bank-1780476906802-1781077927085": false,
+    "bank-1780476798963-1781077929718": false,
+    "bank-1780407540001-1781077932231": true,
+    "bank-1780318267960-1781077935823": false,
+    "bank-1781078017013-1781078019750": false
+  },
+  "day_custom_tasks_v1_2026-06-13": [
+    {
+      "id": 1780476798963,
+      "name": "Bath",
+      "tags": [
+        "under 15m"
+      ],
+      "duration": "under 15m",
+      "note": "",
+      "icon": "ti-star",
+      "color": "amber",
+      "dayId": "bank-1780476798963-1781342456655"
+    },
+    {
+      "id": 1780307392927,
+      "name": "Exercise",
+      "tags": [
+        "3pm"
+      ],
+      "duration": "3pm",
+      "note": "Use a Full-Body Workout  from a you tube video",
+      "icon": "ti-barbell",
+      "color": "amber",
+      "dayId": "bank-1780307392927-1781342482625"
+    },
+    {
+      "id": 1780910358089,
+      "name": "Write With Left Hand",
+      "tags": [
+        "10 min"
+      ],
+      "duration": "10 min",
+      "note": "",
+      "icon": "ti-pencil",
+      "color": "purple",
+      "dayId": "bank-1780910358089-1781342493959"
+    },
+    {
+      "id": 1780318267960,
+      "name": "Trading- Session",
+      "tags": [
+        "5:00 PM — 8:45 PM"
+      ],
+      "duration": "5:00 PM — 8:45 PM",
+      "note": "Session Analysis\nRecord & Review",
+      "icon": "ti-chart-line",
+      "color": "purple",
+      "dayId": "bank-1780318267960-1781342499008"
+    }
+  ],
+  "day_sections_v1_2026-06-13": [
+    {
+      "id": "sec-1781342456721",
+      "label": "My Day"
+    }
+  ],
+  "day_order_v1_2026-06-13": [
+    {
+      "groupId": "sec-1781342456721",
+      "tasks": [
+        "bank-1780910358089-1781342493959",
+        "bank-1780307392927-1781342482625",
+        "bank-1780476798963-1781342456655",
+        "bank-1780318267960-1781342499008"
+      ]
+    }
+  ],
+  "monday_schedule_v2_2026-06-13": {
+    "bank-1780910358089-1781342493959": true,
+    "bank-1780307392927-1781342482625": false,
+    "bank-1780476798963-1781342456655": false,
+    "bank-1780318267960-1781342499008": false
+  },
+  "day_custom_tasks_v1_2026-06-14": [
+    {
+      "id": 1781421188459,
+      "name": "Tounge Twisters",
+      "tags": [
+        "10min"
+      ],
+      "duration": "10min",
+      "note": "",
+      "icon": "ti-heart-rate-monitor",
+      "color": "amber",
+      "dayId": "bank-1781421188459-1781421195644"
+    },
+    {
+      "id": 1780476798963,
+      "name": "Bath",
+      "tags": [
+        "under 15m"
+      ],
+      "duration": "under 15m",
+      "note": "",
+      "icon": "ti-star",
+      "color": "amber",
+      "dayId": "bank-1780476798963-1781421200876"
+    },
+    {
+      "id": 1781078017013,
+      "name": "BACK-TESTING",
+      "tags": [
+        "1 hour"
+      ],
+      "duration": "1 hour",
+      "note": "BACK TEST WITH THE IMMEDIATE SESSION RANGE BEING L1",
+      "icon": "ti-chart-line",
+      "color": "purple",
+      "dayId": "bank-1781078017013-1781421202236"
+    },
+    {
+      "id": 1780910358089,
+      "name": "Write With Left Hand",
+      "tags": [
+        "10 min"
+      ],
+      "duration": "10 min",
+      "note": "",
+      "icon": "ti-pencil",
+      "color": "purple",
+      "dayId": "bank-1780910358089-1781421203356"
+    },
+    {
+      "id": 1780307392927,
+      "name": "Exercise",
+      "tags": [
+        "3pm"
+      ],
+      "duration": "3pm",
+      "note": "Use a Full-Body Workout  from a you tube video",
+      "icon": "ti-barbell",
+      "color": "amber",
+      "dayId": "bank-1780307392927-1781421205533"
+    },
+    {
+      "id": 1780407540001,
+      "name": "Water Refill",
+      "tags": [
+        "under 15m"
+      ],
+      "duration": "under 15m",
+      "note": "Going to the  Arow  to fill water",
+      "icon": "ti-star",
+      "color": "amber",
+      "dayId": "bank-1780407540001-1781421208212"
+    },
+    {
+      "id": 1780318267960,
+      "name": "Trading- Session",
+      "tags": [
+        "5:00 PM — 8:45 PM"
+      ],
+      "duration": "5:00 PM — 8:45 PM",
+      "note": "Session Analysis\nRecord & Review",
+      "icon": "ti-chart-line",
+      "color": "purple",
+      "dayId": "bank-1780318267960-1781421210516"
+    },
+    {
+      "id": 1781421361092,
+      "name": "Pre-Session Analysis Recorded",
+      "tags": [],
+      "duration": "",
+      "note": "Record the Pre-session Analysis",
+      "icon": "ti-chart-line",
+      "color": "amber",
+      "dayId": "bank-1781421361092-1781421368555"
+    },
+    {
+      "id": 1781421402707,
+      "name": "Post Session Analysis",
+      "tags": [],
+      "duration": "",
+      "note": "Record Post-Session Analysis and Upload it",
+      "icon": "ti-chart-line",
+      "color": "amber",
+      "dayId": "bank-1781421402707-1781421410181"
+    }
+  ],
+  "day_sections_v1_2026-06-14": [
+    {
+      "id": "sec-1781421141945",
+      "label": "My Day"
+    },
+    {
+      "id": "sec-1781421245877",
+      "label": "3pm Block"
+    },
+    {
+      "id": "sec-1781421304349",
+      "label": "5PM Block"
+    }
+  ],
+  "day_order_v1_2026-06-14": [
+    {
+      "groupId": "sec-1781421141945",
+      "tasks": [
+        "bank-1780407540001-1781421208212",
+        "bank-1781078017013-1781421202236"
+      ]
+    },
+    {
+      "groupId": "sec-1781421245877",
+      "tasks": [
+        "bank-1780910358089-1781421203356",
+        "bank-1781421188459-1781421195644",
+        "bank-1780307392927-1781421205533",
+        "bank-1780476798963-1781421200876"
+      ]
+    },
+    {
+      "groupId": "sec-1781421304349",
+      "tasks": [
+        "bank-1780318267960-1781421210516",
+        "bank-1781421361092-1781421368555",
+        "bank-1781421402707-1781421410181"
+      ]
+    }
+  ],
+  "monday_schedule_v2_2026-06-14": {
+    "bank-1780407540001-1781421208212": true,
+    "bank-1781078017013-1781421202236": false,
+    "bank-1780910358089-1781421203356": false,
+    "bank-1781421188459-1781421195644": false,
+    "bank-1780307392927-1781421205533": false,
+    "bank-1780476798963-1781421200876": false,
+    "bank-1780318267960-1781421210516": false,
+    "bank-1781421361092-1781421368555": false,
+    "bank-1781421402707-1781421410181": false
+  }
+}

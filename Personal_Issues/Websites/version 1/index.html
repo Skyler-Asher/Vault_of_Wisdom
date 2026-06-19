@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Day — Designed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/tabler-icons.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="storage.js"></script>
+<script src="core.js"></script>
+<script>
+// Guard: if storage.js failed to load (e.g. opened as file://) show a clear message
+window.addEventListener('DOMContentLoaded', () => {
+  if (typeof window.store === 'undefined') {
+    document.body.innerHTML = `
+      <div style="font-family:'DM Sans',sans-serif;background:#0d0d0f;color:#f0efe8;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem;text-align:center">
+        <div>
+          <div style="font-size:2rem;margin-bottom:1rem">⚠️</div>
+          <div style="font-size:1.1rem;font-weight:700;margin-bottom:0.5rem">Server not running</div>
+          <div style="font-size:0.85rem;color:#888885;line-height:1.7;max-width:340px">
+            This app needs the local server to work.<br>
+            Run <code style="background:#1e1e22;padding:2px 7px;border-radius:5px">start.bat</code> (or <code style="background:#1e1e22;padding:2px 7px;border-radius:5px">python server.py</code>),<br>
+            then open <strong>http://localhost:8000/index.html</strong>
+          </div>
+        </div>
+      </div>`;
+  }
+});
+</script>
+<link rel="stylesheet" href="shared.css">
+<link rel="stylesheet" href="planner.css">
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="header-top">
+      <div class="date-chip" id="date-chip"><i class="ti ti-calendar chip-icon"></i><span id="date-chip-label">Monday · Day 1</span><i class="ti ti-chevron-down chip-icon" style="font-size:11px;opacity:0.5"></i></div>
+      <div id="date-picker-anchor" style="position:relative;height:0;width:0;overflow:visible"></div>
+      <div class="header-actions">
+        <div class="add-section-inline" id="add-section-row">
+          <input type="text" id="section-name-input" placeholder="New section…" maxlength="40">
+          <button class="add-section-btn" onclick="addSection()"><i class="ti ti-plus"></i></button>
+        </div>
+        <button class="edit-btn" id="edit-btn" onclick="enterEditMode()"><i class="ti ti-pencil"></i> Edit</button>
+        <button class="cancel-btn" id="cancel-btn" onclick="cancelEditMode()"><i class="ti ti-x"></i> Cancel</button>
+      </div>
+    </div>
+    <h1>Design<br>your <em>day.</em></h1>
+    <div class="edit-banner"><i class="ti ti-drag-drop"></i> Hold the left strip to drag · tap Delete to remove</div>
+    <div class="meta-row">
+      <span class="meta-pill"><i class="ti ti-dumbbell"></i> Workout day</span>
+      <span class="meta-pill accent"><i class="ti ti-trending-up"></i> Trading 5:00–8:45 PM</span>
+    </div>
+    <div>
+      <div class="progress-top">
+        <span class="progress-count" id="done-count">0 / 8 complete</span>
+        <span id="prog-label">Click a block to check it off</span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="prog-bar"></div></div>
+    </div>
+  </div>
+
+  <div class="section-group" data-group-id="sec-morning">
+    <div class="section-item" data-type="section" data-id="sec-morning" onclick="toggleSection(this)">
+      <i class="ti ti-chevron-down section-chevron"></i>
+      <div class="section-line"></div>
+      <span class="section-text">Morning — don't negotiate, just execute</span>
+      <span class="section-count"></span>
+      <div class="section-line"></div>
+      <button class="section-delete-btn" onclick="deleteSection(event,this)"><i class="ti ti-trash"></i> Delete</button>
+    </div>
+    <div class="section-tasks">
+
+  <div class="tl-block" onclick="toggle(this)" data-color="purple" data-id="wake">
+    <div class="tl-spine"><div class="tl-dot anchor-dot" style="background:var(--purple);color:var(--purple)" data-dot></div><div class="tl-line"></div></div>
+    <div class="tl-card is-anchor">
+      <div class="drag-handle"><i class="ti ti-grip-vertical"></i></div>
+      <div class="tl-check" data-check><i class="ti ti-check"></i></div>
+      <div class="card-body">
+        <div class="card-top">
+          <i class="ti ti-alarm card-icon" style="color:var(--purple)"></i>
+          <span class="card-title">Wake up</span>
+          <span class="tag tag-time ml-auto" style="background:var(--purple-dim);color:var(--purple);border:1px solid rgba(124,111,224,0.2)">5:30 AM</span>
+        </div>
+        <div class="card-detail">No phone. Sit up immediately. Feet on floor — the sequence starts here.</div>
+      </div>
+      <div class="card-delete-wrap" style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0">
+        <button class="card-delete" onclick="showConfirm(event,this)"><i class="ti ti-trash"></i> Delete</button>
+        <div class="card-confirm">
+          <span class="confirm-label">Sure?</span>
+          <button class="confirm-yes" onclick="confirmDelete(event,this)">Yes</button>
+          <button class="confirm-no" onclick="cancelConfirm(event,this)">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tl-block" onclick="toggle(this)" data-color="teal" data-id="reading">
+    <div class="tl-spine"><div class="tl-dot" style="background:var(--teal)" data-dot></div><div class="tl-line"></div></div>
+    <div class="tl-card">
+      <div class="drag-handle"><i class="ti ti-grip-vertical"></i></div>
+      <div class="tl-check" data-check><i class="ti ti-check"></i></div>
+      <div class="card-body">
+        <div class="card-top">
+          <i class="ti ti-book card-icon" style="color:var(--teal)"></i>
+          <span class="card-title">Reading</span>
+          <span class="tag tag-stack"><i class="ti ti-droplet" style="font-size:10px"></i> drink alongside</span>
+          <span class="tag ml-auto" style="background:var(--teal-dim);color:var(--teal);border:1px solid rgba(46,192,144,0.15)">~40 min</span>
+        </div>
+        <div class="card-detail">Grab whatever you're drinking — cold coffee, lemon water, anything. Sit down and read. The drink is just company.</div>
+      </div>
+      <div class="card-delete-wrap" style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0">
+        <button class="card-delete" onclick="showConfirm(event,this)"><i class="ti ti-trash"></i> Delete</button>
+        <div class="card-confirm">
+          <span class="confirm-label">Sure?</span>
+          <button class="confirm-yes" onclick="confirmDelete(event,this)">Yes</button>
+          <button class="confirm-no" onclick="cancelConfirm(event,this)">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tl-block" onclick="toggle(this)" data-color="amber" data-id="comms">
+    <div class="tl-spine"><div class="tl-dot" style="background:var(--amber)" data-dot></div><div class="tl-line"></div></div>
+    <div class="tl-card">
+      <div class="drag-handle"><i class="ti ti-grip-vertical"></i></div>
+      <div class="tl-check" data-check><i class="ti ti-check"></i></div>
+      <div class="card-body">
+        <div class="card-top">
+          <i class="ti ti-microphone card-icon" style="color:var(--amber)"></i>
+          <span class="card-title">Communication practice</span>
+          <span class="tag ml-auto" style="background:var(--amber-dim);color:var(--amber);border:1px solid rgba(232,160,48,0.15)">~10 min</span>
+        </div>
+        <div class="card-detail">Pick today's tongue twister. Run the Vinh Giang framework. Short and sharp.</div>
+      </div>
+      <div class="card-delete-wrap" style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0">
+        <button class="card-delete" onclick="showConfirm(event,this)"><i class="ti ti-trash"></i> Delete</button>
+        <div class="card-confirm">
+          <span class="confirm-label">Sure?</span>
+          <button class="confirm-yes" onclick="confirmDelete(event,this)">Yes</button>
+          <button class="confirm-no" onclick="cancelConfirm(event,this)">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tl-block" onclick="toggle(this)" data-color="coral" data-id="workout">
+    <div class="tl-spine"><div class="tl-dot" style="background:var(--coral)" data-dot></div><div class="tl-line"></div></div>
+    <div class="tl-card">
+      <div class="drag-handle"><i class="ti ti-grip-vertical"></i></div>
+      <div class="tl-check" data-check><i class="ti ti-check"></i></div>
+      <div class="card-body">
+        <div class="card-top">
+          <i class="ti ti-run card-icon" style="color:var(--coral)"></i>
+          <span class="card-title">Workout</span>
+          <span class="tag ml-auto" style="background:var(--coral-dim);color:var(--coral);border:1px solid rgba(232,104,64,0.15)">YouTube video</span>
+        </div>
+        <div class="card-detail">The video decides, you execute. No deliberating, no skipping. Hit play.</div>
+      </div>
+      <div class="card-delete-wrap" style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0">
+        <button class="card-delete" onclick="showConfirm(event,this)"><i class="ti ti-trash"></i> Delete</button>
+        <div class="card-confirm">
+          <span class="confirm-label">Sure?</span>
+          <button class="confirm-yes" onclick="confirmDelete(event,this)">Yes</button>
+          <button class="confirm-no" onclick="cancelConfirm(event,this)">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    </div><!-- /section-tasks -->
+  </div><!-- /section-group morning -->
+
+  <div class="section-group" data-group-id="sec-afternoon">
+    <div class="section-item" data-type="section" data-id="sec-afternoon" onclick="toggleSection(this)">
+      <i class="ti ti-chevron-down section-chevron"></i>
+      <div class="section-line"></div>
+      <span class="section-text">Afternoon — flexible gap</span>
+      <span class="section-count"></span>
+      <div class="section-line"></div>
+      <button class="section-delete-btn" onclick="deleteSection(event,this)"><i class="ti ti-trash"></i> Delete</button>
+    </div>
+    <div class="section-tasks">
+
+  <div class="tl-block no-click">
+    <div class="tl-spine"><div class="tl-dot" style="background:var(--gray)"></div><div class="tl-line dashed"></div></div>
+    <div class="tl-card" style="cursor:default">
+      <div style="width:20px;min-width:20px"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <i class="ti ti-soup card-icon" style="color:var(--gray)"></i>
+          <span class="card-title">Recover — eat, rest, free time</span>
+          <span class="tag ml-auto" style="background:var(--gray-dim);color:var(--gray);border:1px solid rgba(102,102,98,0.15)">open</span>
+        </div>
+        <div class="card-detail">Unstructured. Could be 2 hours, could be 5. Just protect your energy for the session.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tl-block" onclick="toggle(this)" data-color="purple" data-id="prep">
+    <div class="tl-spine"><div class="tl-dot" style="background:var(--purple)" data-dot></div><div class="tl-line"></div></div>
+    <div class="tl-card">
+      <div class="drag-handle"><i class="ti ti-grip-vertical"></i></div>
+      <div class="tl-check" data-check><i class="ti ti-check"></i></div>
+      <div class="card-body">
+        <div class="card-top">
+          <i class="ti ti-chart-candle card-icon" style="color:var(--purple)"></i>
+          <span class="card-title">Pre-session prep</span>
+          <span class="tag ml-auto" style="background:var(--purple-dim);color:var(--purple);border:1px solid rgba(124,111,224,0.2)">~15 min before 5</span>
+        </div>
+        <div class="card-detail">Review your rules. Clear your desk. Shift into trader mode — start when it feels like "almost time."</div>
+      </div>
+      <div class="card-delete-wrap" style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0">
+        <button class="card-delete" onclick="showConfirm(event,this)"><i class="ti ti-trash"></i> Delete</button>
+        <div class="card-confirm">
+          <span class="confirm-label">Sure?</span>
+          <button class="confirm-yes" onclick="confirmDelete(event,this)">Yes</button>
+          <button class="confirm-no" onclick="cancelConfirm(event,this)">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    </div><!-- /section-tasks -->
+  </div><!-- /section-group afternoon -->
+
+  <div class="section-group" data-group-id="sec-trading">
+    <div class="section-item" data-type="section" data-id="sec-trading" onclick="toggleSection(this)">
+      <i class="ti ti-chevron-down section-chevron"></i>
+      <div class="section-line"></div>
+      <span class="section-text">Trading — non-negotiable</span>
+      <span class="section-count"></span>
+      <div class="section-line"></div>
+      <button class="section-delete-btn" onclick="deleteSection(event,this)"><i class="ti ti-trash"></i> Delete</button>
+    </div>
+    <div class="section-tasks">
+
+  <div class="tl-block" onclick="toggle(this)" data-color="purple" data-id="trading">
+    <div class="tl-spine"><div class="tl-dot anchor-dot" style="background:var(--purple);color:var(--purple)" data-dot></div><div class="tl-line"></div></div>
+    <div class="tl-card is-anchor">
+      <div class="drag-handle"><i class="ti ti-grip-vertical"></i></div>
+      <div class="tl-check" data-check><i class="ti ti-check"></i></div>
+      <div class="card-body">
+        <div class="card-top">
+          <i class="ti ti-trending-up card-icon" style="color:var(--purple)"></i>
+          <span class="card-title">Trading session</span>
+          <span class="tag tag-time ml-auto" style="background:var(--purple-dim);color:var(--purple);border:1px solid rgba(124,111,224,0.2)">5:00 PM</span>
+          <span class="tag" style="background:var(--purple-dim);color:var(--purple);border:1px solid rgba(124,111,224,0.2)">3 h 45 min</span>
+        </div>
+        <div class="card-detail">Emotions are not a valid reason to skip. Follow session rules. You show up regardless.</div>
+      </div>
+      <div class="card-delete-wrap" style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0">
+        <button class="card-delete" onclick="showConfirm(event,this)"><i class="ti ti-trash"></i> Delete</button>
+        <div class="card-confirm">
+          <span class="confirm-label">Sure?</span>
+          <button class="confirm-yes" onclick="confirmDelete(event,this)">Yes</button>
+          <button class="confirm-no" onclick="cancelConfirm(event,this)">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tl-block" onclick="toggle(this)" data-color="purple" data-id="debrief">
+    <div class="tl-spine"><div class="tl-dot" style="background:var(--purple)" data-dot></div><div class="tl-line"></div></div>
+    <div class="tl-card">
+      <div class="drag-handle"><i class="ti ti-grip-vertical"></i></div>
+      <div class="tl-check" data-check><i class="ti ti-check"></i></div>
+      <div class="card-body">
+        <div class="card-top">
+          <i class="ti ti-notes card-icon" style="color:var(--purple)"></i>
+          <span class="card-title">Session debrief</span>
+          <span class="tag ml-auto" style="background:var(--purple-dim);color:var(--purple);border:1px solid rgba(124,111,224,0.2)">~10 min</span>
+        </div>
+        <div class="card-detail">Right after the session. What did I follow? What did I break? One honest note — no judgment.</div>
+      </div>
+      <div class="card-delete-wrap" style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0">
+        <button class="card-delete" onclick="showConfirm(event,this)"><i class="ti ti-trash"></i> Delete</button>
+        <div class="card-confirm">
+          <span class="confirm-label">Sure?</span>
+          <button class="confirm-yes" onclick="confirmDelete(event,this)">Yes</button>
+          <button class="confirm-no" onclick="cancelConfirm(event,this)">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tl-block no-click">
+    <div class="tl-spine"><div class="tl-dot" style="background:var(--gray)"></div></div>
+    <div class="tl-card" style="cursor:default">
+      <div style="width:20px;min-width:20px"></div>
+      <div class="card-body">
+        <div class="card-top">
+          <i class="ti ti-moon card-icon" style="color:var(--gray)"></i>
+          <span class="card-title">Wind down — sleep by 10 PM</span>
+          <span class="tag ml-auto" style="background:var(--gray-dim);color:var(--gray);border:1px solid rgba(102,102,98,0.15)">close</span>
+        </div>
+        <div class="card-detail">Protect tomorrow's 5:30 AM. The day closes here.</div>
+      </div>
+    </div>
+  </div>
+
+    </div><!-- /section-tasks -->
+  </div><!-- /section-group trading -->
+
+  <div class="complete-banner" id="complete-banner">
+    <p>Day complete. You showed up.</p>
+    <span>That's all it takes. Do it again tomorrow.</span>
+  </div>
+
+  <div class="rule-box">
+    <p><strong>Two anchors, one sequence.</strong> Wake at 5:30, read then communicate then workout in order, rest freely, then show up to trading at 5 PM no matter what. The clock only matters at the anchors — everything else just follows the thing before it.</p>
+  </div>
+
+  <div style="text-align:center;margin-top:2rem">
+    <button onclick="resetDay()" id="reset-btn">Reset day</button>
+  </div>
+
+</div>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+  <a class="nav-item active" href="index.html">
+    <i class="ti ti-calendar-week"></i>
+    Day
+  </a>
+  <a class="nav-item" href="bank.html">
+    <i class="ti ti-stack-2"></i>
+    Tasks
+  </a>
+</nav>
+
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/plugins/AutoScroll/autoscroll.js"></script>
+
+<script>
+// ── GLOBALS ───────────────────────────────────────────────
+let editMode = false;
+let sortable = null;
+let taskSortables = [];
+let snapshotHTML = '';
+let snapshotState = '';
+let snapshotOrder = '';
+let snapshotSections = '';
+
+if (typeof Sortable !== 'undefined' && Sortable.mount) {
+  Sortable.mount(new Sortable.AutoScroll());
+}
+
+// ── CORE LOGIC ────────────────────────────────────────────
+function getTotal() { return document.querySelectorAll('.tl-block[data-color]').length; }
+
+function saveState() {
+  const state = {};
+  document.querySelectorAll('.tl-block[data-color]').forEach(b => {
+    state[b.dataset.id] = b.querySelector('[data-check]').classList.contains('checked');
+  });
+  store.set(KEYS.STATE, state);
+}
+
+async function restoreState() {
+  const state = await store.get(KEYS.STATE);
+  if (!state) return;
+  document.querySelectorAll('.tl-block[data-color]').forEach(block => {
+    if (state[block.dataset.id]) {
+      const card=block.querySelector('.tl-card'), check=block.querySelector('[data-check]'), dot=block.querySelector('[data-dot]');
+      const color=COLORS[block.dataset.color]||COLORS.purple;
+      check.classList.add('checked'); check.style.background=color.hex;
+      card.classList.add('done-card'); if(dot) dot.classList.add('done');
+    }
+  });
+  updateProgress();
+}
+
+function toggle(block) {
+  if (editMode) return;
+  const card=block.querySelector('.tl-card'), check=block.querySelector('[data-check]'), dot=block.querySelector('[data-dot]');
+  const color=COLORS[block.dataset.color]||COLORS.purple, isDone=check.classList.contains('checked');
+  if(isDone){check.classList.remove('checked');check.style.background='';card.classList.remove('done-card');if(dot)dot.classList.remove('done');}
+  else{check.classList.add('checked');check.style.background=color.hex;card.classList.add('done-card');if(dot)dot.classList.add('done');}
+  updateProgress();
+  saveState();
+}
+
+function updateProgress(){
+  const total=getTotal(), done=document.querySelectorAll('[data-check].checked').length, pct=total?Math.round((done/total)*100):0;
+  const bar = document.getElementById('prog-bar');
+  if (bar) {
+    bar.style.width=pct+'%';
+    bar.classList.toggle('full', total > 0 && done === total);
+  }
+  const count = document.getElementById('done-count');
+  if (count) count.textContent=done+' / '+total+' complete';
+  const banner = document.getElementById('complete-banner');
+  if (banner) banner.classList.toggle('visible',total>0&&done===total);
+  const label = document.getElementById('prog-label');
+  if (label) label.textContent=done===0?'Click a block to check it off':done===total?'You showed up. \u2726':pct+'% through your day';
+}
+
+// ── SECTIONS ──────────────────────────────────────────────
+function toggleSection(header) {
+  if (editMode) return;
+  const group = header.closest('.section-group');
+  const tasks = group.querySelector('.section-tasks');
+  const isCollapsed = tasks.classList.contains('collapsed');
+  tasks.classList.toggle('collapsed', !isCollapsed);
+  header.classList.toggle('collapsed', !isCollapsed);
+  updateSectionCount(header);
+}
+
+function updateSectionCount(header) {
+  const group = header.closest('.section-group');
+  const taskCount = group.querySelectorAll('.tl-block[data-color]').length;
+  const countEl = header.querySelector('.section-count');
+  if (countEl) countEl.textContent = taskCount + ' task' + (taskCount !== 1 ? 's' : '');
+}
+
+function updateAllSectionCounts() {
+  document.querySelectorAll('.section-item[data-type="section"]').forEach(updateSectionCount);
+}
+
+function addSection() {
+  const inp = document.getElementById('section-name-input');
+  const name = inp.value.trim();
+  if (!name) { inp.focus(); shake(inp); return; }
+  const id = 'sec-' + Date.now();
+  const groupEl = buildSectionGroupEl(id, name);
+  const anchor = document.getElementById('complete-banner');
+  anchor.parentNode.insertBefore(groupEl, anchor);
+  inp.value = '';
+  inp.focus();
+  if (editMode && typeof Sortable !== 'undefined') {
+    initTaskSortable(groupEl.querySelector('.section-tasks'));
+  }
+  saveOrder();
+  saveSections();
+}
+
+function buildSectionGroupEl(id, label) {
+  const group = document.createElement('div');
+  group.className = 'section-group';
+  group.dataset.groupId = id;
+  group.innerHTML = `
+    <div class="section-item" data-type="section" data-id="${id}" onclick="toggleSection(this)">
+      <i class="ti ti-chevron-down section-chevron"></i>
+      <div class="section-line"></div>
+      <span class="section-text">${escHtml(label)}</span>
+      <span class="section-count"></span>
+      <div class="section-line"></div>
+      <button class="section-delete-btn" onclick="deleteSection(event,this)"><i class="ti ti-trash"></i> Delete</button>
+    </div>
+    <div class="section-tasks"></div>
+  `;
+  return group;
+}
+
+function deleteSection(e, btn) {
+  e.stopPropagation();
+  const group = btn.closest('.section-group');
+  if (group) {
+    group.style.transition = 'opacity 0.2s, transform 0.2s';
+    group.style.opacity = '0';
+    group.style.transform = 'translateX(12px)';
+    setTimeout(() => { group.remove(); saveOrder(); saveSections(); saveCustomDayTasks(); updateProgress(); }, 200);
+  }
+}
+
+// ── EDIT MODE ─────────────────────────────────────────────
+function enterEditMode() {
+  editMode = true;
+  snapshotHTML = document.querySelector('.page').innerHTML;
+  snapshotState    = store._cache ? JSON.stringify(store._cache[KEYS.STATE] ?? '') : '';
+  snapshotOrder    = store._cache ? JSON.stringify(store._cache[KEYS.ORDER] ?? '') : '';
+  snapshotSections = store._cache ? JSON.stringify(store._cache[KEYS.SECTIONS] ?? '') : '';
+  document.body.classList.add('edit-mode');
+  const btn = document.getElementById('edit-btn');
+  btn.innerHTML = '<i class="ti ti-check"></i> Done';
+  btn.classList.add('done-btn');
+  btn.onclick = exitEditMode;
+  document.querySelectorAll('.tl-block[data-color]').forEach(b => {
+    b._onclick = b.getAttribute('onclick');
+    b.removeAttribute('onclick');
+  });
+  document.querySelectorAll('.section-tasks.collapsed').forEach(t => {
+    t.classList.remove('collapsed');
+    t.closest('.section-group').querySelector('.section-item').classList.remove('collapsed');
+  });
+  initSortables();
+}
+
+function exitEditMode() {
+  editMode = false;
+  document.body.classList.remove('edit-mode');
+  const btn = document.getElementById('edit-btn');
+  btn.innerHTML = '<i class="ti ti-pencil"></i> Edit';
+  btn.classList.remove('done-btn');
+  btn.onclick = enterEditMode;
+  document.querySelectorAll('.tl-block[data-color]').forEach(b => {
+    if (b._onclick) b.setAttribute('onclick', b._onclick);
+  });
+  document.querySelectorAll('.card-confirm.visible').forEach(c => c.classList.remove('visible'));
+  destroySortables();
+  saveOrder();
+  saveSections();
+  saveState();
+  updateProgress();
+  updateAllSectionCounts();
+}
+
+function cancelEditMode() {
+  destroySortables();
+  document.querySelector('.page').innerHTML = snapshotHTML;
+  editMode = false;
+  document.body.classList.remove('edit-mode');
+  if (snapshotState)    store.set(KEYS.STATE, JSON.parse(snapshotState));
+  else                  store.remove(KEYS.STATE);
+  if (snapshotOrder)    store.set(KEYS.ORDER, JSON.parse(snapshotOrder));
+  else                  store.remove(KEYS.ORDER);
+  if (snapshotSections) store.set(KEYS.SECTIONS, JSON.parse(snapshotSections));
+  else                  store.remove(KEYS.SECTIONS);
+  const btn = document.getElementById('edit-btn');
+  if (btn) { btn.innerHTML = '<i class="ti ti-pencil"></i> Edit'; btn.classList.remove('done-btn'); btn.onclick = enterEditMode; }
+  restoreState();
+}
+
+function initSortables() {
+  destroySortables();
+  const page = document.querySelector('.page');
+  sortable = Sortable.create(page, {
+    animation: 200, handle: '.section-item', draggable: '.section-group',
+    ghostClass: 'sortable-ghost', chosenClass: 'sortable-chosen', dragClass: 'sortable-drag',
+    scroll: true, scrollSensitivity: 100, scrollSpeed: 30, bubbleScroll: true,
+    onStart() { document.body.classList.add('is-dragging'); document.documentElement.style.scrollBehavior = 'auto'; },
+    onEnd(evt) {
+      document.body.classList.remove('is-dragging'); document.documentElement.style.scrollBehavior = '';
+      if (evt.item) { evt.item.classList.add('drag-landed'); setTimeout(() => evt.item.classList.remove('drag-landed'), 400); }
+      saveOrder(); saveSections();
+    }
+  });
+  document.querySelectorAll('.section-tasks').forEach(initTaskSortable);
+}
+
+function initTaskSortable(container) {
+  const s = Sortable.create(container, {
+    animation: 200, group: 'day-tasks', handle: '.drag-handle', draggable: '.tl-block[data-color]',
+    ghostClass: 'sortable-ghost', chosenClass: 'sortable-chosen', dragClass: 'sortable-drag',
+    scroll: true, scrollSensitivity: 100, scrollSpeed: 30, bubbleScroll: true,
+    onStart() { document.body.classList.add('is-dragging'); document.documentElement.style.scrollBehavior = 'auto'; },
+    onEnd(evt) {
+      document.body.classList.remove('is-dragging'); document.documentElement.style.scrollBehavior = '';
+      if (evt.item) { evt.item.classList.add('drag-landed'); setTimeout(() => evt.item.classList.remove('drag-landed'), 400); }
+      saveOrder(); updateAllSectionCounts();
+    }
+  });
+  taskSortables.push(s);
+}
+
+function destroySortables() {
+  if (sortable) { sortable.destroy(); sortable = null; }
+  taskSortables.forEach(s => s.destroy());
+  taskSortables = [];
+}
+
+// ── PERSISTENCE ───────────────────────────────────────────
+function saveOrder() {
+  const groups = Array.from(document.querySelectorAll('.section-group')).map(g => {
+    const tasks = Array.from(g.querySelectorAll('.tl-block[data-color]')).map(b => b.dataset.id);
+    return { groupId: g.dataset.groupId, tasks };
+  });
+  store.set(KEYS.ORDER, groups);
+}
+
+function saveSections() {
+  const sections = Array.from(document.querySelectorAll('.section-item[data-type="section"]')).map(el => ({
+    id: el.dataset.id,
+    label: el.querySelector('.section-text').textContent
+  }));
+  store.set(KEYS.SECTIONS, sections);
+}
+
+async function restoreOrder() {
+  const groups = await store.get(KEYS.ORDER);
+  if (!groups || !groups[0] || !groups[0].groupId) return;
+  const page = document.querySelector('.page');
+  const anchor = document.getElementById('complete-banner');
+  groups.forEach(({ groupId, tasks }) => {
+    const group = page.querySelector(`.section-group[data-group-id="${groupId}"]`);
+    if (!group) return;
+    page.insertBefore(group, anchor);
+    const tasksContainer = group.querySelector('.section-tasks');
+    if (!tasksContainer) return;
+    tasks.forEach(taskId => {
+      const el = page.querySelector(`[data-id="${taskId}"]`);
+      if (el) tasksContainer.appendChild(el);
+    });
+  });
+}
+
+async function restoreSections() {
+  const sections = await store.get(KEYS.SECTIONS);
+  if (!sections) return;
+  sections.forEach(({ id, label }) => {
+    const el = document.querySelector(`.section-item[data-id="${id}"]`);
+    if (el) el.querySelector('.section-text').textContent = label;
+  });
+}
+
+// ── CUSTOM TASKS (BANK) ───────────────────────────────────
+async function saveCustomDayTasks() {
+  const tasks = Array.from(document.querySelectorAll('.tl-block[data-custom-task="true"]')).map(block => {
+    const color = block.dataset.color || 'purple';
+    return {
+      dayId: block.dataset.id,
+      id: block.dataset.id.replace(/^bank-/, ''),
+      name: block.querySelector('.card-title')?.textContent || 'Task',
+      tags: Array.from(block.querySelectorAll('.tag')).map(tag => tag.textContent.trim()).filter(Boolean),
+      note: block.querySelector('.card-detail')?.textContent || '',
+      icon: (block.querySelector('.card-icon')?.className.match(/\bti-[\w-]+\b/) || ['ti-star'])[0],
+      color: color
+    };
+  });
+  await store.set(KEYS.CUSTOM_DAY_TASKS, tasks);
+}
+
+function buildCustomDayTaskBlock(task) {
+  const c = COLORS[task.color] || COLORS.purple;
+  const block = document.createElement('div');
+  block.className = 'tl-block bank-imported';
+  block.setAttribute('onclick', 'toggle(this)');
+  block.dataset.color = task.color || 'purple';
+  block.dataset.id = task.dayId || ('bank-' + task.id);
+  block.dataset.customTask = 'true';
+  const tags = getTaskTags(task);
+  const durationTag = tags.map((tag, index) =>
+    `<span class="tag ${index === 0 ? 'ml-auto' : ''}" style="background:${c.dim};color:${c.hex};border:1px solid ${c.border}">${escHtml(tag)}</span>`
+  ).join('');
+  const noteHtml = task.note ? `<div class="card-detail">${escHtml(task.note)}</div>` : '';
+
+  block.innerHTML = `
+    <div class="tl-spine">
+      <div class="tl-dot" style="background:${c.hex}" data-dot></div>
+      <div class="tl-line"></div>
+    </div>
+    <div class="tl-card">
+      <div class="drag-handle"><i class="ti ti-grip-vertical"></i></div>
+      <div class="tl-check" data-check><i class="ti ti-check"></i></div>
+      <div class="card-body">
+        <div class="card-top">
+          <i class="ti ${escHtml(task.icon || 'ti-star')} card-icon" style="color:${c.hex}"></i>
+          <span class="card-title">${escHtml(task.name)}</span>
+          ${durationTag}
+        </div>
+        ${noteHtml}
+      </div>
+      <div class="card-delete-wrap" style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0">
+        <button class="card-delete" onclick="showConfirm(event,this)"><i class="ti ti-trash"></i> Delete</button>
+        <div class="card-confirm">
+          <span class="confirm-label">Sure?</span>
+          <button class="confirm-yes" onclick="confirmDelete(event,this)">Yes</button>
+          <button class="confirm-no" onclick="cancelConfirm(event,this)">No</button>
+        </div>
+      </div>
+    </div>
+  `;
+  return block;
+}
+
+async function restoreCustomDayTasks() {
+  const tasks = await store.get(KEYS.CUSTOM_DAY_TASKS) || [];
+  const target = document.querySelector('.section-group[data-group-id="sec-afternoon"] .section-tasks') || document.querySelector('.section-tasks');
+  if (!target) return;
+  tasks.forEach(task => {
+    const id = task.dayId || ('bank-' + task.id);
+    if (!document.querySelector(`[data-id="${id}"]`)) target.appendChild(buildCustomDayTaskBlock(task));
+  });
+}
+
+// ── DELETE / CONFIRM ──────────────────────────────────────
+function showConfirm(e, btn) {
+  e.stopPropagation();
+  document.querySelectorAll('.card-confirm.visible').forEach(c => {
+    c.classList.remove('visible');
+    c.closest('.card-delete-wrap').querySelector('.card-delete').style.display = '';
+  });
+  btn.style.display = 'none';
+  btn.nextElementSibling.classList.add('visible');
+}
+function cancelConfirm(e, btn) {
+  e.stopPropagation();
+  const wrap = btn.closest('.card-delete-wrap');
+  wrap.querySelector('.card-confirm').classList.remove('visible');
+  wrap.querySelector('.card-delete').style.display = '';
+}
+function confirmDelete(e, btn) {
+  e.stopPropagation();
+  const block = btn.closest('.tl-block');
+  block.style.transition = 'opacity 0.2s, transform 0.2s';
+  block.style.opacity = '0';
+  block.style.transform = 'translateX(14px)';
+  setTimeout(() => { block.remove(); updateProgress(); saveOrder(); saveSections(); saveState(); saveCustomDayTasks(); updateAllSectionCounts(); }, 200);
+}
+
+// ── RESET ─────────────────────────────────────────────────
+function resetDay() {
+  const modal = document.getElementById('reset-modal');
+  if (modal) modal.style.display='flex';
+  else _resetChecks();
+}
+function _resetChecks() {
+  store.remove(KEYS.STATE);
+  document.querySelectorAll('.tl-block[data-color]').forEach(block => {
+    const card=block.querySelector('.tl-card'), check=block.querySelector('[data-check]'), dot=block.querySelector('[data-dot]');
+    check.classList.remove('checked'); check.style.background='';
+    card.classList.remove('done-card'); if(dot) dot.classList.remove('done');
+  });
+  updateProgress();
+}
+function resetChecksOnly() { document.getElementById('reset-modal').style.display='none'; _resetChecks(); }
+function resetFull() {
+  document.getElementById('reset-modal').style.display='none';
+  store.remove(KEYS.STATE); store.remove(KEYS.ORDER); store.remove(KEYS.SECTIONS); store.remove(KEYS.CUSTOM_DAY_TASKS);
+  location.reload();
+}
+function closeResetModal() { document.getElementById('reset-modal').style.display='none'; }
+
+// ── INIT ──────────────────────────────────────────────────
+(async function init() {
+  const params = new URLSearchParams(window.location.search);
+  const raw = params.get('bank_task');
+  
+  await restoreSections();
+  await restoreCustomDayTasks();
+  await restoreOrder();
+  await restoreState();
+  updateAllSectionCounts();
+
+  // Process bank import AFTER restoring existing state
+  if (raw) {
+    try {
+      const task = JSON.parse(decodeURIComponent(raw));
+      history.replaceState({}, '', window.location.pathname);
+      const taskId = 'bank-' + task.id;
+      if (!document.querySelector(`[data-id="${taskId}"]`)) {
+        const target = document.querySelector('.section-group[data-group-id="sec-afternoon"] .section-tasks') || document.querySelector('.section-tasks');
+        if (target) {
+          target.appendChild(buildCustomDayTaskBlock(task));
+          await saveCustomDayTasks();
+          updateProgress();
+          saveOrder();
+        }
+      }
+    } catch(e) {}
+  }
+})();
+
+document.addEventListener('DOMContentLoaded', () => {
+  const inp = document.getElementById('section-name-input');
+  if (inp) inp.addEventListener('keydown', e => { if (e.key === 'Enter') addSection(); });
+});
+</script>
+
+<script>
+// ── DATE PICKER ───────────────────────────────────────────
+const DAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const chip = document.getElementById('date-chip');
+const chipLabel = document.getElementById('date-chip-label');
+
+function formatDateChip(d) {
+  const dayName = DAYS[d.getDay()];
+  const dayNum = d.getDate();
+  const month = d.toLocaleString('default', { month: 'short' });
+  chipLabel.textContent = `${dayName} · ${month} ${dayNum}`;
+  const title = document.getElementById('page-title');
+  if (title) title.textContent = `${dayName} — Designed`;
+}
+
+formatDateChip(new Date());
+
+const fp = flatpickr(document.getElementById('date-picker-anchor'), {
+  defaultDate: 'today',
+  disableMobile: true,
+  clickOpens: false,
+  onChange(selectedDates) {
+    if (selectedDates[0]) formatDateChip(selectedDates[0]);
+  }
+});
+
+if (chip) chip.addEventListener('click', () => fp.open());
+</script>
+
+<!-- RESET MODAL -->
+<div class="reset-modal-overlay" id="reset-modal" onclick="if(event.target===this)closeResetModal()">
+  <div class="reset-modal">
+    <h3>Reset day</h3>
+    <p>Just want to uncheck everything? Or start completely fresh — clearing your custom task order and sections too?</p>
+    <div class="reset-modal-actions">
+      <button class="reset-opt" onclick="resetChecksOnly()">↺ Uncheck all tasks</button>
+      <button class="reset-opt danger" onclick="resetFull()">⚠ Full reset — restore default layout</button>
+    </div>
+    <button class="reset-cancel" onclick="closeResetModal()">Cancel</button>
+  </div>
+</div>
+</body>
+</html>

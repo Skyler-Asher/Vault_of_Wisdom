@@ -1,0 +1,54 @@
+{
+  "task_bank_v1": [
+    {
+      "id": 1779987403015,
+      "name": "Sleep Ready",
+      "tags": [
+        "10:00pm",
+        "schedule"
+      ],
+      "duration": "10:00pm , schedule",
+      "note": "No digital screen after 10 pm and a 15m walk . \n15m walk can be outdoors or indoors.",
+      "icon": "ti-star",
+      "color": "amber"
+    }
+  ],
+  "monday_schedule_v2": {
+    "wake": false,
+    "reading": false,
+    "comms": false,
+    "workout": false,
+    "prep": false,
+    "trading": false,
+    "debrief": false
+  },
+  "day_order_v1": [
+    {
+      "groupId": "sec-morning",
+      "tasks": []
+    },
+    {
+      "groupId": "sec-afternoon",
+      "tasks": []
+    },
+    {
+      "groupId": "sec-trading",
+      "tasks": []
+    }
+  ],
+  "day_sections_v1": [
+    {
+      "id": "sec-morning",
+      "label": "Morning — don't negotiate, just execute"
+    },
+    {
+      "id": "sec-afternoon",
+      "label": "Afternoon — flexible gap"
+    },
+    {
+      "id": "sec-trading",
+      "label": "Trading — non-negotiable"
+    }
+  ],
+  "day_custom_tasks_v1": []
+}

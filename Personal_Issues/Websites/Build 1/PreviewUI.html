@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Heavenly Note Popup — Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tabler-icons@1.119.0/iconfont/tabler-icons.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* ----- DESIGN SYSTEM – Elevated, Ethereal ----- */
+    :root {
+      --bg-deep: #07070a;
+      --bg-surface: #111114;
+      --bg-elevated: #1a1a1f;
+      --glass-bg: rgba(26, 26, 31, 0.68);
+      --glass-border: rgba(124, 111, 224, 0.25);
+      --accent: #8b7df2;
+      --accent-glow: rgba(139, 125, 242, 0.35);
+      --accent-dim: rgba(139, 125, 242, 0.12);
+      --success: #2EC090;
+      --success-glow: rgba(46, 192, 144, 0.25);
+      --text-primary: #f5f3f0;
+      --text-secondary: #b5b3ad;
+      --text-tertiary: #5f5e5a;
+      --border-subtle: rgba(255,255,255,0.06);
+      --border-hover: rgba(255,255,255,0.12);
+      --radius-xl: 20px;
+      --radius-lg: 16px;
+      --radius-sm: 12px;
+      --radius-pill: 100px;
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --font-display: 'Syne', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+
+    body {
+      background: var(--bg-deep);
+      font-family: var(--font-body);
+      color: var(--text-primary);
+      padding: 2rem 1.5rem;
+      min-height: 100vh;
+      background-image: radial-gradient(circle at 25% 40%, rgba(139,125,242,0.08) 0%, transparent 50%);
+    }
+
+    /* Demo header */
+    .demo-header {
+      max-width: 1000px;
+      margin: 0 auto 3rem;
+      text-align: center;
+      animation: fadeSlideUp 0.6s var(--ease-out-expo);
+    }
+    .demo-header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      font-weight: 700;
+      background: linear-gradient(135deg, #ffffff, var(--accent), #c084fc);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.02em;
+    }
+    .demo-header p {
+      color: var(--text-secondary);
+      margin-top: 0.75rem;
+      font-size: 0.95rem;
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .toolbar {
+      display: flex;
+      justify-content: flex-end;
+      max-width: 1000px;
+      margin: 0 auto 1.5rem;
+    }
+    .reset-btn {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border-subtle);
+      padding: 6px 16px;
+      border-radius: var(--radius-pill);
+      color: var(--text-secondary);
+      font-size: 0.75rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      backdrop-filter: blur(4px);
+    }
+    .reset-btn:hover {
+      background: var(--accent-dim);
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: scale(0.98);
+    }
+
+    /* Task Grid – heavenly cards */
+    .task-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.75rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .task-card {
+      background: var(--bg-surface);
+      backdrop-filter: blur(2px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      padding: 1.25rem;
+      transition: transform 0.25s var(--ease-out-expo), border-color 0.2s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+    .task-card::before {
+      content: '';
+      position: absolute;
+      inset: 0 0 auto;
+      height: 4px;
+      background: linear-gradient(90deg, var(--task-accent), var(--accent-glow));
+      border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    }
+    .task-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-hover);
+      box-shadow: 0 20px 32px -12px rgba(0,0,0,0.5), 0 0 0 1px rgba(139,125,242,0.1);
+    }
+
+    /* Card inner */
+    .task-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+    .task-icon {
+      font-size: 1.6rem;
+      color: var(--task-accent);
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    }
+    .task-name {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: -0.01em;
+    }
+    .task-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 0.5rem 0;
+    }
+    .task-badge {
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.2rem 0.7rem;
+      border-radius: var(--radius-pill);
+      background: var(--accent-dim);
+      color: var(--accent);
+      border: 1px solid rgba(139,125,242,0.2);
+      backdrop-filter: blur(2px);
+    }
+
+    /* Note preview – elegant */
+    .note-preview {
+      font-size: 0.8rem;
+      background: rgba(255,255,255,0.02);
+      border-left: 2px solid var(--task-accent);
+      padding: 0.6rem 0.8rem;
+      margin: 0.8rem 0;
+      border-radius: var(--radius-sm);
+      color: var(--text-secondary);
+      line-height: 1.45;
+      transition: all 0.2s;
+    }
+    .note-preview.empty {
+      border-left-color: var(--text-tertiary);
+      color: var(--text-tertiary);
+      font-style: italic;
+    }
+    /* Flash animation on save */
+    @keyframes noteFlash {
+      0% { background: rgba(139,125,242,0); border-left-color: var(--task-accent); }
+      50% { background: var(--accent-dim); border-left-color: var(--accent); }
+      100% { background: rgba(255,255,255,0.02); border-left-color: var(--task-accent); }
+    }
+    .note-preview.flash {
+      animation: noteFlash 0.4s ease-out;
+    }
+
+    /* Action icons */
+    .task-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.6rem;
+      margin-top: 0.8rem;
+    }
+    .icon-btn {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border-subtle);
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.2s var(--ease-spring);
+      font-size: 1.1rem;
+    }
+    .icon-btn:hover {
+      background: var(--accent-dim);
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: scale(1.08);
+    }
+    .icon-btn:active {
+      transform: scale(0.96);
+    }
+    .icon-btn:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    /* ---------- HEAVENLY POPUP (Floating, Glassmorphic) ---------- */
+    .note-popup {
+      position: fixed;
+      z-index: 1000;
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      width: 320px;
+      box-shadow: 0 20px 40px -12px rgba(0,0,0,0.5), 0 0 0 1px rgba(139,125,242,0.15), 0 0 20px rgba(139,125,242,0.2);
+      animation: floatIn 0.25s var(--ease-out-expo);
+      will-change: transform, opacity;
+    }
+    @keyframes floatIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.96);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    .popup-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.9rem 1.2rem;
+      background: linear-gradient(135deg, rgba(139,125,242,0.15), rgba(139,125,242,0.05));
+      border-bottom: 1px solid rgba(139,125,242,0.2);
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    }
+    .popup-header span {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.02em;
+      color: var(--accent);
+    }
+    .popup-close {
+      background: none;
+      border: none;
+      color: var(--text-tertiary);
+      cursor: pointer;
+      font-size: 1.1rem;
+      padding: 4px;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+    .popup-close:hover {
+      color: var(--text-primary);
+      background: rgba(255,255,255,0.1);
+    }
+    .popup-body {
+      padding: 1.2rem;
+    }
+    .popup-body textarea {
+      width: 100%;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 0.8rem;
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      resize: vertical;
+      min-height: 110px;
+      transition: border 0.2s, box-shadow 0.2s;
+    }
+    .popup-body textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+    .char-counter {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 0.4rem;
+      font-size: 0.65rem;
+      color: var(--text-tertiary);
+      gap: 0.3rem;
+      align-items: center;
+    }
+    .char-counter .counter-number {
+      font-family: monospace;
+      font-weight: 500;
+    }
+    .popup-footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.6rem;
+      padding: 0.8rem 1.2rem 1.2rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .popup-btn {
+      padding: 0.45rem 1.2rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+    }
+    .popup-btn.save {
+      background: linear-gradient(135deg, var(--accent), #9b8ef5);
+      color: white;
+      box-shadow: 0 2px 6px rgba(139,125,242,0.3);
+    }
+    .popup-btn.save:hover {
+      transform: scale(0.97);
+      opacity: 0.92;
+    }
+    .popup-btn.cancel {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+    }
+    .popup-btn.cancel:hover {
+      background: rgba(255,255,255,0.12);
+    }
+
+    /* Toast notification */
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--bg-elevated);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      padding: 0.6rem 1.4rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      z-index: 1100;
+      pointer-events: none;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    /* Responsive: mobile bottom sheet */
+    @media (max-width: 640px) {
+      .note-popup {
+        width: calc(100vw - 2rem);
+        left: 1rem !important;
+        right: 1rem !important;
+        top: auto !important;
+        bottom: 1rem !important;
+        transform: none !important;
+        animation: slideUp 0.25s var(--ease-out-expo);
+      }
+      @keyframes slideUp {
+        from { transform: translateY(30px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+      }
+      body {
+        padding: 1rem;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .task-card {
+      animation: fadeSlideUp 0.4s var(--ease-out-expo) both;
+    }
+    .task-card:nth-child(1) { animation-delay: 0.02s; }
+    .task-card:nth-child(2) { animation-delay: 0.07s; }
+    .task-card:nth-child(3) { animation-delay: 0.12s; }
+    .task-card:nth-child(4) { animation-delay: 0.17s; }
+  </style>
+</head>
+<body>
+<div class="demo-header">
+  <h1>✧ Ethereal Notes</h1>
+  <p>Tap the <i class="ti ti-notes" style="vertical-align: middle;"></i> icon — a floating, glass‑morphic popup appears. Write, save, and feel the delight.</p>
+</div>
+<div class="toolbar">
+  <button class="reset-btn" id="resetBtn"><i class="ti ti-refresh"></i> Reset demo</button>
+</div>
+<div class="task-grid" id="taskGrid"></div>
+<div id="toast" class="toast" style="opacity: 0;" aria-live="polite"></div>
+
+<script>
+  // ------ Demo tasks with notes -----
+  let tasks = [
+    { id: 1, name: "Morning Alchemy", tags: ["30 min", "AM"], note: "Stretch, cold shower, journal one intention", icon: "ti-sun", color: "#8b7df2" },
+    { id: 2, name: "Deep Resonance", tags: ["2h", "focus"], note: "", icon: "ti-brand-codesandbox", color: "#2EC090" },
+    { id: 3, name: "Evening Glow", tags: ["debrief"], note: "Write three gratitudes, plan tomorrow", icon: "ti-moon", color: "#E8A030" },
+    { id: 4, name: "Reading Flow", tags: ["30 min"], note: "The Art of War, chapter 2", icon: "ti-book", color: "#8b7df2" }
+  ];
+
+  const escapeHtml = (str) => String(str || '').replace(/[&<>]/g, m => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;' }[m]));
+
+  function renderTasks() {
+    const container = document.getElementById('taskGrid');
+    container.innerHTML = '';
+    tasks.forEach(task => {
+      const tagsHtml = (task.tags || []).map(tag => `<span class="task-badge">${escapeHtml(tag)}</span>`).join('');
+      const hasNote = task.note && task.note.trim().length > 0;
+      const notePreviewHtml = hasNote
+        ? `<div class="note-preview" data-note-id="${task.id}"><i class="ti ti-message-2" style="font-size:0.7rem; margin-right:0.3rem;"></i> ${escapeHtml(task.note.substring(0, 100))}${task.note.length > 100 ? '…' : ''}</div>`
+        : `<div class="note-preview empty" data-note-id="${task.id}"><i class="ti ti-message-2"></i> No note — click the sparkle icon</div>`;
+
+      const card = document.createElement('div');
+      card.className = 'task-card';
+      card.style.setProperty('--task-accent', task.color);
+      card.dataset.id = task.id;
+      card.innerHTML = `
+        <div class="task-header">
+          <i class="ti ${task.icon} task-icon"></i>
+          <div class="task-name">${escapeHtml(task.name)}</div>
+        </div>
+        <div class="task-tags">${tagsHtml}</div>
+        ${notePreviewHtml}
+        <div class="task-actions">
+          <button class="icon-btn note-btn" data-id="${task.id}" aria-label="Add or edit note"><i class="ti ti-notes"></i></button>
+          <button class="icon-btn delete-btn" data-id="${task.id}" aria-label="Delete task"><i class="ti ti-trash"></i></button>
+        </div>
+      `;
+      container.appendChild(card);
+    });
+
+    // Attach events
+    document.querySelectorAll('.note-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const id = parseInt(btn.dataset.id);
+        openNotePopup(id, btn);
+      });
+    });
+    document.querySelectorAll('.delete-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const id = parseInt(btn.dataset.id);
+        tasks = tasks.filter(t => t.id !== id);
+        renderTasks();
+        showToast('✨ Task removed', false);
+      });
+    });
+  }
+
+  // Flash note preview after save
+  function flashNotePreview(taskId) {
+    const previewDiv = document.querySelector(`.note-preview[data-note-id="${taskId}"]`);
+    if (previewDiv) {
+      previewDiv.classList.add('flash');
+      setTimeout(() => previewDiv.classList.remove('flash'), 400);
+    }
+  }
+
+  // ----- Anchored Popup – Heavenly -----
+  let activePopup = null;
+  let focusBefore = null;
+
+  function closePopup(save = false, newNote = '', taskId = null) {
+    if (!activePopup) return;
+    if (save && taskId) {
+      const task = tasks.find(t => t.id === taskId);
+      if (task) {
+        task.note = newNote.trim();
+        renderTasks();        // re-render to update note text
+        flashNotePreview(taskId);
+        showToast('♡ Note saved', true);
+      }
+    }
+    if (focusBefore && focusBefore.focus) focusBefore.focus();
+    activePopup.remove();
+    activePopup = null;
+  }
+
+  function openNotePopup(taskId, triggerBtn) {
+    if (activePopup) closePopup(false);
+    const task = tasks.find(t => t.id === taskId);
+    if (!task) return;
+    focusBefore = triggerBtn;
+
+    const rect = triggerBtn.getBoundingClientRect();
+    const popup = document.createElement('div');
+    popup.className = 'note-popup';
+    popup.setAttribute('role', 'dialog');
+    popup.setAttribute('aria-modal', 'true');
+    popup.setAttribute('aria-label', `Edit note for ${task.name}`);
+    popup.dataset.taskId = taskId;
+
+    // Smart positioning
+    let left = rect.right + 12;
+    let top = rect.top - 12;
+    const popupWidth = 320;
+    const popupHeight = 280;
+    if (left + popupWidth > window.innerWidth) left = rect.left - popupWidth - 12;
+    if (left < 8) left = 8;
+    if (top + popupHeight > window.innerHeight) top = rect.bottom - popupHeight + 8;
+    if (top < 8) top = 8;
+    popup.style.left = left + 'px';
+    popup.style.top = top + 'px';
+
+    popup.innerHTML = `
+      <div class="popup-header">
+        <span><i class="ti ti-sparkles"></i> Note for ${escapeHtml(task.name)}</span>
+        <button class="popup-close" aria-label="Close"><i class="ti ti-x"></i></button>
+      </div>
+      <div class="popup-body">
+        <textarea id="popupTextarea" placeholder="Write something inspired…" maxlength="300">${escapeHtml(task.note || '')}</textarea>
+        <div class="char-counter">
+          <i class="ti ti-pencil" style="font-size:0.7rem;"></i>
+          <span class="counter-number" id="charCount">${(task.note || '').length}</span>
+          <span>/ 300</span>
+        </div>
+      </div>
+      <div class="popup-footer">
+        <button class="popup-btn cancel">Cancel</button>
+        <button class="popup-btn save">Save note</button>
+      </div>
+    `;
+    document.body.appendChild(popup);
+    activePopup = popup;
+
+    const textarea = popup.querySelector('#popupTextarea');
+    const charSpan = popup.querySelector('#charCount');
+    const updateCounter = () => { charSpan.textContent = textarea.value.length; };
+    textarea.addEventListener('input', updateCounter);
+    textarea.focus();
+    textarea.select();
+
+    const closeBtn = popup.querySelector('.popup-close');
+    const cancelBtn = popup.querySelector('.cancel');
+    const saveBtn = popup.querySelector('.save');
+
+    const handleSave = () => closePopup(true, textarea.value, taskId);
+    const handleCancel = () => closePopup(false);
+
+    closeBtn.addEventListener('click', handleCancel);
+    cancelBtn.addEventListener('click', handleCancel);
+    saveBtn.addEventListener('click', handleSave);
+
+    // Escape key
+    const escHandler = (e) => {
+      if (e.key === 'Escape') {
+        handleCancel();
+        document.removeEventListener('keydown', escHandler);
+      }
+    };
+    document.addEventListener('keydown', escHandler);
+
+    // Click outside
+    const outsideClick = (e) => {
+      if (!popup.contains(e.target) && !triggerBtn.contains(e.target)) {
+        handleCancel();
+        document.removeEventListener('click', outsideClick);
+      }
+    };
+    setTimeout(() => document.addEventListener('click', outsideClick), 10);
+
+    // Focus trap
+    const focusable = popup.querySelectorAll('button, textarea');
+    if (focusable.length) focusable[0].focus();
+    const trapFocus = (e) => {
+      if (!popup.contains(document.activeElement)) focusable[0].focus();
+    };
+    popup.addEventListener('focusout', trapFocus);
+
+    // Cleanup
+    const originalRemove = popup.remove;
+    popup.remove = function() {
+      document.removeEventListener('keydown', escHandler);
+      document.removeEventListener('click', outsideClick);
+      popup.removeEventListener('focusout', trapFocus);
+      originalRemove.call(this);
+    };
+  }
+
+  let toastTimeout;
+  function showToast(msg, isSuccess = true) {
+    const toast = document.getElementById('toast');
+    toast.textContent = msg;
+    toast.style.opacity = '1';
+    clearTimeout(toastTimeout);
+    toastTimeout = setTimeout(() => { toast.style.opacity = '0'; }, 2000);
+  }
+
+  function resetDemo() {
+    tasks = [
+      { id: 1, name: "Morning Alchemy", tags: ["30 min", "AM"], note: "Stretch, cold shower, journal one intention", icon: "ti-sun", color: "#8b7df2" },
+      { id: 2, name: "Deep Resonance", tags: ["2h", "focus"], note: "", icon: "ti-brand-codesandbox", color: "#2EC090" },
+      { id: 3, name: "Evening Glow", tags: ["debrief"], note: "Write three gratitudes, plan tomorrow", icon: "ti-moon", color: "#E8A030" },
+      { id: 4, name: "Reading Flow", tags: ["30 min"], note: "The Art of War, chapter 2", icon: "ti-book", color: "#8b7df2" }
+    ];
+    renderTasks();
+    showToast('🔄 Reset to default', true);
+  }
+
+  document.getElementById('resetBtn').addEventListener('click', resetDemo);
+  renderTasks();
+
+  // Close popup on window resize
+  window.addEventListener('resize', () => { if (activePopup) closePopup(false); });
+</script>
+</body>
+</html>

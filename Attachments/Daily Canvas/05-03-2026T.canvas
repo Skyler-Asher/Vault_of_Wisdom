@@ -1,0 +1,34 @@
+{
+	"nodes":[
+		{"id":"6ce8422778a7ec5a","type":"group","x":-1365,"y":-920,"width":2659,"height":1000,"label":"Day "},
+		{"id":"fc17d72a8f498935","type":"text","text":"###  Woke up late","x":85,"y":-560,"width":180,"height":60,"color":"6"},
+		{"id":"f8a005bf97299656","type":"text","text":"Wake up at 6 am every single morning , put 100 alarms ","x":85,"y":-840,"width":250,"height":105,"color":"6"},
+		{"id":"40dbe3c7f7307fbc","type":"text","text":"## Exercise ","x":-891,"y":-660,"width":151,"height":60,"color":"6"},
+		{"id":"6ab664090c2a83d8","type":"text","text":"#### No-Plan ","x":-1060,"y":-800,"width":140,"height":50,"color":"6"},
+		{"id":"f2c015e5ca6d3a4d","type":"text","text":"Real World kings/controllers? \n\n\"https://youtu.be/ZEbm3DkRpsc?si=QjzahdFSLzLORe4U\"","x":175,"y":-310,"width":400,"height":120,"color":"6"},
+		{"id":"5d9f7feea9ebf120","type":"text","text":" I face the problem , How ? ","x":-1310,"y":-190,"width":250,"height":60,"color":"6"},
+		{"id":"f12fece6d8b40059","type":"text","text":"Masturbation - MB ","x":-1310,"y":-340,"width":200,"height":50,"color":"6"},
+		{"id":"fe35f30a7c086b19","type":"text","text":"Problems ","x":-891,"y":-476,"width":132,"height":60,"color":"6"},
+		{"id":"5496f69d7adfea8b","type":"text","text":"\n# Problems\n\n- Exercise Plan with detail on which days to exercise  .\n- Problem Rewiring (Mentioned in the canvas)\n- Trading - How to map out Market structure?\n- Waking up Early \n- Define Kurama Energy and find a way to use it .  \n","x":840,"y":-767,"width":380,"height":307,"color":"4"},
+		{"id":"dc694774b76b61bf","type":"text","text":"#### Plan ","x":-700,"y":-800,"width":129,"height":50,"color":"6"},
+		{"id":"9ae1de636077ccef","type":"text","text":"MTDP -  Made the day productive  \n\n\"by recording the events of day in this canvas file for future reference\"","x":-355,"y":-775,"width":300,"height":140,"color":"6"},
+		{"id":"3668b4b3c7091de3","type":"text","text":"# NPD - Non-Productive-Day ","x":-480,"y":-416,"width":275,"height":106,"color":"6"},
+		{"id":"8ff17bc708587612","type":"text","text":"My goal is to surpass the Greats , so i understood if its true i will face them and i have to beat them , how ? i don't know how i will , but i understand my goal asks me too , so i went emotional overload , thus triggering envy , why was i not born in that world leading family ? , what ifs  ? ,  envy is one of the 7 sins  and i felt that at that moment . ","x":680,"y":-315,"width":434,"height":209,"color":"6"},
+		{"id":"759b68901b47eded","type":"text","text":"##### How To map correct  Market-Structure on \"x\" Time-Frame ?","x":-480,"y":-146,"width":300,"height":80,"color":"6"},
+		{"id":"6e4f730bdf8b4bab","type":"text","text":"# Energy\n\n- Low-Energy \n\t- Me on Bad Days\n- Medium-Energy\n\t- Me on normal days\n- High-Energy\n\t- Me on Good Days\n- Kurama-Energy\n","x":389,"y":-767,"width":373,"height":307,"color":"4"}
+	],
+	"edges":[
+		{"id":"eb93914c9739ba24","fromNode":"3668b4b3c7091de3","fromSide":"bottom","toNode":"759b68901b47eded","toSide":"top","color":"3","label":"Trading"},
+		{"id":"9cc99c9597437a21","fromNode":"3668b4b3c7091de3","fromSide":"top","toNode":"9ae1de636077ccef","toSide":"bottom","label":"me - 8:00pm"},
+		{"id":"d5e5dabf2516932d","fromNode":"3668b4b3c7091de3","fromSide":"right","toNode":"fc17d72a8f498935","toSide":"left","color":"3"},
+		{"id":"50ecbe3951868133","fromNode":"3668b4b3c7091de3","fromSide":"right","toNode":"f2c015e5ca6d3a4d","toSide":"left","label":"tate video"},
+		{"id":"4d245d7e47891672","fromNode":"f2c015e5ca6d3a4d","fromSide":"right","toNode":"8ff17bc708587612","toSide":"left"},
+		{"id":"45ba392ddf37a0c2","fromNode":"3668b4b3c7091de3","fromSide":"left","toNode":"fe35f30a7c086b19","toSide":"right","color":"3","label":" i encounter "},
+		{"id":"0d3397702c405831","fromNode":"fe35f30a7c086b19","fromSide":"left","toNode":"f12fece6d8b40059","toSide":"right","label":"default wiring "},
+		{"id":"ab7149fc3f36211a","fromNode":"fe35f30a7c086b19","fromSide":"bottom","toNode":"5d9f7feea9ebf120","toSide":"right","label":"Rewiring "},
+		{"id":"230ad0126f747042","fromNode":"f8a005bf97299656","fromSide":"bottom","toNode":"fc17d72a8f498935","toSide":"top","label":"re-wire"},
+		{"id":"2b3b8e0fefa8e17a","fromNode":"3668b4b3c7091de3","fromSide":"top","toNode":"40dbe3c7f7307fbc","toSide":"bottom","color":"3"},
+		{"id":"e7af14d4a1bdb223","fromNode":"40dbe3c7f7307fbc","fromSide":"top","toNode":"dc694774b76b61bf","toSide":"bottom","label":"need to"},
+		{"id":"47417e65153ddc24","fromNode":"40dbe3c7f7307fbc","fromSide":"top","toNode":"6ab664090c2a83d8","toSide":"bottom","label":"did this "}
+	]
+}

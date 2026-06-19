@@ -1,0 +1,164 @@
+AI PROJECT NOTES - PERSONAL DAY PLANNER WEB APP
+
+Purpose
+This file is a handoff note for any future AI assistant or coding tool working on this project. Read this before making changes so the project does not need to be rediscovered from scratch each time.
+
+Project Overview
+This folder contains a small local personal planner web app. It is built with plain HTML, CSS, JavaScript, and a tiny Python server. There is no framework, package manager, or build step.
+
+Main files:
+- index.html: the main day planner/checklist page.
+- bank.html: the reusable task bank page.
+- storage.js: shared browser-side storage helper.
+- server.py: local Python server that serves the app and handles saved data.
+- data.json: persistent app data.
+- start.bat: Windows launcher that starts the server and opens the app.
+
+How To Run
+Use start.bat, or run server.py directly with Python from this folder.
+
+The app is served at:
+http://localhost:8000/index.html
+
+Data Flow
+The app saves state through storage.js.
+
+storage.js exposes:
+- store.get(key)
+- store.set(key, value)
+- store.remove(key)
+
+These functions call the local server's /data endpoint. The server reads and writes data.json.
+
+Important saved keys in data.json:
+- monday_schedule_v2: checked/unchecked state for day tasks.
+- day_order_v1: saved section order and task order.
+- day_sections_v1: custom section labels.
+- task_bank_v1: reusable tasks created in the task bank.
+- day_custom_tasks_v1: tasks added from the task bank onto the day page.
+
+Main App Behavior
+index.html contains the day planner. It supports:
+- checkable task cards
+- progress bar
+- date picker
+- collapsible sections
+- edit mode
+- dragging/reordering sections and tasks with SortableJS
+- deleting sections and tasks
+- adding new sections
+- reset modal
+- importing tasks from the task bank
+
+bank.html contains the task bank. It supports:
+- creating reusable tasks
+- assigning task name, tag/duration, note, icon, and color
+- deleting saved bank tasks
+- adding a bank task to the day page
+
+Task Bank Import Behavior
+When a task is added from bank.html to index.html, it is passed through the URL as a bank_task parameter.
+
+The day page then:
+1. reads the task from the URL
+2. creates a day task card
+3. saves it into day_custom_tasks_v1
+4. removes the URL parameter so refresh does not duplicate the task
+
+Important: day_custom_tasks_v1 is required so imported task-bank tasks persist after refresh or app restart.
+
+Known Existing Issues / Caution Areas
+Some files contain visible encoding damage, such as characters like "â€”", "Â·", and garbled emoji text. These usually represent em dashes, bullets, arrows, or emoji that were saved with the wrong encoding. Be careful when editing text-heavy parts of the files.
+
+The JavaScript is mostly inline inside the HTML files. When changing behavior, check for related functions in the same file instead of assuming there are separate modules.
+
+Several save operations are asynchronous. If adding features that save data and immediately reload or navigate, wait for store.set/store.remove to finish where needed.
+
+Future AI Change Rule
+Any AI assistant, coding agent, or automated tool that changes this project should update this file before finishing.
+
+When updating this file, add a short note under "Change Log" with:
+- the date
+- which files were changed
+- what behavior was changed
+- any tests or manual checks performed
+
+This is important so future helpers can understand what changed and why, without having to reverse-engineer the project again.
+
+Change Log
+2026-05-31
+- File changed: index.html
+- Behavior changed: Fixed silent failure where bank tasks appeared to be added ("Added" toast shown) but never appeared on the day page.
+- Root cause: A broken CDN path (sortablejs plugins/AutoScroll/autoscroll.js, which does not exist) was causing a 404 network error. Because both script tags shared the same <script> block boundary, the 404 plus the subsequent Sortable.mount(new Sortable.AutoScroll()) constructor error were silently aborting the entire main app script block — meaning saveCustomDayTasks, buildCustomDayTaskBlock, and the init function never ran at all.
+- Fix: Removed the broken AutoScroll CDN import and the Sortable.mount() call. AutoScroll is already active by default in Sortable.min.js UMD build and does not need to be mounted manually. The scroll settings (scrollSensitivity: 100, scrollSpeed: 30, bubbleScroll: true) in initSortables and initTaskSortable remain and are sufficient.
+- Checks performed: Traced the full import path from bank.html URL parameter through JSON.parse, buildCustomDayTaskBlock, saveCustomDayTasks, and restoreCustomDayTasks. Verified data-custom-task attribute is set on build and queried correctly on restore.
+
+2026-05-30
+- Status: Comprehensive Audit and Architectural Analysis.
+- Details: Performed a full-file review of server.py, storage.js, index.html, and bank.html. Validated the async storage shim and verified the data flow with data.json. Analyzed the SortableJS integration and custom auto-scroll logic. The codebase is confirmed stable and ready for feature expansion.
+2026-05-30
+- Status: Visual Polish: Phase 1 (Cyber-Minimalist Upgrade).
+- Files changed: shared.css, planner.css, index.html, AI_PROJECT_NOTES.txt.
+- Behavior changed: Enhanced the UI aesthetic without changing logic. Completed tasks now feature neon-glow dots. Task cards upgraded to semi-transparent glassmorphism with backdrop-blur and inner light borders. The progress bar now triggers a 'shimmer' animation celebration when reaching 100%. Metadata typography refined with improved spacing.
+- Checks performed: Verified visual styles in local browser. Confirmed that a hard restore point was created in 'stable_backup/' before these changes.
+
+2026-05-30
+- Status: JavaScript Refactor and core.js Integration.
+- Files changed: core.js (new), index.html, bank.html, AI_PROJECT_NOTES.txt.
+- Details: Centralized shared logic and constants into core.js. This includes unified color maps (COLORS), storage keys (KEYS), and utility functions (escHtml, parseTags, shake). Both HTML files now include core.js, eliminating redundant code blocks and ensuring a single source of truth for application behavior. Streamlined the task rendering and import logic between the bank and the day planner.
+- Checks performed: Verified task creation, persistence, bank-to-day importing, and progress tracking across both pages.
+
+2026-05-30
+- Status: CSS Refactor and Modularization.
+- Files changed: shared.css, planner.css, bank.css, index.html, bank.html.
+- Details: Extracted all styles into a modular architecture. Created shared.css for global variables, layout, and navigation. Created planner.css for day-planner specific styles. Cleaned up bank.css to remove redundancy. Both HTML files now link to shared.css and their respective page styles, significantly reducing HTML file size and ensuring visual consistency.
+- Checks performed: Verified visual consistency across both pages in the local browser.
+
+2026-05-30
+- File changed: index.html
+- Behavior changed: drag auto-scroll is now 100% consistent and responsive in both directions.
+- Details: Fixed downward autoscroll by disabling 'pointer-events' on the fixed bottom navigation bar during drags. Previously, the nav bar was "shielding" the bottom of the viewport, preventing the drag cursor from reaching the SortableJS trigger zone. Also harmonized speed/sensitivity settings across all instances.
+- Checks performed: Verified instant upward and downward scroll triggers on all sections.
+
+2026-05-30
+- Status: Core File Renaming for semantic clarity.
+- Files changed: bank.html, bank.css, index.html, AI_PROJECT_NOTES.txt
+- Behavior changed: Task Bank tasks now support multiple comma-separated tags instead of only one tag.
+- Details: new tasks save a tags array while preserving the old duration field for compatibility. Existing old single-tag tasks still display correctly. Task Bank cards render each tag as its own chip, and tasks imported to the day page render multiple tags as separate day-page chips as well.
+- Checks performed: verified Task Bank and day-page scripts parse successfully, opened the Task Bank locally, confirmed the existing saved task still renders its tag, and checked for browser console errors.
+
+2026-05-28
+- File changed: bank.css
+- Behavior/design changed: Task Bank delete button was changed from an icon-only circle back into a labeled pill button to visually match the Add to Day button.
+- Checks performed: CSS-only change; no behavior logic changed.
+
+2026-05-28
+- Files changed: bank.html, bank.css, AI_PROJECT_NOTES.txt
+- Behavior/design changed: Task Bank styling was moved out of bank.html into a dedicated bank.css file, and the saved task display was redesigned from a compact list into a responsive card grid.
+- Details: task cards now use larger visual cards, stronger icon treatment, readable notes, a top color accent, clearer Add to Day action, and a compact icon-only delete button. The icon dropdown text and note placeholder were cleaned of visible encoding damage.
+- Checks performed: verified the Task Bank inline script still parses successfully after the HTML/CSS changes.
+
+2026-05-28
+- File changed: bank.css
+- Behavior/design changed: Task Bank cards were adjusted after feedback that the first grid version felt too wide and rectangular.
+- Details: cards are now constrained to a narrower tile width with a taller height, more vertical spacing, and less awkward text compression.
+- Checks performed: verified the rendered card dimensions changed from about 475x184 to about 280x236 in the local browser, and verified the Task Bank script still parses successfully.
+
+2026-05-28
+- File changed: index.html
+- Behavior changed: tasks added from the task bank to the day page now persist after refresh/restart.
+- Details: added saved custom day-task handling through day_custom_tasks_v1, restored those tasks on page load, and removed them from saved data when deleted from the day.
+- Checks performed: tested adding an existing task-bank task to the day, refreshed the page, confirmed it stayed, then deleted the test import and confirmed it did not return. Also checked that the page had no browser console errors.
+sole errors.
+
+2026-05-30
+- File changed: index.html
+- Behavior changed: Fixed "malformed URI" error when adding tasks from the bank that contain special characters (e.g., '%'). Also enabled adding multiple instances of the same bank task to the day.
+- Details: Removed redundant decodeURIComponent call in the initialization logic that was causing silent failures on special characters. Switched from using static bank-ID to unique instance-IDs for imported tasks. Ensured all persistence operations during import are properly awaited.
+- Checks performed: Verified code for redundant decoding and race conditions.
+
+2026-05-30
+- File changed: index.html
+- Behavior changed: Improved reliability of the "Full Reset" action.
+- Details: Updated resetFull to be an asynchronous function that explicitly awaits the removal of all data keys (state, order, sections, custom tasks) before reloading the page. This prevents a race condition where the page could reload before the server-side data was fully cleared.
+- Checks performed: Verified async/await syntax and logic flow.
