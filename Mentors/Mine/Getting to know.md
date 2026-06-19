@@ -16,7 +16,10 @@
 * Reading self help books
 * playing Minecraft 1.8.9
 * Trading session 
-* 
+* watch porn and fap to it 
+* Backtesting ? minimal ig 
+* full body at home workout 
+* Trying to conciously gain 
 
 ## Patterns
 
