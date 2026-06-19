@@ -109,6 +109,10 @@ Being misunderstood?
 # Quotes 
 
 > "The Past is memories , the future is your imagination only the present is what you have "
+> 
+> ' The past is memories  means that memories of every creature not just your , because if something happened in the past that everyone knows and you forget the past still exists  but if everyone forget the past crumbles , so past exist in mem'
+> ----
+> 
 
 
 
