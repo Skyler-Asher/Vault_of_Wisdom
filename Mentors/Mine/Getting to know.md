@@ -19,6 +19,8 @@
 * Backtesting 
 * full body at home workout 
 * Trying to consciously gain insights from things could be stories/succesfull peopls/ or even objects.
+* doing eye exercise sometimes , did only 2 days .
+* recording trading session analysis
 * 
 
 ## Patterns
