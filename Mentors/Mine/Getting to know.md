@@ -103,3 +103,8 @@ Regret?
 Dependence?
 Mediocrity?
 Being misunderstood?
+
+
+
+# Quotes 
+- 
