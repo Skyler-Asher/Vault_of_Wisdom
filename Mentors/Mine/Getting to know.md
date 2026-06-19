@@ -6,13 +6,16 @@
 * Indulging in porn
 * Gaming(not sure though to think about )
 
-## Habits
+## Stuff that i do 
 
 * Reading web novels
 * Watching web novel recaps
 * Listening to music
 * Drinking Coffee/Shakes/lemon water/
 * Writing with my left hand daily 10 mins 
+* Reading self help books
+* playing Minecraft 1.8.9
+* Trading session 
 * 
 
 ## Patterns
