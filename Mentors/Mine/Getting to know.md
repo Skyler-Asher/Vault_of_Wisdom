@@ -6,98 +6,49 @@
 * Indulging in porn
 * Gaming(not sure though to think about )
 
-# Things I Do
+## My Activities
 
-## Trading
+### Trading & Analysis
 - Trading sessions
-- Backtesting
-- Recording trading session analysis
-  - Pre-session analysis
-  - Post-session analysis
-- Uploading trading content online
+  - Backtesting strategies
+  - Session analysis (pre-session & post-session recordings)
+  - Uploading analysis online
 
-## Learning & Self-Development
-- Reading self-help books
-- Writing with my left hand (10 minutes daily)
-- Trying to consciously gain insights from:
-  - Stories
-  - Successful people
-  - Everyday objects
-- Developing emotional intelligence
-  - Understanding family members' emotions
-  - Learning to better understand strangers
-
-## Entertainment
-- Reading/watching recaps of:
-  - Web novels
-  - Manhwa
-  - Manhua
-  - Manga
+### Entertainment & Leisure
+- Reading recaps (web novels, comics, manhua, manwha, manga)
 - Listening to music
-- Playing Minecraft 1.8.9
-- Watching porn and masturbating
+- Gaming (Minecraft 1.8.9)
+- Casual basketball at home
+- Watching porn/masturbation
 
-## Health & Fitness
-- Full-body home workouts
-- Playing basketball at home
-- Eye exercises (inconsistent)
-
-## Food & Drinks
-- Drinking:
+### Health & Wellness
+- Full-body at-home workouts
+- Eye exercises (inconsistent—only 2 days so far)
+- Beverages
   - Coffee
   - Shakes
   - Lemon water
-- Basic cooking
-  - Eggs
-  - A few simple dishes
+- Cooking basics (eggs and minor dishes)
 
-## Family & Responsibilities
+### Personal Development
+- Daily left-hand writing (10 minutes)
+- Reading self-help books
+- Extracting insights consciously (from stories, successful people, everyday objects)
+- Emotional intelligence awareness (strong with family; still developing with strangers)
+
+### Daily Tasks & Chores
 - Minor household chores
-  - Massaging my mother
-  - Bringing drinking water
-  - Other small errands
+  - Massaging mom
+  - Fetching water
 
-## Technology & PC
-- Customizing my PC
-  - Tweaking settings
-  - Changing appearance
-  - Spending hours on minor improvements
+### Computer Habits
+- Unnecessary PC customization (time sink)
 
 ---
 
-# Things I Should Be Doing (But Keep Avoiding)
-
-## Following Vinh's Guidance
-- Not following Vinh's advice consistently
-- Previously blamed the lack of a phone
-- Realistically avoided it even when I had a phone
-
-## Health & Fitness
-- Being consistent with eye exercises
-
-## Life Skills
-- Learning to cook more than basic meals
-## Patterns
-
-### 1. Unease While Backtesting
-While backtesting, I experience a sense of unease that eventually causes me to quit doing it, even though i enjoy doing it . 
-
-### 2. Happiness While Trading / Backtesting / Thinking Freely
-
-While trading, backtesting, or letting my thoughts run free, I feel a strange sense of happiness.
-
-I do not experience this from gaming or other activities.
-
-It is not the feeling of fulfillment from completing a task, but a different kind of happiness that comes from doing the activity itself.
-
-## Decisions I Keep Making
-
-### 1. Putting Pleasure Over Myself
-
-* Choosing short-term pleasure over long-term benefit.
-
----
-
+## ⚠️ Things I Should Do But Don't (Temporary)
+- Following Vinh's guidance consistently
+- Developing cooking skills beyond basics
 # What I Repeatedly Think
     1. My Family Behaviours , i end up observing them even if i don't want to , such as observing family financial conditions / family member moods etc.
 
