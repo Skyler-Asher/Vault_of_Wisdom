@@ -6,49 +6,50 @@
 * Indulging in porn
 * Gaming(not sure though to think about )
 
-## My Activities
+## Stuff that i do 
 
-### Trading & Analysis
-- Trading sessions
-  - Backtesting strategies
-  - Session analysis (pre-session & post-session recordings)
-  - Uploading analysis online
+* Reading/watching recaps -  web novels/comics/manwha/manhua/mannga
+* Listening to music
+* Drinking Coffee/Shakes/lemon water/
+* Writing with my left hand daily 10 mins 
+* Reading self help books
+* playing Minecraft 1.8.9
+* Trading session 
+* watch porn and fap to it 
+* Backtesting 
+* full body at home workout 
+* Trying to consciously gain insights from things could be stories/succesfull peopls/ or even objects.
+* doing eye exercise sometimes , did only 2 days .
+* recording trading session analysis - ex pre session/post session then uploading them on internet . 
+* killing time with basketball at my house . 
+* only know to cook eggs and some other minor stuff 
+* i have good emotional iq atleast for my family , since recently i have realized that i can't see through strangers exactly probably because i need time and their emotional vulnerability for me to see through them . 
+* doing useless stuff with my pc , such as customizing it even though I can work with the pc as it is I will go waste hours doing stuff to make tiny changes to my pc .
+* not following vinh guidance even a bit now i have the excuse of not having a phone however even when i had a phone i did not follow vinh words , my fault , probablyin the list of thing i should be doing but keep putting off . 
+* doing minor chores at home (massagin my mom/bringing drinking water from near a arroww ,etc )
+* 
 
-### Entertainment & Leisure
-- Reading recaps (web novels, comics, manhua, manwha, manga)
-- Listening to music
-- Gaming (Minecraft 1.8.9)
-- Casual basketball at home
-- Watching porn/masturbation
+## Patterns
 
-### Health & Wellness
-- Full-body at-home workouts
-- Eye exercises (inconsistent—only 2 days so far)
-- Beverages
-  - Coffee
-  - Shakes
-  - Lemon water
-- Cooking basics (eggs and minor dishes)
+### 1. Unease While Backtesting
+While backtesting, I experience a sense of unease that eventually causes me to quit doing it, even though i enjoy doing it . 
 
-### Personal Development
-- Daily left-hand writing (10 minutes)
-- Reading self-help books
-- Extracting insights consciously (from stories, successful people, everyday objects)
-- Emotional intelligence awareness (strong with family; still developing with strangers)
+### 2. Happiness While Trading / Backtesting / Thinking Freely
 
-### Daily Tasks & Chores
-- Minor household chores
-  - Massaging mom
-  - Fetching water
+While trading, backtesting, or letting my thoughts run free, I feel a strange sense of happiness.
 
-### Computer Habits
-- Unnecessary PC customization (time sink)
+I do not experience this from gaming or other activities.
+
+It is not the feeling of fulfillment from completing a task, but a different kind of happiness that comes from doing the activity itself.
+
+## Decisions I Keep Making
+
+### 1. Putting Pleasure Over Myself
+
+* Choosing short-term pleasure over long-term benefit.
 
 ---
 
-## ⚠️ Things I Should Do But Don't (Temporary)
-- Following Vinh's guidance consistently
-- Developing cooking skills beyond basics
 # What I Repeatedly Think
     1. My Family Behaviours , i end up observing them even if i don't want to , such as observing family financial conditions / family member moods etc.
 
