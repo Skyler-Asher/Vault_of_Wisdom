@@ -107,4 +107,9 @@ Being misunderstood?
 
 
 # Quotes 
-- 
+
+> "The Past is memories , the future is your imagination only the present is what you have "
+
+
+
+
