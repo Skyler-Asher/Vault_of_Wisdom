@@ -24,8 +24,8 @@
 * killing time with basketball at my house . 
 * only know to cook eggs and some other minor stuff 
 * i have good emotional iq atleast for my family , since recently i have realized that i can't see through strangers exactly probably because i need time and their emotional vulnerability for me to see through them . 
-* doing useless stuff with my pc , such as customizing it even though i can work with the pc as it is i will go waste hours doing stuff to make tiny changes to my pc .
-* not following vinh guiadance even a bit now i have the excuse of not having a phone however even when i had a phone i did not follow vinh words , my fault , probabyin the list of thing i should be doing but keep putting off . 
+* doing useless stuff with my pc , such as customizing it even though I can work with the pc as it is I will go waste hours doing stuff to make tiny changes to my pc .
+* not following vinh guidance even a bit now i have the excuse of not having a phone however even when i had a phone i did not follow vinh words , my fault , probably in the list of thing i should be doing but keep putting off . 
 * doing minor chores at home (massagin my mom/bringing drinking water from near a arroww ,etc )
 * 
 
