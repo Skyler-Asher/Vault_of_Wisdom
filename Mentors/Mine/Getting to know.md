@@ -6,29 +6,77 @@
 * Indulging in porn
 * Gaming(not sure though to think about )
 
-## Stuff that i do 
+# Things I Do
 
-* Reading/watching recaps -  web novels/comics/manwha/manhua/mannga
-* Listening to music
-* Drinking Coffee/Shakes/lemon water/
-* Writing with my left hand daily 10 mins 
-* Reading self help books
-* playing Minecraft 1.8.9
-* Trading session 
-* watch porn and fap to it 
-* Backtesting 
-* full body at home workout 
-* Trying to consciously gain insights from things could be stories/succesfull peopls/ or even objects.
-* doing eye exercise sometimes , did only 2 days .
-* recording trading session analysis - ex pre session/post session then uploading them on internet . 
-* killing time with basketball at my house . 
-* only know to cook eggs and some other minor stuff 
-* i have good emotional iq atleast for my family , since recently i have realized that i can't see through strangers exactly probably because i need time and their emotional vulnerability for me to see through them . 
-* doing useless stuff with my pc , such as customizing it even though I can work with the pc as it is I will go waste hours doing stuff to make tiny changes to my pc .
-* not following vinh guidance even a bit now i have the excuse of not having a phone however even when i had a phone i did not follow vinh words , my fault , probably in the list of thing i should be doing but keep putting off . 
-* doing minor chores at home (massagin my mom/bringing drinking water from near a arroww ,etc )
-* 
+## Trading
+- Trading sessions
+- Backtesting
+- Recording trading session analysis
+  - Pre-session analysis
+  - Post-session analysis
+- Uploading trading content online
 
+## Learning & Self-Development
+- Reading self-help books
+- Writing with my left hand (10 minutes daily)
+- Trying to consciously gain insights from:
+  - Stories
+  - Successful people
+  - Everyday objects
+- Developing emotional intelligence
+  - Understanding family members' emotions
+  - Learning to better understand strangers
+
+## Entertainment
+- Reading/watching recaps of:
+  - Web novels
+  - Manhwa
+  - Manhua
+  - Manga
+- Listening to music
+- Playing Minecraft 1.8.9
+- Watching porn and masturbating
+
+## Health & Fitness
+- Full-body home workouts
+- Playing basketball at home
+- Eye exercises (inconsistent)
+
+## Food & Drinks
+- Drinking:
+  - Coffee
+  - Shakes
+  - Lemon water
+- Basic cooking
+  - Eggs
+  - A few simple dishes
+
+## Family & Responsibilities
+- Minor household chores
+  - Massaging my mother
+  - Bringing drinking water
+  - Other small errands
+
+## Technology & PC
+- Customizing my PC
+  - Tweaking settings
+  - Changing appearance
+  - Spending hours on minor improvements
+
+---
+
+# Things I Should Be Doing (But Keep Avoiding)
+
+## Following Vinh's Guidance
+- Not following Vinh's advice consistently
+- Previously blamed the lack of a phone
+- Realistically avoided it even when I had a phone
+
+## Health & Fitness
+- Being consistent with eye exercises
+
+## Life Skills
+- Learning to cook more than basic meals
 ## Patterns
 
 ### 1. Unease While Backtesting
