@@ -17,9 +17,10 @@
 * playing Minecraft 1.8.9
 * Trading session 
 * watch porn and fap to it 
-* Backtesting ? minimal ig 
+* Backtesting ?
 * full body at home workout 
-* Trying to conciously gain 
+* Trying to consciously gain insights from things could be stories/succesfull peopls/ or even objects .
+* 
 
 ## Patterns
 
