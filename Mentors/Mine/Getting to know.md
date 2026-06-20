@@ -130,6 +130,10 @@ interesting Counterpoint: If everyone forgets a tree fell in your forest, did it
 > > to use it in a systematic way we can just say most people overestimate what they can achieve in month and underestimate but they can achieve in a year . 
 > > or we can say that most people overestimate what they can achieve in a day and underestimate what they can achieve in a month.
 > > 
+> > and I think this approach or this certain quote can help me deal with my slow path problem.
+> > 
+> > slow path problem- sometimes I think I would have gone further
+> > 
 > > 
 
 
