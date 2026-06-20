@@ -136,10 +136,13 @@ interesting Counterpoint: If everyone forgets a tree fell in your forest, did it
 > > 
 > 
 
-> **Alex Hormozi:** "Most people overestimate what they can achieve in a year and underestimate what they can achieve in a decade."
->
->**My Version:** Most people overestimate what they can achieve in a month and underestimate what they can achieve in a year. Most people overestimate what they can achieve in a day and underestimate what they can achieve in a month. Most people overestimate what they can achieve in an hour and underestimate what they can achieve in a week.
-
-
+> Alex Hormozi: "Most people overestimate what they can achieve in a year and underestimate what they can achieve in a decade."
+> 
+> My Version:
+> 
+> - Most people overestimate what they can achieve in a month and underestimate what they can achieve in a year.
+> - Most people overestimate what they can achieve in a day and underestimate what they can achieve in a month.
+> - Most people overestimate what they can achieve in an hour and underestimate what they can achieve in a week.
+> 
 
 
