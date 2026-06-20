@@ -126,7 +126,7 @@ interesting Counterpoint: If everyone forgets a tree fell in your forest, did it
 ----
 > " most people overestimate what they can achieve in a year and underestimate what they can achieve in a decade"  ~ Alex Hormozi
 > 
-> > 
+> > I have a personal view on this that I would like to share
 > > 
 
 
