@@ -131,9 +131,7 @@ interesting Counterpoint: If everyone forgets a tree fell in your forest, did it
 > - Most people overestimate what they can achieve in a month and underestimate what they can achieve in a year.
 > - Most people overestimate what they can achieve in a day and underestimate what they can achieve in a month.
 > - Most people overestimate what they can achieve in an hour and underestimate what they can achieve in a week.
-
-
-#3### Raw
+###### Raw
 >
  > " most people overestimate what they can achieve in a year and underestimate what they can achieve in a decade"  ~ Alex Hormozi
 > 
@@ -152,3 +150,5 @@ interesting Counterpoint: If everyone forgets a tree fell in your forest, did it
 ---
 
 
+
+---
