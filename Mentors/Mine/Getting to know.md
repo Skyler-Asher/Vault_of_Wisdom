@@ -134,7 +134,8 @@ interesting Counterpoint: If everyone forgets a tree fell in your forest, did it
 > > 
 > > slow path problem- sometimes I think I would have gone further if I choose the slowest way instead of me trying to do 10 task under the day I could have approached it in such a way that I do 1 task for certain amount of day until it until I integrate into myself and then add another so that will make it 2 tasks and repeat it until I have all the 10 tasks under my address but what I did is that I tried to do all 10 tasks under one day and as of right now it's been month and I have failed to even integrate 1 task
 > > 
-> > 
+
+
 
 
 
