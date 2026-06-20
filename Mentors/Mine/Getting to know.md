@@ -124,7 +124,10 @@ Being misunderstood?
 interesting Counterpoint: If everyone forgets a tree fell in your forest, did it not fall?
 
 ----
-> " most people overestimate what they can"
+> " most people overestimate what they can achieve in a year and underestimate what they can achieve in a decade"  ~ Alex Hormozi
+> 
+> > 
+> > 
 
 
 
