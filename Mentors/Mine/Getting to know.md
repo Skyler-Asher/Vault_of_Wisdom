@@ -127,7 +127,8 @@ interesting Counterpoint: If everyone forgets a tree fell in your forest, did it
 > " most people overestimate what they can achieve in a year and underestimate what they can achieve in a decade"  ~ Alex Hormozi
 > 
 > > I have a personal view on this that I would like to share, I think this quote can be used as a system in such a manner that it gives slow progress the chance to shine.
-> > 
+> > to use it in a systematic way we can just say most people overestimate what they can achieve in month and underestimate but they can achieve in a year . 
+> > or we can say that most people overestimate what they can achieve in a day and underestimate what they can achieve in a month.
 > > 
 > > 
 
