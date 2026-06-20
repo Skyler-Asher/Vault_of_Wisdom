@@ -792,5 +792,111 @@
     "bank-1780318267960-1781421210516": false,
     "bank-1781421361092-1781421368555": false,
     "bank-1781421402707-1781421410181": false
-  }
+  },
+  "day_custom_tasks_v1_2026-06-20": [
+    {
+      "id": 1780910358089,
+      "name": "Write With Left Hand",
+      "tags": [
+        "10 min"
+      ],
+      "duration": "10 min",
+      "note": "",
+      "icon": "ti-pencil",
+      "color": "purple",
+      "dayId": "bank-1780910358089-1781942739575"
+    },
+    {
+      "id": 1781421188459,
+      "name": "Tounge Twisters",
+      "tags": [
+        "10min"
+      ],
+      "duration": "10min",
+      "note": "",
+      "icon": "ti-heart-rate-monitor",
+      "color": "amber",
+      "dayId": "bank-1781421188459-1781942744566"
+    },
+    {
+      "id": 1781078017013,
+      "name": "BACK-TESTING",
+      "tags": [
+        "1 hour"
+      ],
+      "duration": "1 hour",
+      "note": "BACK TEST WITH THE IMMEDIATE SESSION RANGE BEING L1",
+      "icon": "ti-chart-line",
+      "color": "purple",
+      "dayId": "bank-1781078017013-1781942749486"
+    },
+    {
+      "id": 1780476798963,
+      "name": "Bath",
+      "tags": [
+        "under 15m"
+      ],
+      "duration": "under 15m",
+      "note": "",
+      "icon": "ti-star",
+      "color": "amber",
+      "dayId": "bank-1780476798963-1781942753902"
+    },
+    {
+      "id": 1780476906802,
+      "name": "Book-Reading",
+      "tags": [
+        "Habit Stacking : Drinks"
+      ],
+      "duration": "Habit Stacking : Drinks",
+      "note": "Read 10 pages of any chosen book",
+      "icon": "ti-book-2",
+      "color": "amber",
+      "dayId": "bank-1780476906802-1781942754838"
+    },
+    {
+      "id": 1780407540001,
+      "name": "Water Refill",
+      "tags": [
+        "under 15m"
+      ],
+      "duration": "under 15m",
+      "note": "Going to the  Arow  to fill water",
+      "icon": "ti-star",
+      "color": "amber",
+      "dayId": "bank-1780407540001-1781942755710"
+    },
+    {
+      "id": 1780307392927,
+      "name": "Exercise",
+      "tags": [
+        "3pm"
+      ],
+      "duration": "3pm",
+      "note": "Use a Full-Body Workout  from a you tube video",
+      "icon": "ti-barbell",
+      "color": "amber",
+      "dayId": "bank-1780307392927-1781942763918"
+    }
+  ],
+  "day_sections_v1_2026-06-20": [
+    {
+      "id": "sec-1781942740475",
+      "label": "My Day"
+    }
+  ],
+  "day_order_v1_2026-06-20": [
+    {
+      "groupId": "sec-1781942740475",
+      "tasks": [
+        "bank-1780910358089-1781942739575",
+        "bank-1781421188459-1781942744566",
+        "bank-1781078017013-1781942749486",
+        "bank-1780476798963-1781942753902",
+        "bank-1780476906802-1781942754838",
+        "bank-1780407540001-1781942755710",
+        "bank-1780307392927-1781942763918"
+      ]
+    }
+  ]
 }
