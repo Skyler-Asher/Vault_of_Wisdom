@@ -1,7 +1,7 @@
 [
-  "obsidian-git",
   "obsidian-icon-folder",
   "calendar",
   "obsidian-local-rest-api",
-  "html-viewer"
+  "html-viewer",
+  "obsidian-git"
 ]

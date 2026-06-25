@@ -1,6 +1,6 @@
 # What I Repeatedly Do
 
-## Addictions
+## Addictionsp
 
 * Masturbation
 * Indulging in porn
