@@ -152,3 +152,19 @@ interesting Counterpoint: If everyone forgets a tree fell in your forest, did it
 
 
 ---
+## Trading Technical stuff 
+	Theory 1 
+1.   Way 1 -- Confirming a Pullback with [0.382 fib level].
+2.   Way 2 -- Confirming a Pullback with the a trend shift in internal Structure . 
+   
+   *Which gives the best bias overall: Way 1, Way 2, or both combined?*
+-------------------------------------------------------------------------------------------------------
+	Theory 2 
+1. Is L2 The limit of  structure identification ?  since beyond L2 I don't know what timeframe closing to look for and almost i get my immediate session range at L2 . 
+   Weekly -->Daily --> 4h -->15m -->L1 --> L2 .... 
+-------------------------------------------------------------------------
+
+	Theory 3 
+1. Which is more beneficial to me ? 
+	  -  Taking Profit at weak Highs/lows
+	  - Taking Profit at fix 1:3 R:R 
