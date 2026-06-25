@@ -156,7 +156,7 @@ interesting Counterpoint: If everyone forgets a tree fell in your forest, did it
 	Theory 1 
 1.   Way 1 -- Confirming a Pullback with [0.382 fib level].
 2.   Way 2 -- Confirming a Pullback with the a trend shift in internal Structure . 
-   
+3. Way 3 -- Confirming a Pullback with [0.278 fib level , 27.8%] 
    *Which gives the best bias overall: Way 1, Way 2, or both combined?*
 -------------------------------------------------------------------------------------------------------
 	Theory 2 
