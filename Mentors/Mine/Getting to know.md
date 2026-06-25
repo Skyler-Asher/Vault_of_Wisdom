@@ -2,7 +2,7 @@
 
 ## Addictions
 
-* Masturbation
+* MasturbationA
 * Indulging in porn
 * Gaming(not sure though to think about )
 

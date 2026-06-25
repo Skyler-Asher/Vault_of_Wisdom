@@ -1,5 +1,7 @@
 {
   "attachmentFolderPath": "Attachments",
   "newFileLocation": "folder",
-  "newFileFolderPath": "Attachments/Files_inside_notes"
+  "newFileFolderPath": "Attachments/Files_inside_notes",
+  "readableLineLength": true,
+  "showInlineTitle": true
 }
