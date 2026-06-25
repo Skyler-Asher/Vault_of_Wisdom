@@ -178,3 +178,5 @@ My Trading Strategy
 3. Supply & Demand :  Bare minimum - imb + Bos (ideally 1 or 2 candles at the bottom of the range )
 4. Premium Pricing  - Demand / Supply Areas must be marked below the in premium pricing . 
 5. Multi time frame analysis : 
+6. The Market structure should not overlap.
+7. Liquidity = strong low/highs , trendlines , demand / supply zones 
