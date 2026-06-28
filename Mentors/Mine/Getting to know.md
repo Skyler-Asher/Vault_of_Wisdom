@@ -231,6 +231,21 @@ Weekly --> Daily --> 4h --> 15m --> L1 --> L2 ....
 
 ## Goals & Future Plans
 
+## Insurance Job
+| Requirement                    | Target                                                                                                                                                                        |
+| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Purpose**                    | Insurance if main_job doesn't work or takes longer than expected                                                                                                              |
+| **Target Income**              | Enough to comfortably pay household bills (define Minimum ₹ later)                                                                                                            |
+| **Time Investment**            | 2-hours/day                                                                                                                                                                   |
+| **Time to Become Employable**  | professional aiming to secure an internship or entry-level role by late 2026, with a strategic 3-year plan to achieve a target income and establish long-term career growth." |
+| **Learning Method**            | **Can be learned primarily on a computer from home**                                                                                                                          |
+| **Work Environment**           | **Can be performed using a computer**                                                                                                                                         |
+| **Degree Requirement**         | Preferably not required                                                                                                                                                       |
+| **AI Resistance**              | Preferably moderate to high                                                                                                                                                   |
+| **Re-entry**                   | Easy to return                                                                                                                                                                |
+| **Market Demand**              | High demand with stable job opportunities                                                                                                                                     |
+| **Compatibility with Trading** | Doesn't consume excessive mental energy or hours                                                                                                                              |
+
 (To be filled)
 
 ---
