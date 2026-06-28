@@ -4,3 +4,6 @@ HTF - 4H , MTF - 15m
 POI - minimum imb + bos + premium pricing. 
 
 
+Execution , Poi mitigation . 
+
+
