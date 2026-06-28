@@ -245,6 +245,7 @@ Weekly --> Daily --> 4h --> 15m --> L1 --> L2 ....
 | **Re-entry**                   | Easy to return                                                                                                                                                                |
 | **Market Demand**              | High demand with stable job opportunities                                                                                                                                     |
 | **Compatibility with Trading** | Doesn't consume excessive mental energy or hours                                                                                                                              |
+|                                |                                                                                                                                                                               |
 
 (To be filled)
 
