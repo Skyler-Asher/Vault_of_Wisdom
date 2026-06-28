@@ -192,6 +192,8 @@ Weekly --> Daily --> 4h --> 15m --> L1 --> L2 ....
 
 (Backtesting)
 
+
+
 ---
 
 ## Conclusions
@@ -201,6 +203,10 @@ Weekly --> Daily --> 4h --> 15m --> L1 --> L2 ....
 ---
 
 # Block 4 — Skills
+
+- **Primary Mission:** Become consistently profitable in trading.
+- **Insurance Policy:** Build one valuable career skill over time. 
+
 
 ## Skills I'm Developing
 
