@@ -145,8 +145,10 @@ interesting Counterpoint: If everyone forgets a tree fell in your forest, did it
 > > 
 >
 
+---
+> The Fight Against Distractions is  not a fight u can win once and rest , it is a fight that you have to win every single time  back to back .
 
-
+>" I will do what is required , ignoring my state of mind  - ex: immense sadness , happiness , pain etc.
 ---
 
 
