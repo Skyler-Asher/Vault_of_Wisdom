@@ -250,3 +250,9 @@ Weekly --> Daily --> 4h --> 15m --> L1 --> L2 ....
 (To be filled)
 
 ---
+
+
+What is the One Good thing i did today that i want to carry over to tommrow ? <Mon,20 Jul 2026 | 21:00>)
+Ans -- I woke up early at 6:30 AM & went for a small walk . 
+
+One amazing facts i learned from chatgpt drilling your wrists/hands while doing pushups make it 1/10 pushups difficulty? <Mon,20 Jul 2026 | 21:00>)
