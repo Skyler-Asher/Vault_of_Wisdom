@@ -1,0 +1,1 @@
+1. Backup plan -- Learn Pine-script and work as a free lancer.
