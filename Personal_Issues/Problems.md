@@ -7,3 +7,4 @@
 4. I am unable to choose what path should I choose , I need money  
 5. My exercise has fallen off too , I am stuck there too .
 6. I also don't go  outside my home too much even though I am 18 , Its to the point of concerning . 
+7. I would like to earn money to for that , at first I choose trading and now for some reason I have left it , but I feel I didn't think much about leaving trading but Gernally I want a source of income . The ideal scenario I have is something like a service buisness , I offer a  skill like video editing and earn money through it . I should be making money in around 3 months .
