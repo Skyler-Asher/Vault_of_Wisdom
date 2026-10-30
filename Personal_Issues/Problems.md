@@ -6,3 +6,4 @@
 
 4. I am unable to choose what path should I choose , I need money  
 5. My exercise has fallen off too , I am stuck there too .
+6. I also don't go  outside my home too much even though I am 18 , Its to the point of concerning . 
