@@ -1,5 +1,6 @@
 
-1. Whenever I face a problem , I run away  to play chess / fap / play games etc. 
+1. Whenever I face a problem , I run away  to play chess / fap / play games etc.  [Problem 1]
+   
 2. Even if I have a 9:30pm alarm set for no phone and 10 pm alarm for sleeping , I don't follow it in a literal way and I don't wake up at 6 am because I put my phone away and I don't have a alarm to wake up . ( I have a broken kitchen timer that I would need to fix  or alternate way)
    
 3. My eyes are not in perfect shape , I neglect them . 
