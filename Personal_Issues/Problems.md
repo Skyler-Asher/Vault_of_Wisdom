@@ -5,12 +5,12 @@
    
 3. [[Problem-3]] --> My eyes are not in perfect shape , I neglect them . 
 
-4. I am unable to choose what path should I choose , I need money  
-5. My exercise has fallen off too , I am stuck there too .
-6. I also don't go  outside my home too much even though I am 18 , Its to the point of concerning . 
+4. [[Problem-4]] --> ___My exercise has fallen off too , I am stuck there too .
+5.[[Problem-5]] --->  I also don't go  outside my home too much even though I am 18 , Its to the point of concerning . 
 ---
 ```
-7. My current situation
+6. My current situation
+   ( I am unable to choose what path should I choose , I need money  )
 
 I want to establish an independent source of income. My desirable target is ₹20,000 per month, although even earning ₹2,000 would be a meaningful achievement because it would give me some financial independence.
 
@@ -24,3 +24,5 @@ I previously pursued trading for almost two years but have moved away from it as
 
 I have considered several possibilities, including video editing and a service-based business, but I haven't established exactly what I want or what direction I should pursue.
 ```
+
+7. I noticed a great deal of imbalance in my face . 
