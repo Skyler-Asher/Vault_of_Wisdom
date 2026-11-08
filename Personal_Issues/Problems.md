@@ -1,5 +1,5 @@
 
-1.  [[Problem 1]] -->Whenever I face a problem , I run away  to play chess / fap / play games etc. 
+1.  [[Problem 1]] -->Whenever I face a problem , I run away  to play chess / fap / play games etc. [^1]
    
 2. [[Problems2]] --> Even if I have a 9:30pm alarm set for no phone and 10 pm alarm for sleeping , I don't follow it in a literal way and I don't wake up at 6 am because I put my phone away and I don't have a alarm to wake up . ( I have a broken kitchen timer that I would need to fix  or alternate way)
    
@@ -26,3 +26,5 @@ I have considered several possibilities, including video editing and a service-b
 ```
 
 7. I noticed a great deal of imbalance in my face . 
+
+[^1]: Phycological 
