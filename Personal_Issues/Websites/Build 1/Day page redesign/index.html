@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Day — Designed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="icons/tabler-icons.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="storage.js"></script>
+<script src="core.js"></script>
+<script>
+// Guard: if storage.js failed to load (e.g. opened as file://) show a clear message
+window.addEventListener('DOMContentLoaded', () => {
+  if (typeof window.store === 'undefined') {
+    document.body.innerHTML = `
+      <div style="font-family:'DM Sans',sans-serif;background:#0d0d0f;color:#f0efe8;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem;text-align:center">
+        <div>
+          <div style="font-size:2rem;margin-bottom:1rem">⚠️</div>
+          <div style="font-size:1.1rem;font-weight:700;margin-bottom:0.5rem">Server not running</div>
+          <div style="font-size:0.85rem;color:#888885;line-height:1.7;max-width:340px">
+            This app needs the local server to work.<br>
+            Run <code style="background:#1e1e22;padding:2px 7px;border-radius:5px">start.bat</code> (or <code style="background:#1e1e22;padding:2px 7px;border-radius:5px">python server.py</code>),<br>
+            then open <strong>http://localhost:8000/index.html</strong>
+          </div>
+        </div>
+      </div>`;
+  }
+});
+</script>
+<link rel="stylesheet" href="shared.css">
+<link rel="stylesheet" href="planner.css">
+<style> 
+  .page { opacity: 0; } 
+
+  /* ---------- FLOATING GLASSMORPHIC POPUP ---------- */
+  .note-popup {
+    position: fixed;
+    z-index: 1000;
+    background: rgba(26, 26, 31, 0.68);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(124, 111, 224, 0.25);
+    border-radius: 16px;
+    width: 320px;
+    box-shadow: 0 20px 40px -12px rgba(0,0,0,0.5), 0 0 0 1px rgba(139, 125, 242, 0.15), 0 0 20px rgba(139, 125, 242, 0.2);
+    animation: floatIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
+  }
+
+  @keyframes floatIn {
+    from { opacity: 0; transform: translateY(10px) scale(0.96); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.9rem 1.2rem;
+    background: linear-gradient(135deg, rgba(139,125,242,0.15), rgba(139,125,242,0.05));
+    border-bottom: 1px solid rgba(139,125,242,0.2);
+    border-radius: 16px 16px 0 0;
+  }
+  .popup-header span {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.02em;
+    color: #8b7df2;
+  }
+  .popup-close {
+    background: none;
+    border: none;
+    color: #5f5e5a;
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 4px;
+    border-radius: 8px;
+    transition: all 0.2s;
+  }
+  .popup-close:hover {
+    color: #f5f3f0;
+    background: rgba(255,255,255,0.1);
+  }
+  .popup-body {
+    padding: 1.2rem;
+  }
+  .popup-body textarea {
+    width: 100%;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 0.8rem;
+    color: #f5f3f0;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    resize: vertical;
+    min-height: 110px;
+    transition: border 0.2s, box-shadow 0.2s;
+  }
+  .popup-body textarea:focus {
+    outline: none;
+    border-color: #8b7df2;
+    box-shadow: 0 0 0 3px rgba(139, 125, 242, 0.35);
+  }
+  .char-counter {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 0.4rem;
+    font-size: 0.65rem;
+    color: #5f5e5a;
+    gap: 0.3rem;
+    align-items: center;
+  }
+  .char-counter .counter-number {
+    font-family: monospace;
+    font-weight: 500;
+  }
+  .popup-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.6rem;
+    padding: 0.8rem 1.2rem 1.2rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .popup-btn {
+    padding: 0.45rem 1.2rem;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+  }
+  .popup-btn.save {
+    background: linear-gradient(135deg, #8b7df2, #9b8ef5);
+    color: white;
+    box-shadow: 0 2px 6px rgba(139,125,242,0.3);
+  }
+  .popup-btn.save:hover {
+    transform: scale(0.97);
+    opacity: 0.92;
+  }
+  .popup-btn.cancel {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.06);
+    color: #b5b3ad;
+  }
+  .popup-btn.cancel:hover {
+    background: rgba(255,255,255,0.12);
+  }
+
+  /* ---------- UPGRADED SLEEK CARD ACTIONS ---------- */
+  .card-actions-wrap {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+  .action-btn {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    color: #6e6d6a;
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    font-size: 0.95rem;
+    padding: 0;
+  }
+  .action-btn:hover {
+    transform: translateY(-1px);
+  }
+  .action-btn.note-btn:hover {
+    background: rgba(139, 125, 242, 0.14);
+    border-color: rgba(139, 125, 242, 0.4);
+    color: #8b7df2;
+  }
+  
+  /* Dynamic indicator state when a note has content */
+  .action-btn.note-btn.has-content {
+    background: rgba(139, 125, 242, 0.09);
+    border-color: rgba(139, 125, 242, 0.3);
+    color: #9b8ef5;
+    box-shadow: 0 0 10px rgba(139, 125, 242, 0.1);
+  }
+  .action-btn.note-btn.has-content:hover {
+    background: rgba(139, 125, 242, 0.18);
+    border-color: rgba(139, 125, 242, 0.5);
+  }
+  .action-btn.delete-btn:hover {
+    background: rgba(239, 68, 68, 0.12);
+    border-color: rgba(239, 68, 68, 0.35);
+    color: #ef4444;
+  }
+  
+  .card-confirm {
+    display: none;
+    align-items: center;
+    gap: 4px;
+    background: rgba(239, 68, 68, 0.08);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    border-radius: 8px;
+    padding: 2px 6px;
+    height: 28px;
+  }
+  .card-confirm.visible {
+    display: flex;
+    animation: actionFadeIn 0.15s ease-out;
+  }
+  @keyframes actionFadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  .confirm-label {
+    font-size: 0.65rem;
+    color: #ef4444;
+    font-weight: 600;
+    margin-right: 2px;
+  }
+  .confirm-yes, .confirm-no {
+    background: none;
+    border: none;
+    padding: 2px 6px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  .confirm-yes { color: #ef4444; background: rgba(239, 68, 68, 0.1); }
+  .confirm-no { color: #b5b3ad; }
+  .confirm-yes:hover { background: rgba(239, 68, 68, 0.2); }
+  .confirm-no:hover { color: #fff; }
+
+  /* ---------- PLANNER COMPONENT OVERRIDES ---------- */
+  .card-detail.flash {
+    animation: noteFlash 0.4s ease-out;
+  }
+  @keyframes noteFlash {
+    0% { background: rgba(139,125,242,0); }
+    50% { background: rgba(139, 125, 242, 0.12); }
+    100% { background: transparent; }
+  }
+
+  /* ---------- TOAST NOTIFICATION ---------- */
+  .toast {
+    position: fixed;
+    bottom: 5.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1a1a1f;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(124, 111, 224, 0.25);
+    padding: 0.6rem 1.4rem;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #f5f3f0;
+    z-index: 1100;
+    pointer-events: none;
+    white-space: nowrap;
+    transition: opacity 0.2s;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+
+  @media (max-width: 640px) {
+    .note-popup {
+      width: calc(100vw - 2rem);
+      left: 1rem !important;
+      right: 1rem !important;
+      top: auto !important;
+      bottom: 5.5rem !important;
+      transform: none !important;
+      animation: slideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes slideUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="header-top">
+      <div class="date-chip" id="date-chip"><i class="ti ti-calendar chip-icon"></i><span id="date-chip-label">Monday · Day 1</span><i class="ti ti-chevron-down chip-icon" style="font-size:11px;opacity:0.5"></i></div>
+      <div id="date-picker-anchor" style="position:relative;height:0;width:0;overflow:visible"></div>
+      <div class="header-actions">
+        <div class="add-section-inline" id="add-section-row">
+          <input type="text" id="section-name-input" placeholder="New section…" maxlength="40">
+          <button class="add-section-btn" onclick="addSection()"><i class="ti ti-plus"></i></button>
+        </div>
+        <button class="edit-btn" id="edit-btn" onclick="enterEditMode()"><i class="ti ti-pencil"></i> Edit</button>
+        <button class="cancel-btn" id="cancel-btn" onclick="cancelEditMode()"><i class="ti ti-x"></i> Cancel</button>
+      </div>
+    </div>
+    <h1>Design<br>your <em>day.</em></h1>
+    <div class="edit-banner"><i class="ti ti-drag-drop"></i> Hold the left strip to drag · tap Delete to remove</div>
+    <div>
+      <div class="progress-top">
+        <span class="progress-count" id="done-count">0 / 0 complete</span>
+        <span id="prog-label">Click a block to check it off</span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="prog-bar"></div></div>
+    </div>
+  </div>
+
+  <div class="empty-day-state" id="empty-day-state">
+    <i class="ti ti-layout-list"></i>
+    <p>Nothing here yet.</p>
+    <span>Add a section above, then pull tasks in from the Task Bank.</span>
+  </div>
+
+  <div class="complete-banner" id="complete-banner">
+    <p>Day complete. You showed up.</p>
+    <span>That's all it takes. Do it again tomorrow.</span>
+  </div>
+
+<div style="text-align:center;margin-top:2rem">
+    <button onclick="resetDay()" id="reset-btn">Reset day</button>
+  </div>
+
+</div>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+  <a class="nav-item active" href="index.html">
+    <i class="ti ti-calendar-week"></i>
+    Day
+  </a>
+  <a class="nav-item" href="bank.html">
+    <i class="ti ti-stack-2"></i>
+    Tasks
+  </a>
+</nav>
+
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
+
+<script>
+// ── GLOBALS ───────────────────────────────────────────────
+let editMode = false;
+let sortable = null;
+let taskSortables = [];
+let snapshotHTML = '';
+let snapshotState = '';
+let snapshotOrder = '';
+let snapshotSections = '';
+let snapshotCustomDayTasks = '';
+let currentDateStr = getISODateString(new Date());
+
+function getDayKey(baseKey) {
+  return `${baseKey}_${currentDateStr}`;
+}
+
+// ── CORE LOGIC ────────────────────────────────────────────
+function getTotal() { return document.querySelectorAll('.tl-block[data-color]').length; }
+
+async function saveState() {
+  const state = {};
+  document.querySelectorAll('.tl-block[data-color]').forEach(b => {
+    state[b.dataset.id] = b.querySelector('[data-check]').classList.contains('checked');
+  });
+  await store.set(getDayKey(KEYS.STATE), state);
+}
+
+async function restoreState() {
+  const state = await store.get(getDayKey(KEYS.STATE));
+  if (!state) return;
+  document.querySelectorAll('.tl-block[data-color]').forEach(block => {
+    if (state[block.dataset.id]) {
+      const card=block.querySelector('.tl-card'), check=block.querySelector('[data-check]'), dot=block.querySelector('[data-dot]');
+      const color=COLORS[block.dataset.color]||COLORS.purple;
+      check.classList.add('checked'); check.style.background=color.hex;
+      card.classList.add('done-card'); if(dot) dot.classList.add('done');
+    }
+  });
+  updateProgress();
+}
+
+function toggle(block) {
+  if (editMode) return;
+  const card=block.querySelector('.tl-card'), check=block.querySelector('[data-check]'), dot=block.querySelector('[data-dot]');
+  const color=COLORS[block.dataset.color]||COLORS.purple, isDone=check.classList.contains('checked');
+  if(isDone){check.classList.remove('checked');check.style.background='';card.classList.remove('done-card');if(dot)dot.classList.remove('done');}
+  else{check.classList.add('checked');check.style.background=color.hex;card.classList.add('done-card');if(dot)dot.classList.add('done');}
+  updateProgress();
+  saveState();
+}
+
+function updateEmptyState() {
+  const el = document.getElementById('empty-day-state');
+  if (!el) return;
+  const hasSections = document.querySelectorAll('.section-group').length > 0;
+  el.style.display = hasSections ? 'none' : 'block';
+}
+
+function updateProgress(){
+  const total=getTotal(), done=document.querySelectorAll('[data-check].checked').length, pct=total?Math.round((done/total)*100):0;
+  const bar = document.getElementById('prog-bar');
+  if (bar) {
+    bar.style.width=pct+'%';
+    bar.classList.toggle('full', total > 0 && done === total);
+  }
+  const count = document.getElementById('done-count');
+  if (count) count.textContent=done+' / '+total+' complete';
+  const banner = document.getElementById('complete-banner');
+  if (banner) banner.classList.toggle('visible',total>0&&done===total);
+  const label = document.getElementById('prog-label');
+  if (label) label.textContent=done===0?'Click a block to check it off':done===total?'You showed up. \u2726':pct+'% through your day';
+  updateEmptyState();
+}
+
+// ── SECTIONS ──────────────────────────────────────────────
+function toggleSection(header) {
+  if (editMode) return;
+  const group = header.closest('.section-group');
+  const tasks = group.querySelector('.section-tasks');
+  const isCollapsed = tasks.classList.contains('collapsed');
+  tasks.classList.toggle('collapsed', !isCollapsed);
+  header.classList.toggle('collapsed', !isCollapsed);
+  updateSectionCount(header);
+}
+
+function updateSectionCount(header) {
+  const group = header.closest('.section-group');
+  const taskCount = group.querySelectorAll('.tl-block[data-color]').length;
+  const countEl = header.querySelector('.section-count');
+  if (countEl) countEl.textContent = taskCount + ' task' + (taskCount !== 1 ? 's' : '');
+}
+
+function updateAllSectionCounts() {
+  document.querySelectorAll('.section-item[data-type="section"]').forEach(updateSectionCount);
+}
+
+async function addSection() {
+  const inp = document.getElementById('section-name-input');
+  const name = inp.value.trim();
+  if (!name) { inp.focus(); shake(inp); return; }
+  const id = 'sec-' + Date.now();
+  const groupEl = buildSectionGroupEl(id, name);
+  const anchor = document.getElementById('complete-banner');
+  anchor.parentNode.insertBefore(groupEl, anchor);
+  inp.value = '';
+  inp.focus();
+  if (editMode && typeof Sortable !== 'undefined') {
+    initTaskSortable(groupEl.querySelector('.section-tasks'));
+  }
+  await saveOrder();
+  await saveSections();
+}
+
+function buildSectionGroupEl(id, label) {
+  const group = document.createElement('div');
+  group.className = 'section-group';
+  group.dataset.groupId = id;
+  group.innerHTML = `
+    <div class="section-item" data-type="section" data-id="${id}" onclick="toggleSection(this)">
+      <i class="ti ti-chevron-down section-chevron"></i>
+      <div class="section-line"></div>
+      <span class="section-text">${escHtml(label)}</span>
+      <span class="section-count"></span>
+      <div class="section-line"></div>
+      <button class="section-delete-btn" onclick="deleteSection(event,this)"><i class="ti ti-trash"></i> Delete</button>
+    </div>
+    <div class="section-tasks"></div>
+  `;
+  return group;
+}
+
+function deleteSection(e, btn) {
+  e.stopPropagation();
+  const group = btn.closest('.section-group');
+  if (group) {
+    group.style.transition = 'opacity 0.2s, transform 0.2s';
+    group.style.opacity = '0';
+    group.style.transform = 'translateX(12px)';
+    setTimeout(async () => {
+      const deletedIds = new Set(
+        Array.from(group.querySelectorAll('.tl-block[data-color]')).map(b => b.dataset.id)
+      );
+      customDayTasks = customDayTasks.filter(t => !deletedIds.has(t.dayId || ('bank-' + t.id)));
+      group.remove();
+      await Promise.all([saveOrder(), saveSections(), saveState(), saveCustomDayTasks()]);
+      updateProgress();
+    }, 200);
+  }
+}
+
+// ── EDIT MODE ─────────────────────────────────────────────
+function enterEditMode() {
+  editMode = true;
+  snapshotHTML = document.querySelector('.page').innerHTML;
+  snapshotState          = store._cache ? JSON.stringify(store._cache[getDayKey(KEYS.STATE)]    ?? '') : '';
+  snapshotOrder          = store._cache ? JSON.stringify(store._cache[getDayKey(KEYS.ORDER)]    ?? '') : '';
+  snapshotSections       = store._cache ? JSON.stringify(store._cache[getDayKey(KEYS.SECTIONS)] ?? '') : '';
+  snapshotCustomDayTasks = JSON.stringify(customDayTasks);
+  document.body.classList.add('edit-mode');
+  const btn = document.getElementById('edit-btn');
+  btn.innerHTML = '<i class="ti ti-check"></i> Done';
+  btn.classList.add('done-btn');
+  btn.onclick = exitEditMode;
+  document.querySelectorAll('.tl-block[data-color]').forEach(b => {
+    b._onclick = b.getAttribute('onclick');
+    b.removeAttribute('onclick');
+  });
+  document.querySelectorAll('.section-tasks.collapsed').forEach(t => {
+    t.classList.remove('collapsed');
+    t.closest('.section-group').querySelector('.section-item').classList.remove('collapsed');
+  });
+  initSortables();
+}
+
+async function exitEditMode() {
+  editMode = false;
+  document.body.classList.remove('edit-mode');
+  const btn = document.getElementById('edit-btn');
+  btn.innerHTML = '<i class="ti ti-pencil"></i> Edit';
+  btn.classList.remove('done-btn');
+  btn.onclick = enterEditMode;
+  document.querySelectorAll('.tl-block[data-color]').forEach(b => {
+    if (b._onclick) b.setAttribute('onclick', b._onclick);
+  });
+  document.querySelectorAll('.card-confirm.visible').forEach(c => c.classList.remove('visible'));
+  destroySortables();
+  await Promise.all([saveOrder(), saveSections(), saveState()]);
+  updateProgress();
+  updateAllSectionCounts();
+}
+
+async function cancelEditMode() {
+  destroySortables();
+  document.querySelector('.page').innerHTML = snapshotHTML;
+  editMode = false;
+  document.body.classList.remove('edit-mode');
+  
+  const stateKey = getDayKey(KEYS.STATE);
+  const orderKey = getDayKey(KEYS.ORDER);
+  const sectionsKey = getDayKey(KEYS.SECTIONS);
+  const customDayTasksKey = getDayKey(KEYS.CUSTOM_DAY_TASKS);
+  
+  const promises = [];
+  if (snapshotState)    promises.push(store.set(stateKey, JSON.parse(snapshotState)));
+  else                  promises.push(store.remove(stateKey));
+  
+  if (snapshotOrder)    promises.push(store.set(orderKey, JSON.parse(snapshotOrder)));
+  else                  promises.push(store.remove(orderKey));
+  
+  if (snapshotSections) promises.push(store.set(sectionsKey, JSON.parse(snapshotSections)));
+  else                  promises.push(store.remove(sectionsKey));
+  
+  customDayTasks = snapshotCustomDayTasks ? JSON.parse(snapshotCustomDayTasks) : [];
+  promises.push(store.set(customDayTasksKey, customDayTasks));
+  
+  await Promise.all(promises);
+  
+  const btn = document.getElementById('edit-btn');
+  if (btn) { btn.innerHTML = '<i class="ti ti-pencil"></i> Edit'; btn.classList.remove('done-btn'); btn.onclick = enterEditMode; }
+  await restoreState();
+}
+
+// ── SORTABLES ─────────────────────────────────────────────
+function initSortables() {
+  destroySortables();
+  const page = document.querySelector('.page');
+  sortable = Sortable.create(page, {
+    animation: 200, handle: '.section-item', draggable: '.section-group',
+    ghostClass: 'sortable-ghost', chosenClass: 'sortable-chosen', dragClass: 'sortable-drag',
+    scroll: true, scrollSensitivity: 100, scrollSpeed: 30, bubbleScroll: true,
+    onStart() { document.body.classList.add('is-dragging'); document.documentElement.style.scrollBehavior = 'auto'; },
+    onEnd(evt) {
+      document.body.classList.remove('is-dragging'); document.documentElement.style.scrollBehavior = '';
+      if (evt.item) { evt.item.classList.add('drag-landed'); setTimeout(() => evt.item.classList.remove('drag-landed'), 400); }
+      saveOrder(); saveSections();
+    }
+  });
+  document.querySelectorAll('.section-tasks').forEach(initTaskSortable);
+}
+
+function initTaskSortable(container) {
+  const s = Sortable.create(container, {
+    animation: 200, group: 'day-tasks', handle: '.drag-handle', draggable: '.tl-block[data-color]',
+    ghostClass: 'sortable-ghost', chosenClass: 'sortable-chosen', dragClass: 'sortable-drag',
+    scroll: true, scrollSensitivity: 100, scrollSpeed: 30, bubbleScroll: true,
+    onStart() { document.body.classList.add('is-dragging'); document.documentElement.style.scrollBehavior = 'auto'; },
+    onEnd(evt) {
+      document.body.classList.remove('is-dragging'); document.documentElement.style.scrollBehavior = '';
+      if (evt.item) { evt.item.classList.add('drag-landed'); setTimeout(() => evt.item.classList.remove('drag-landed'), 400); }
+      saveOrder(); updateAllSectionCounts();
+    }
+  });
+  taskSortables.push(s);
+}
+
+function destroySortables() {
+  if (sortable) { sortable.destroy(); sortable = null; }
+  taskSortables.forEach(s => s.destroy());
+  taskSortables = [];
+}
+
+// ── PERSISTENCE ───────────────────────────────────────────
+async function saveOrder() {
+  const groups = Array.from(document.querySelectorAll('.section-group')).map(g => {
+    const tasks = Array.from(g.querySelectorAll('.tl-block[data-color]')).map(b => b.dataset.id);
+    return { groupId: g.dataset.groupId, tasks };
+  });
+  await store.set(getDayKey(KEYS.ORDER), groups);
+}
+
+async function saveSections() {
+  const sections = Array.from(document.querySelectorAll('.section-item[data-type="section"]')).map(el => ({
+    id: el.dataset.id,
+    label: el.querySelector('.section-text').textContent
+  }));
+  await store.set(getDayKey(KEYS.SECTIONS), sections);
+}
+
+async function restoreOrder() {
+  const groups = await store.get(getDayKey(KEYS.ORDER));
+  if (!groups) return; 
+  const sections = await store.get(getDayKey(KEYS.SECTIONS)) || [];
+  const labelMap = {};
+  sections.forEach(s => { labelMap[s.id] = s.label; });
+  const page = document.querySelector('.page');
+  const anchor = document.getElementById('complete-banner');
+  groups.forEach(({ groupId, tasks }) => {
+    const label = labelMap[groupId] || 'Untitled';
+    const group = buildSectionGroupEl(groupId, label);
+    page.insertBefore(group, anchor);
+  });
+}
+
+async function restoreSections() {}
+
+// ── CUSTOM TASKS (BANK) ───────────────────────────────────
+let customDayTasks = [];
+
+async function saveCustomDayTasks() {
+  await store.set(getDayKey(KEYS.CUSTOM_DAY_TASKS), customDayTasks);
+}
+
+function buildCustomDayTaskBlock(task) {
+  const c = COLORS[task.color] || COLORS.purple;
+  const block = document.createElement('div');
+  block.className = 'tl-block bank-imported';
+  block.setAttribute('onclick', 'toggle(this)');
+  block.dataset.color = task.color || 'purple';
+  block.dataset.id = task.dayId || ('bank-' + task.id);
+  block.dataset.customTask = 'true';
+  
+  const tags = getTaskTags(task);
+  const durationTag = tags.map((tag, index) =>
+    `<span class="tag ${index === 0 ? 'ml-auto' : ''}" style="background:${c.dim};color:${c.hex};border:1px solid ${c.border}">${escHtml(tag)}</span>`
+  ).join('');
+
+  const noteHtml = `<div class="card-detail" style="${task.note ? '' : 'display:none;'}">${escHtml(task.note || '')}</div>`;
+  const hasNoteClass = task.note && task.note.trim() ? 'has-content' : '';
+
+  block.innerHTML = `
+    <div class="tl-spine">
+      <div class="tl-dot" style="background:${c.hex}" data-dot></div>
+      <div class="tl-line"></div>
+    </div>
+    <div class="tl-card">
+      <div class="drag-handle"><i class="ti ti-grip-vertical"></i></div>
+      <div class="tl-check" data-check><i class="ti ti-check"></i></div>
+      <div class="card-body">
+        <div class="card-top">
+          <i class="ti ${escHtml(task.icon || 'ti-star')} card-icon" style="color:${c.hex}"></i>
+          <span class="card-title">${escHtml(task.name)}</span>
+          ${durationTag}
+        </div>
+        ${noteHtml}
+      </div>
+      <div class="card-actions-wrap">
+        <button class="action-btn note-btn ${hasNoteClass}" onclick="openNotePopupEvent(event, this)" title="Task Note">
+          <i class="ti ti-notes"></i>
+        </button>
+        <button class="action-btn delete-btn" onclick="showConfirm(event,this)" title="Delete Task">
+          <i class="ti ti-trash"></i>
+        </button>
+        <div class="card-confirm">
+          <span class="confirm-label">Sure?</span>
+          <button class="confirm-yes" onclick="confirmDelete(event,this)">Yes</button>
+          <button class="confirm-no" onclick="cancelConfirm(event,this)">No</button>
+        </div>
+      </div>
+    </div>
+  `;
+  return block;
+}
+
+async function restoreCustomDayTasks() {
+  customDayTasks = await store.get(getDayKey(KEYS.CUSTOM_DAY_TASKS)) || [];
+  const order = await store.get(getDayKey(KEYS.ORDER)) || [];
+
+  // Build a map: dayId → task for O(1) lookup
+  const taskMap = {};
+  customDayTasks.forEach(task => {
+    const id = task.dayId || ('bank-' + task.id);
+    taskMap[id] = task;
+  });
+
+  // Append tasks in the EXACT sequence recorded in day_order_v1 (respects drag order)
+  order.forEach(({ groupId, tasks: taskIds }) => {
+    const container = document.querySelector(`.section-group[data-group-id="${groupId}"] .section-tasks`);
+    if (!container) return;
+    taskIds.forEach(id => {
+      if (document.querySelector(`[data-id="${id}"]`)) return;
+      const task = taskMap[id];
+      if (task) container.appendChild(buildCustomDayTaskBlock(task));
+    });
+  });
+}
+
+// ── DELETE / CONFIRM ──────────────────────────────────────
+function showConfirm(e, btn) {
+  e.stopPropagation();
+  document.querySelectorAll('.card-confirm.visible').forEach(c => {
+    c.classList.remove('visible');
+    c.closest('.card-actions-wrap').querySelector('.delete-btn').style.display = '';
+  });
+  btn.style.display = 'none';
+  btn.nextElementSibling.classList.add('visible');
+}
+function cancelConfirm(e, btn) {
+  e.stopPropagation();
+  const wrap = btn.closest('.card-actions-wrap');
+  wrap.querySelector('.card-confirm').classList.remove('visible');
+  wrap.querySelector('.delete-btn').style.display = '';
+}
+function confirmDelete(e, btn) {
+  e.stopPropagation();
+  const block = btn.closest('.tl-block');
+  block.style.transition = 'opacity 0.2s, transform 0.2s';
+  block.style.opacity = '0';
+  block.style.transform = 'translateX(14px)';
+  setTimeout(async () => {
+    const bid = block.dataset.id;
+    customDayTasks = customDayTasks.filter(t => (t.dayId || ('bank-' + t.id)) !== bid);
+    block.remove();
+    await Promise.all([saveOrder(), saveSections(), saveState(), saveCustomDayTasks()]);
+    updateProgress();
+    updateAllSectionCounts();
+  }, 200);
+}
+
+// ── RESET ─────────────────────────────────────────────────
+function resetDay() {
+  const modal = document.getElementById('reset-modal');
+  if (modal) modal.style.display='flex';
+  else _resetChecks();
+}
+function _resetChecks() {
+  store.remove(getDayKey(KEYS.STATE));
+  document.querySelectorAll('.tl-block[data-color]').forEach(block => {
+    const card=block.querySelector('.tl-card'), check=block.querySelector('[data-check]'), dot=block.querySelector('[data-dot]');
+    check.classList.remove('checked'); check.style.background='';
+    card.classList.remove('done-card'); if(dot) dot.classList.remove('done');
+  });
+  updateProgress();
+}
+function resetChecksOnly() { document.getElementById('reset-modal').style.display='none'; _resetChecks(); }
+async function resetFull() {
+  document.getElementById('reset-modal').style.display='none';
+  const stateKey = getDayKey(KEYS.STATE);
+  const orderKey = getDayKey(KEYS.ORDER);
+  const sectionsKey = getDayKey(KEYS.SECTIONS);
+  const customDayTasksKey = getDayKey(KEYS.CUSTOM_DAY_TASKS);
+  await Promise.all([
+    store.remove(stateKey),
+    store.remove(orderKey),
+    store.remove(sectionsKey),
+    store.remove(customDayTasksKey)
+  ]);
+  location.reload();
+}
+function closeResetModal() { document.getElementById('reset-modal').style.display='none'; }
+
+// ── INIT ──────────────────────────────────────────────────
+async function init() {
+  const params = new URLSearchParams(window.location.search);
+  const raw = params.get('bank_task');
+  
+  // Hook up initial date from URL
+  const urlDate = params.get('date');
+  let initialDate = new Date();
+  if (urlDate) {
+    const parts = urlDate.split('-');
+    if (parts.length === 3) {
+      const year = parseInt(parts[0], 10);
+      const month = parseInt(parts[1], 10) - 1;
+      const day = parseInt(parts[2], 10);
+      const parsed = new Date(year, month, day);
+      if (!isNaN(parsed.getTime())) {
+        initialDate = parsed;
+      }
+    }
+  }
+  const initialDateStr = getISODateString(initialDate);
+  currentDateStr = initialDateStr;
+  
+  fp.setDate(initialDate);
+  formatDateChip(initialDate);
+  updateNavLinks(initialDateStr);
+  
+  await restoreSections();
+  await restoreOrder();
+  await restoreCustomDayTasks();
+  await restoreState();
+  updateAllSectionCounts();
+
+  document.querySelector('.page').style.transition = 'opacity 0.2s ease';
+  document.querySelector('.page').style.opacity = '1';
+
+  if (raw) {
+    try {
+      const task = JSON.parse(raw);
+      const instanceId = 'bank-' + task.id + '-' + Date.now();
+
+      let target = document.querySelector('.section-tasks');
+      if (!target) {
+        const group = buildSectionGroupEl('sec-' + Date.now(), 'My Day');
+        document.querySelector('.page').insertBefore(group, document.getElementById('complete-banner'));
+        await saveOrder();
+        await saveSections();
+        target = group.querySelector('.section-tasks');
+      }
+
+      const dayTask = { ...task, dayId: instanceId };
+      customDayTasks.push(dayTask);
+      target.appendChild(buildCustomDayTaskBlock(dayTask));
+      await saveCustomDayTasks();
+      updateProgress();
+      await saveOrder();
+      
+      // Clear bank_task but keep the date in URL
+      const newParams = new URLSearchParams(window.location.search);
+      newParams.delete('bank_task');
+      const newSearch = newParams.toString();
+      const newUrl = window.location.pathname + (newSearch ? '?' + newSearch : '');
+      history.replaceState({}, '', newUrl);
+    } catch(e) {
+      console.error('[init] Bank import failed', e);
+    }
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const inp = document.getElementById('section-name-input');
+  if (inp) inp.addEventListener('keydown', e => { if (e.key === 'Enter') addSection(); });
+  init();
+});
+</script>
+
+<script>
+// ── DATE PICKER ───────────────────────────────────────────
+const DAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const chip = document.getElementById('date-chip');
+const chipLabel = document.getElementById('date-chip-label');
+
+function formatDateChip(d) {
+  const dayName = DAYS[d.getDay()];
+  const dayNum = d.getDate();
+  const month = d.toLocaleString('default', { month: 'short' });
+  chipLabel.textContent = `${dayName} · ${month} ${dayNum}`;
+  const title = document.getElementById('page-title');
+  if (title) title.textContent = `${dayName} — Designed`;
+}
+
+formatDateChip(new Date());
+
+const fp = flatpickr(document.getElementById('date-picker-anchor'), {
+  defaultDate: 'today',
+  disableMobile: true,
+  clickOpens: false,
+  onChange(selectedDates) {
+    if (selectedDates[0]) {
+      const dateStr = getISODateString(selectedDates[0]);
+      formatDateChip(selectedDates[0]);
+      loadDayData(dateStr);
+    }
+  }
+});
+
+if (chip) chip.addEventListener('click', () => {
+  if (editMode) return;
+  fp.open();
+});
+
+function updateNavLinks(dateStr) {
+  const tasksLink = document.querySelector('.bottom-nav a[href^="bank.html"]');
+  if (tasksLink) {
+    tasksLink.href = `bank.html?date=${dateStr}`;
+  }
+}
+
+async function loadDayData(dateStr) {
+  // Clear current day's DOM elements
+  document.querySelectorAll('.section-group').forEach(el => el.remove());
+  
+  // Set current date
+  currentDateStr = dateStr;
+  updateNavLinks(dateStr);
+  
+  // Update browser address bar without reload
+  const newParams = new URLSearchParams(window.location.search);
+  newParams.set('date', dateStr);
+  const newUrl = window.location.pathname + '?' + newParams.toString();
+  history.replaceState({}, '', newUrl);
+
+  // Reload data
+  await restoreOrder();
+  await restoreCustomDayTasks();
+  await restoreState();
+  updateAllSectionCounts();
+  updateProgress();
+}
+</script>
+
+<!-- POPUP CONTROL SCRIPTS -->
+<script>
+let activePopup = null;
+let focusBefore = null;
+
+function openNotePopupEvent(e, btn) {
+  e.stopPropagation();
+  if (editMode) return;
+  const block = btn.closest('.tl-block');
+  if (!block) return;
+  const instanceId = block.dataset.id;
+  openNotePopup(instanceId, btn);
+}
+
+function closePopup(save = false, newNote = '', instanceId = null) {
+  if (!activePopup) return;
+  
+  if (save && instanceId) {
+    const task = customDayTasks.find(t => (t.dayId || ('bank-' + t.id)) === instanceId);
+    if (task) {
+      task.note = newNote.trim();
+      
+      const block = document.querySelector(`[data-id="${instanceId}"]`);
+      if (block) {
+        const detailEl = block.querySelector('.card-detail');
+        if (detailEl) {
+          detailEl.textContent = task.note;
+          detailEl.style.display = task.note ? 'block' : 'none';
+          
+          detailEl.classList.add('flash');
+          setTimeout(() => detailEl.classList.remove('flash'), 400);
+        }
+        
+        // Dynamically toggle glow state on the upgraded note button
+        const noteBtn = block.querySelector('.note-btn');
+        if (noteBtn) {
+          if (task.note) {
+            noteBtn.classList.add('has-content');
+          } else {
+            noteBtn.classList.remove('has-content');
+          }
+        }
+      }
+      
+      saveCustomDayTasks();
+      showToast('♡ Note saved');
+    }
+  }
+  
+  if (focusBefore && focusBefore.focus) focusBefore.focus();
+  activePopup.remove();
+  activePopup = null;
+}
+
+function openNotePopup(instanceId, triggerBtn) {
+  if (activePopup) closePopup(false);
+  
+  const task = customDayTasks.find(t => (t.dayId || ('bank-' + t.id)) === instanceId);
+  if (!task) return;
+  focusBefore = triggerBtn;
+
+  const rect = triggerBtn.getBoundingClientRect();
+  const popup = document.createElement('div');
+  popup.className = 'note-popup';
+  popup.setAttribute('role', 'dialog');
+  popup.setAttribute('aria-modal', 'true');
+  popup.setAttribute('aria-label', `Edit note for ${task.name}`);
+  popup.dataset.taskId = instanceId;
+
+  let left = rect.right + 12;
+  let top = rect.top - 12;
+  const popupWidth = 320;
+  const popupHeight = 220;
+  
+  if (left + popupWidth > window.innerWidth) left = rect.left - popupWidth - 12;
+  if (left < 8) left = 8;
+  if (top + popupHeight > window.innerHeight) top = rect.bottom - popupHeight + 8;
+  if (top < 8) top = 8;
+  
+  popup.style.left = left + 'px';
+  popup.style.top = top + 'px';
+
+  popup.innerHTML = `
+    <div class="popup-header">
+      <span><i class="ti ti-sparkles"></i> Note for ${escHtml(task.name)}</span>
+      <button class="popup-close" aria-label="Close"><i class="ti ti-x"></i></button>
+    </div>
+    <div class="popup-body">
+      <textarea id="popupTextarea" placeholder="Write something inspired…" maxlength="300">${escHtml(task.note || '')}</textarea>
+      <div class="char-counter">
+        <i class="ti ti-pencil" style="font-size:0.7rem;"></i>
+        <span class="counter-number" id="charCount">${(task.note || '').length}</span>
+        <span>/ 300</span>
+      </div>
+    </div>
+    <div class="popup-footer">
+      <button class="popup-btn cancel">Cancel</button>
+      <button class="popup-btn save">Save note</button>
+    </div>
+  `;
+  document.body.appendChild(popup);
+  activePopup = popup;
+
+  const textarea = popup.querySelector('#popupTextarea');
+  const charSpan = popup.querySelector('#charCount');
+  
+  textarea.addEventListener('input', () => { charSpan.textContent = textarea.value.length; });
+  textarea.focus();
+  textarea.select();
+
+  popup.querySelector('.popup-close').addEventListener('click', () => closePopup(false));
+  popup.querySelector('.cancel').addEventListener('click', () => closePopup(false));
+  popup.querySelector('.save').addEventListener('click', () => closePopup(true, textarea.value, instanceId));
+
+  const escHandler = (e) => {
+    if (e.key === 'Escape') {
+      closePopup(false);
+      document.removeEventListener('keydown', escHandler);
+    }
+  };
+  document.addEventListener('keydown', escHandler);
+
+  const outsideClick = (e) => {
+    if (!popup.contains(e.target) && !triggerBtn.contains(e.target)) {
+      closePopup(false);
+      document.removeEventListener('click', outsideClick);
+    }
+  };
+  setTimeout(() => document.addEventListener('click', outsideClick), 10);
+}
+
+let toastTimeout;
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  if (!toast) return;
+  toast.textContent = msg;
+  toast.style.opacity = '1';
+  clearTimeout(toastTimeout);
+  toastTimeout = setTimeout(() => { toast.style.opacity = '0'; }, 2000);
+}
+
+window.addEventListener('resize', () => { if (activePopup) closePopup(false); });
+</script>
+
+<!-- RESET MODAL -->
+<div class="reset-modal-overlay" id="reset-modal" onclick="if(event.target===this)closeResetModal()">
+  <div class="reset-modal">
+    <h3>Reset day</h3>
+    <p>Just want to uncheck everything? Or start completely fresh — clearing your custom task order and sections too?</p>
+    <div class="reset-modal-actions">
+      <button class="reset-opt" onclick="resetChecksOnly()">↺ Uncheck all tasks</button>
+      <button class="reset-opt danger" onclick="resetFull()">⚠ Full reset — restore default layout</button>
+    </div>
+    <button class="reset-cancel" onclick="closeResetModal()">Cancel</button>
+  </div>
+</div>
+
+<div id="toast" class="toast" style="opacity: 0;" aria-live="polite"></div>
+</body>
+</html>

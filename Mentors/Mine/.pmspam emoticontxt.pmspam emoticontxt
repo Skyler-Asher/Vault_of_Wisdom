@@ -1,0 +1,47 @@
+// Get all emoji names from the page
+const emojiElements = document.querySelectorAll('#private_emo .emoticon img.pemot');
+const emojis = [];
+
+// Extract all emoji codes (like :amazing:, :angel:, etc.)
+emojiElements.forEach(img => {
+    const emojiCode = img.getAttribute('data');
+    if (emojiCode) {
+        emojis.push(emojiCode);
+    }
+});
+
+console.log('Loaded ' + emojis.length + ' emojis');
+
+// Function to get a random emoji different from the last one
+function getRandomEmoji(lastEmoji) {
+    let newEmoji;
+    do {
+        newEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+    } while (newEmoji === lastEmoji && emojis.length > 1);
+    return newEmoji;
+}
+
+// Function to send random emoji with random delay
+let timeoutId;
+
+function sendRandomEmoji(lastEmoji) {
+    // Get random emoji (different from last one)
+    const emoji = getRandomEmoji(lastEmoji);
+    
+    // Send the emoji using your function
+    sendPrivateMessage(emoji);
+    console.log('Sent emoji:', emoji);
+    
+    // Calculate random interval between 1-10 seconds (1000ms to 10000ms)
+    const randomDelay = Math.floor(Math.random() * 9000) + 1000;
+    
+    // Schedule next emoji
+    timeoutId = setTimeout(() => {
+        sendRandomEmoji(emoji);
+    }, randomDelay);
+}
+
+// Start sending random emojis
+sendRandomEmoji(null);
+
+// To stop: clearTimeout(timeoutId);

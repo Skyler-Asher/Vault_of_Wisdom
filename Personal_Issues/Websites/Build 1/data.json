@@ -898,5 +898,171 @@
         "bank-1780307392927-1781942763918"
       ]
     }
-  ]
+  ],
+  "monday_schedule_v2_2026-06-21": "",
+  "day_order_v1_2026-06-21": "",
+  "day_sections_v1_2026-06-21": "",
+  "day_custom_tasks_v1_2026-06-21": [],
+  "day_custom_tasks_v1_2026-06-22": [
+    {
+      "id": 1780910358089,
+      "name": "Write With Left Hand",
+      "tags": [
+        "10 min"
+      ],
+      "duration": "10 min",
+      "note": "",
+      "icon": "ti-pencil",
+      "color": "purple",
+      "dayId": "bank-1780910358089-1782112714577"
+    },
+    {
+      "id": 1781421188459,
+      "name": "Tounge Twisters",
+      "tags": [
+        "10min"
+      ],
+      "duration": "10min",
+      "note": "",
+      "icon": "ti-heart-rate-monitor",
+      "color": "amber",
+      "dayId": "bank-1781421188459-1782112729160"
+    },
+    {
+      "id": 1781421402707,
+      "name": "Post Session Analysis",
+      "tags": [],
+      "duration": "",
+      "note": "Record Post-Session Analysis and Upload it",
+      "icon": "ti-chart-line",
+      "color": "amber",
+      "dayId": "bank-1781421402707-1782112731889"
+    },
+    {
+      "id": 1781421361092,
+      "name": "Pre-Session Analysis Recorded",
+      "tags": [],
+      "duration": "",
+      "note": "Record the Pre-session Analysis",
+      "icon": "ti-chart-line",
+      "color": "amber",
+      "dayId": "bank-1781421361092-1782112732633"
+    },
+    {
+      "id": 1780476798963,
+      "name": "Bath",
+      "tags": [
+        "under 15m"
+      ],
+      "duration": "under 15m",
+      "note": "",
+      "icon": "ti-star",
+      "color": "amber",
+      "dayId": "bank-1780476798963-1782112737776"
+    },
+    {
+      "id": 1780407540001,
+      "name": "Water Refill",
+      "tags": [
+        "under 15m"
+      ],
+      "duration": "under 15m",
+      "note": "Going to the  Arow  to fill water",
+      "icon": "ti-star",
+      "color": "amber",
+      "dayId": "bank-1780407540001-1782112739808"
+    },
+    {
+      "id": 1780476906802,
+      "name": "Book-Reading",
+      "tags": [
+        "Habit Stacking : Drinks"
+      ],
+      "duration": "Habit Stacking : Drinks",
+      "note": "Read 10 pages of any chosen book",
+      "icon": "ti-book-2",
+      "color": "amber",
+      "dayId": "bank-1780476906802-1782112742193"
+    },
+    {
+      "id": 1780318267960,
+      "name": "Trading- Session",
+      "tags": [
+        "5:00 PM — 8:45 PM"
+      ],
+      "duration": "5:00 PM — 8:45 PM",
+      "note": "Session Analysis\nRecord & Review",
+      "icon": "ti-chart-line",
+      "color": "purple",
+      "dayId": "bank-1780318267960-1782112745265"
+    },
+    {
+      "id": 1780307392927,
+      "name": "Exercise",
+      "tags": [
+        "3pm"
+      ],
+      "duration": "3pm",
+      "note": "Use a Full-Body Workout  from a you tube video",
+      "icon": "ti-barbell",
+      "color": "amber",
+      "dayId": "bank-1780307392927-1782112746816"
+    },
+    {
+      "id": 1780304009706,
+      "name": "Sleep",
+      "tags": [
+        "10:00PM - 11:00PM"
+      ],
+      "duration": "10:00PM - 11:00PM",
+      "note": "After 10 pm  no screens",
+      "icon": "ti-moon",
+      "color": "amber",
+      "dayId": "bank-1780304009706-1782112750664"
+    }
+  ],
+  "day_sections_v1_2026-06-22": [
+    {
+      "id": "sec-1782112715481",
+      "label": "My Day"
+    },
+    {
+      "id": "sec-1782112976565",
+      "label": "Minor Tasks"
+    }
+  ],
+  "day_order_v1_2026-06-22": [
+    {
+      "groupId": "sec-1782112715481",
+      "tasks": [
+        "bank-1781421402707-1782112731889",
+        "bank-1781421361092-1782112732633",
+        "bank-1780476906802-1782112742193",
+        "bank-1780318267960-1782112745265",
+        "bank-1780307392927-1782112746816",
+        "bank-1780304009706-1782112750664"
+      ]
+    },
+    {
+      "groupId": "sec-1782112976565",
+      "tasks": [
+        "bank-1780476798963-1782112737776",
+        "bank-1780910358089-1782112714577",
+        "bank-1781421188459-1782112729160",
+        "bank-1780407540001-1782112739808"
+      ]
+    }
+  ],
+  "monday_schedule_v2_2026-06-22": {
+    "bank-1781421402707-1782112731889": false,
+    "bank-1781421361092-1782112732633": false,
+    "bank-1780476906802-1782112742193": false,
+    "bank-1780318267960-1782112745265": false,
+    "bank-1780307392927-1782112746816": false,
+    "bank-1780304009706-1782112750664": false,
+    "bank-1780476798963-1782112737776": false,
+    "bank-1780910358089-1782112714577": false,
+    "bank-1781421188459-1782112729160": true,
+    "bank-1780407540001-1782112739808": false
+  }
 }
