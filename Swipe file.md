@@ -20,4 +20,11 @@
 
 1. What I did 
    
-   I have 10 fitness coaches according to the criteria claude set for 
+   I have 10 fitness coaches according to the criteria claude set for me 
+   
+   
+   My worries 
+   
+   1. Maybe I am leaning too much on AI but I managed to work  considering my lazy ahh streak this could be one of the best day with just this little work . 
+      
+2. I don't get why claude recommend me people with 20k - 200k followers  , from what I know we were looking for fitness coaches videos a
