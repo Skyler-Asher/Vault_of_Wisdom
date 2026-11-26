@@ -27,4 +27,4 @@
    
    1. Maybe I am leaning too much on AI but I managed to work  considering my lazy ahh streak this could be one of the best day with just this little work . 
       
-2. I don't get why claude recommend me people with 20k - 200k followers  , from what I know we were looking for fitness coaches videos a
+2. I don't get why claude recommend me people with 20k - 200k followers  , from what I know we were looking for fitness coaches videos and study them to get good so why not look at 1M + guys ??? 
