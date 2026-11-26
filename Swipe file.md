@@ -12,3 +12,12 @@
 
 
 ![[Pasted image 20261126214406.png]]![[Pasted image 20261126214640.png]]
+
+
+![[Pasted image 20261126215416.png]]
+
+
+
+1. What I did 
+   
+   I have 10 fitness coaches according to the criteria claude set for 
